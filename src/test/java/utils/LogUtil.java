@@ -1,0 +1,61 @@
+package utils;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.aventstack.extentreports.ExtentTest;
+
+public class LogUtil {
+	
+	private static final Logger logger = LogManager.getLogger(LogUtil.class);
+	private static final ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+	
+	public static void setExtentTest(ExtentTest test) {
+		extentTest.set(test);
+	}
+	
+	public static void removeExtentTest() {
+		extentTest.remove();
+	}
+	
+	public static ExtentTest getExtentTest() {
+		return extentTest.get();
+	}
+	
+	public static void info(String message) {
+		logger.info(message);
+		ExtentTest test = extentTest.get();
+		
+		if(test != null) test.info(message);
+	}
+	
+	public static void debug(String message) {
+		logger.debug(message);
+	
+	}
+	
+	public static void debug(String message, Object placeHolder1, Object placeHolder2) {
+		logger.debug(message, placeHolder1, placeHolder2);
+	}
+	
+	public static void pass(String message) {
+		logger.info(message);
+		ExtentTest test = extentTest.get();
+		
+		if(test != null) test.pass(message);
+	}
+	
+	public static void fail(String message, Throwable t) {
+		logger.error(message);
+		ExtentTest test = extentTest.get();
+		
+		if(test != null) test.fail(message + t.getMessage());
+	}
+	
+	public static void error(String message, Throwable t) {
+		logger.error(message, t);
+		ExtentTest test = extentTest.get();
+		
+		if(test != null) test.fail(message + "<br>" + t.getMessage());
+	}
+}

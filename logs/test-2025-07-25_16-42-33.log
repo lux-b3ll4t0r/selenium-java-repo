@@ -1,0 +1,9 @@
+2025-07-25 16:42:33 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 16:42:34 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 16:42:34 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 16:42:34 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 16:42:34 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Products navbar link is visible and clickable.
+2025-07-25 16:42:36 [main] INFO  utils.LogUtil - ** Verifying Products navbar link is visible **
+2025-07-25 16:42:46 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 16:42:46 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 16:42:46 [main] ERROR utils.LogUtil - [TEST FAILED]: productsNavBarVisibleAndClickable

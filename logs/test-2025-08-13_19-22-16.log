@@ -1,0 +1,101 @@
+2025-08-13 19:22:16 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:17 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:17 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Homepage loads successfully.
+2025-08-13 19:22:19 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - ** Verifying current url matches expected url **
+2025-08-13 19:22:19 [main] DEBUG utils.LogUtil - Current URL: https://automationexercise.com/<br>Expected URL: https://automationexercise.com/
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - ** Current url matches expected url **
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - ** Verifying title matches expected title **
+2025-08-13 19:22:19 [main] DEBUG utils.LogUtil - Current title: Automation Exercise<br>Expected title: Automation Exercise
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - ** Title matches expected title **
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - ** Verifying homepage logo is visible **
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:19 [main] ERROR utils.LogUtil - [TEST FAILED]: testHomePageLoads
+2025-08-13 19:22:19 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:20 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:20 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up form header is visible.
+2025-08-13 19:22:21 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:21 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:21 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:21 [main] ERROR utils.LogUtil - [TEST FAILED]: verifySignUpFormHeaderVisibility
+2025-08-13 19:22:21 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:22 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:22 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up form can be populated and submitted.
+2025-08-13 19:22:23 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:23 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:23 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:23 [main] ERROR utils.LogUtil - [TEST FAILED]: verifySignUpFormFunctionality
+2025-08-13 19:22:23 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:24 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:24 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up account information can be populated and submitted.
+2025-08-13 19:22:25 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:25 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:22:25 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:25 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:25 [main] ERROR utils.LogUtil - [TEST FAILED]: verifySignUpAccountInformationFunctionality
+2025-08-13 19:22:25 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:26 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:26 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying API Testing navbar link is visible and clickable.
+2025-08-13 19:22:27 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:27 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:27 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:27 [main] ERROR utils.LogUtil - [TEST FAILED]: apiTestingNavBarVisibleAndClickable
+2025-08-13 19:22:27 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:28 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:28 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Cart navbar link is visible and clickable.
+2025-08-13 19:22:30 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:30 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:30 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:30 [main] ERROR utils.LogUtil - [TEST FAILED]: cartNavBarVisibleAndClickable
+2025-08-13 19:22:30 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:31 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:31 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Home navbar link is visible and clickable.
+2025-08-13 19:22:33 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:33 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:33 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:33 [main] ERROR utils.LogUtil - [TEST FAILED]: homeNavBarVisibleAndClickable
+2025-08-13 19:22:33 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:33 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:33 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Products navbar link is visible and clickable.
+2025-08-13 19:22:35 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:35 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:35 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:35 [main] ERROR utils.LogUtil - [TEST FAILED]: productsNavBarVisibleAndClickable
+2025-08-13 19:22:35 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:35 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:35 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Signup Login navbar link is visible and clickable.
+2025-08-13 19:22:37 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:37 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:38 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:38 [main] ERROR utils.LogUtil - [TEST FAILED]: signUpLoginNavBarVisibleAndClickable
+2025-08-13 19:22:38 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:38 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:38 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Test Cases navbar link is visible and clickable.
+2025-08-13 19:22:40 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:40 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:40 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:40 [main] ERROR utils.LogUtil - [TEST FAILED]: testCasesNavBarVisibleAndClickable
+2025-08-13 19:22:40 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:41 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:41 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Video Tutorials navbar link is visible and clickable.
+2025-08-13 19:22:42 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:42 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:42 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:42 [main] ERROR utils.LogUtil - [TEST FAILED]: videoTutorialsNavBarVisibleAndClickable
+2025-08-13 19:22:42 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:43 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:43 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Login form header is visible.
+2025-08-13 19:22:45 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:45 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:22:45 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:45 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:45 [main] ERROR utils.LogUtil - [TEST FAILED]: verifyLoginFormHeader
+2025-08-13 19:22:45 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:22:46 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:22:46 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Login form fields can be populated and submitted successfully.
+2025-08-13 19:22:48 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:22:48 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:22:48 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:22:48 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:22:48 [main] ERROR utils.LogUtil - [TEST FAILED]: verifyLoginFormFunctionality

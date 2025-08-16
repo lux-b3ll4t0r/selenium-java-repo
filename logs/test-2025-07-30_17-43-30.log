@@ -1,0 +1,49 @@
+2025-07-30 17:43:30 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-30 17:43:31 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-30 17:43:31 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-30 17:43:31 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-30 17:43:31 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-07-30 17:43:31 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+2025-07-30 17:43:31 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2025-07-30 17:43:32 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up account information can be populated and submitted.
+2025-07-30 17:43:33 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-07-30 17:43:33 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-07-30 17:43:34 [main] DEBUG utils.LogUtil - Signing up new user: "Sanda" - "drucilla.shields@hotmail.com"
+2025-07-30 17:43:46 [main] INFO  utils.LogUtil - ** Entering new user account information **
+2025-07-30 17:43:46 [main] INFO  utils.LogUtil - ** Selecting title: "Mrs"**
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Name: "Sanda"
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Email: "drucilla.shields@hotmail.com"
+2025-07-30 17:43:46 [main] INFO  utils.LogUtil - ** Entering password **
+2025-07-30 17:43:46 [main] INFO  utils.LogUtil - ** Entering date of birth "15-4-1989"
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Selecting day: "15"
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Selecting month: "4"
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Selecting year: "1989"
+2025-07-30 17:43:46 [main] INFO  utils.LogUtil - ** Clicking sign up for newsletter **
+2025-07-30 17:43:46 [main] INFO  utils.LogUtil - ** Clicking to receive special offers **
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Entering first name: "Sanda" **
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Entering last name: "Stoltenberg" **
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Entering company name: "Larkin, Beer and Keebler" **
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Entering address 1: "15132 Ondricka Prairie" **
+2025-07-30 17:43:46 [main] DEBUG utils.LogUtil - ** Entering address 2: "Suite 061" **
+2025-07-30 17:43:47 [main] DEBUG utils.LogUtil - ** Selecting country: "New Zealand" **
+2025-07-30 17:43:47 [main] DEBUG utils.LogUtil - ** Entering state: "Utah" **
+2025-07-30 17:43:47 [main] DEBUG utils.LogUtil - ** Entering city: "West Fidelialand" **
+2025-07-30 17:43:47 [main] DEBUG utils.LogUtil - ** Entering zipcode: "827" **
+2025-07-30 17:43:47 [main] DEBUG utils.LogUtil - ** Entering mobile number: "950-921-9284" **
+2025-07-30 17:43:47 [main] INFO  utils.LogUtil - ** Submitting sign up account info **
+2025-07-30 17:43:48 [main] INFO  utils.LogUtil - ** Verifying "Account Created!" message is displayed **
+2025-07-30 17:43:48 [main] INFO  utils.LogUtil - ** Clicking continue **
+2025-07-30 17:43:48 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-30 17:43:48 [main] INFO  utils.LogUtil - [UPDATING AND CLOSING RESOURCES]
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save content types part
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save package relationships
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'docProps/core.xml'
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/drawings/drawing1.xml'
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/sharedStrings.xml'
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/styles.xml'
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/theme/theme1.xml'
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/workbook.xml'
+2025-07-30 17:43:48 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/worksheets/sheet1.xml'
+2025-07-30 17:43:48 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-30 17:43:48 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-30 17:43:48 [main] INFO  utils.LogUtil - [TEST PASS]: verifySignUpAccountInformationFunctionality

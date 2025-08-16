@@ -1,0 +1,104 @@
+2025-07-25 23:23:35 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:23:37 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:23:37 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:23:37 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:23:37 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying API Testing navbar link is visible and clickable.
+2025-07-25 23:23:38 [main] INFO  utils.LogUtil - ** Verifying API Testing navbar link is visible **
+2025-07-25 23:23:38 [main] INFO  utils.LogUtil - ** API Testing navbar link is visible **
+2025-07-25 23:23:38 [main] INFO  utils.LogUtil - ** Verifying API Testing navbar link is clickable
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - ** API Testing navbar link is clickable **
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - [TEST PASS]: apiTestingNavBarVisibleAndClickable
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:23:40 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Cart navbar link is visible and clickable.
+2025-07-25 23:23:42 [main] INFO  utils.LogUtil - ** Verifying Cart navbar link is visible **
+2025-07-25 23:23:42 [main] INFO  utils.LogUtil - ** Cart navbar link is visible **
+2025-07-25 23:23:42 [main] INFO  utils.LogUtil - ** Verifying Cart navbar link is clickable
+2025-07-25 23:23:43 [main] INFO  utils.LogUtil - ** Cart navbar link is clickable **
+2025-07-25 23:23:43 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:23:43 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:23:43 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:23:43 [main] INFO  utils.LogUtil - [TEST PASS]: cartNavBarVisibleAndClickable
+2025-07-25 23:23:43 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:23:44 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:23:44 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:23:44 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:23:44 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Contact Us navbar link is visible and clickable.
+2025-07-25 23:23:46 [main] INFO  utils.LogUtil - ** Verifying Contact Us navbar link is visible **
+2025-07-25 23:23:46 [main] INFO  utils.LogUtil - ** Contact Us navbar link is visible **
+2025-07-25 23:23:46 [main] INFO  utils.LogUtil - ** Verifying Contact Us navbar link is clickable
+2025-07-25 23:23:47 [main] INFO  utils.LogUtil - ** Contact Us navbar link is clickable **
+2025-07-25 23:23:47 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:23:47 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:23:47 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:23:47 [main] INFO  utils.LogUtil - [TEST PASS]: contactUsNavBarVisibleAndClickable
+2025-07-25 23:23:47 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:23:48 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:23:48 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:23:48 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:23:48 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Home navbar link is visible and clickable.
+2025-07-25 23:23:49 [main] INFO  utils.LogUtil - ** Verifying Home navbar link is visible **
+2025-07-25 23:23:49 [main] INFO  utils.LogUtil - ** Home navbar link is visible **
+2025-07-25 23:23:49 [main] INFO  utils.LogUtil - ** Verifying Home navbar link is clickable
+2025-07-25 23:23:51 [main] INFO  utils.LogUtil - ** Home navbar link is clickable **
+2025-07-25 23:23:51 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:23:51 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:23:51 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:23:51 [main] INFO  utils.LogUtil - [TEST PASS]: homeNavBarVisibleAndClickable
+2025-07-25 23:23:51 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:23:52 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:23:52 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:23:52 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:23:52 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Products navbar link is visible and clickable.
+2025-07-25 23:23:54 [main] INFO  utils.LogUtil - ** Verifying Products navbar link is visible **
+2025-07-25 23:23:54 [main] INFO  utils.LogUtil - ** Products navbar link is visible **
+2025-07-25 23:23:54 [main] INFO  utils.LogUtil - ** Verifying Products navbar link is clickable
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - ** Products navbar link is clickable **
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - [TEST PASS]: productsNavBarVisibleAndClickable
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:23:56 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Signup Login navbar link is visible and clickable.
+2025-07-25 23:23:58 [main] INFO  utils.LogUtil - ** Verifying Signup Login navbar link is visible **
+2025-07-25 23:23:58 [main] INFO  utils.LogUtil - ** Signup Login navbar link is visible **
+2025-07-25 23:23:58 [main] INFO  utils.LogUtil - ** Verifying Signup Login navbar link is clickable
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - ** Signup Login navbar link is clickable **
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - [TEST PASS]: signUpLoginNavBarVisibleAndClickable
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:24:00 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Test Cases navbar link is visible and clickable.
+2025-07-25 23:24:02 [main] INFO  utils.LogUtil - ** Verifying Test Cases navbar link is visible **
+2025-07-25 23:24:02 [main] INFO  utils.LogUtil - ** Test Cases navbar link is visible **
+2025-07-25 23:24:02 [main] INFO  utils.LogUtil - ** Verifying Test Cases navbar link is clickable
+2025-07-25 23:24:04 [main] INFO  utils.LogUtil - ** Test Cases navbar link is clickable **
+2025-07-25 23:24:04 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:24:04 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:24:04 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:24:04 [main] INFO  utils.LogUtil - [TEST PASS]: testCasesNavBarVisibleAndClickable
+2025-07-25 23:24:04 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:24:05 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:24:05 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:24:05 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:24:05 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Video Tutorials navbar link is visible and clickable.
+2025-07-25 23:24:07 [main] INFO  utils.LogUtil - ** Verifying Video Tutorials navbar link is visible **
+2025-07-25 23:24:07 [main] INFO  utils.LogUtil - ** Video Tutorials navbar link is visible **
+2025-07-25 23:24:07 [main] INFO  utils.LogUtil - ** Verifying Video Tutorials navbar link is clickable
+2025-07-25 23:24:08 [main] INFO  utils.LogUtil - ** Video Tutorials navbar link is clickable **
+2025-07-25 23:24:08 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:24:08 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:24:08 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:24:08 [main] INFO  utils.LogUtil - [TEST PASS]: videoTutorialsNavBarVisibleAndClickable

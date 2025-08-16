@@ -1,0 +1,13 @@
+2025-07-25 23:21:09 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-25 23:21:11 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-25 23:21:11 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-25 23:21:11 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-25 23:21:11 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Cart navbar link is visible and clickable.
+2025-07-25 23:21:13 [main] INFO  utils.LogUtil - ** Verifying Cart navbar link is visible **
+2025-07-25 23:21:13 [main] INFO  utils.LogUtil - ** Cart navbar link is visible **
+2025-07-25 23:21:13 [main] INFO  utils.LogUtil - ** Verifying Cart navbar link is clickable
+2025-07-25 23:21:14 [main] INFO  utils.LogUtil - ** Cart navbar link is clickable **
+2025-07-25 23:21:14 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-25 23:21:14 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-25 23:21:14 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-25 23:21:14 [main] INFO  utils.LogUtil - [TEST PASS]: cartNavBarVisibleAndClickable

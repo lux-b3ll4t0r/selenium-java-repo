@@ -1,0 +1,27 @@
+2025-08-13 19:19:17 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:19:19 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:19:19 [main] DEBUG utils.LogUtil - Setting up test resources
+2025-08-13 19:19:19 [main] DEBUG utils.LogUtil - Set up successfully
+2025-08-13 19:19:19 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Login form header is visible.
+2025-08-13 19:19:21 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:19:21 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:19:22 [main] INFO  utils.LogUtil - ** Login form header is visible **
+2025-08-13 19:19:22 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:19:22 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:19:22 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:19:22 [main] INFO  utils.LogUtil - [TEST PASS]: verifyLoginFormHeader
+2025-08-13 19:19:22 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:19:23 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:19:23 [main] DEBUG utils.LogUtil - Setting up test resources
+2025-08-13 19:19:23 [main] DEBUG utils.LogUtil - Set up successfully
+2025-08-13 19:19:23 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Login form fields can be populated and submitted successfully.
+2025-08-13 19:19:25 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:19:25 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:19:26 [main] INFO  utils.LogUtil - Entering email
+2025-08-13 19:19:26 [main] INFO  utils.LogUtil - Entering password
+2025-08-13 19:19:26 [main] INFO  utils.LogUtil - Submitting login details
+2025-08-13 19:19:28 [main] INFO  utils.LogUtil - User logged in successfully
+2025-08-13 19:19:28 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:19:28 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:19:28 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:19:28 [main] INFO  utils.LogUtil - [TEST PASS]: verifyLoginFormFunctionality

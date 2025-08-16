@@ -1,0 +1,17 @@
+2025-07-27 00:42:26 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-27 00:42:27 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-27 00:42:27 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-27 00:42:28 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-27 00:42:28 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up form can be populated and submitted.
+2025-07-27 00:42:29 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-07-27 00:42:30 [main] INFO  utils.LogUtil - ** Verifying name input can be populated **
+2025-07-27 00:42:30 [main] INFO  utils.LogUtil - ** Name input populated successfully **
+2025-07-27 00:42:30 [main] INFO  utils.LogUtil - ** Verifying email input can be populated **
+2025-07-27 00:42:31 [main] INFO  utils.LogUtil - ** Email input can be populated successfully **
+2025-07-27 00:42:31 [main] INFO  utils.LogUtil - ** Clicking signup button to submit to next page **
+2025-07-27 00:42:31 [main] INFO  utils.LogUtil - ** Verifying enter account information page is visible**
+2025-07-27 00:42:31 [main] INFO  utils.LogUtil - ** Enter account information page is visible**
+2025-07-27 00:42:31 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-07-27 00:42:31 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-27 00:42:32 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-27 00:42:32 [main] INFO  utils.LogUtil - [TEST PASS]: verifySignUpFormFunctionality

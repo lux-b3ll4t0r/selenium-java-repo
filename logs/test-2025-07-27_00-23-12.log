@@ -1,0 +1,9 @@
+2025-07-27 00:23:12 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-27 00:23:12 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-27 00:23:12 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-27 00:23:14 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-27 00:23:14 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up form can be populated and submitted.
+2025-07-27 00:23:16 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-07-27 00:23:16 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-27 00:23:16 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-27 00:23:16 [main] ERROR utils.LogUtil - [TEST FAILED]: verifySignUpFormFunctionality

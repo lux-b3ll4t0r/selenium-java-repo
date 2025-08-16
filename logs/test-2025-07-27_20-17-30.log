@@ -1,0 +1,13 @@
+2025-07-27 20:17:30 [main] INFO  utils.LogUtil - Initializing Driver
+2025-07-27 20:17:31 [main] INFO  utils.LogUtil - Driver Initialized
+2025-07-27 20:17:31 [main] INFO  utils.LogUtil - Setting up test resources
+2025-07-27 20:17:31 [main] INFO  utils.LogUtil - Set up successfully
+2025-07-27 20:17:31 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up account information can be populated and submitted.
+2025-07-27 20:17:35 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-07-27 20:17:37 [main] INFO  utils.LogUtil - ** Clicking signup button to submit to next page **
+2025-07-27 20:17:37 [main] INFO  utils.LogUtil - ** Selecting title **
+2025-07-27 20:17:39 [main] INFO  utils.LogUtil - ** Entering password **
+2025-07-27 20:17:39 [main] INFO  utils.LogUtil - ** Entering date of birth **
+2025-07-27 20:17:49 [main] INFO  utils.LogUtil - Quiting Driver
+2025-07-27 20:17:49 [main] INFO  utils.LogUtil - Driver Quit
+2025-07-27 20:17:49 [main] ERROR utils.LogUtil - [TEST FAILED]: verifySignUpAccountInformationFunctionality

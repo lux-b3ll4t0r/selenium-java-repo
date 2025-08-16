@@ -1,0 +1,220 @@
+2025-08-13 19:44:15 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:44:16 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:44:16 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:44:16 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:44:16 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Homepage loads successfully.
+2025-08-13 19:44:17 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - ** Verifying current url matches expected url **
+2025-08-13 19:44:17 [main] DEBUG utils.LogUtil - Current URL: https://automationexercise.com/<br>Expected URL: https://automationexercise.com/
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - ** Current url matches expected url **
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - ** Verifying title matches expected title **
+2025-08-13 19:44:17 [main] DEBUG utils.LogUtil - Current title: Automation Exercise<br>Expected title: Automation Exercise
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - ** Title matches expected title **
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - ** Verifying homepage logo is visible **
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - ** Homepage logo is visible **
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - [TEST PASS]: testHomePageLoads
+2025-08-13 19:44:17 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:44:18 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:44:18 [main] DEBUG utils.LogUtil - Setting up test resources
+2025-08-13 19:44:18 [main] DEBUG utils.LogUtil - Set up successfully
+2025-08-13 19:44:18 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-08-13 19:44:18 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+2025-08-13 19:44:18 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2025-08-13 19:44:18 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up form header is visible.
+2025-08-13 19:44:20 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:44:21 [main] INFO  utils.LogUtil - ** Sign up form header is visible **
+2025-08-13 19:44:21 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:44:21 [main] DEBUG utils.LogUtil - [UPDATING AND CLOSING RESOURCES]
+2025-08-13 19:44:21 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save content types part
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save package relationships
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'docProps/core.xml'
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/drawings/drawing1.xml'
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/sharedStrings.xml'
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/styles.xml'
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/theme/theme1.xml'
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/workbook.xml'
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/worksheets/sheet1.xml'
+2025-08-13 19:44:22 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:44:22 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:44:22 [main] INFO  utils.LogUtil - [TEST PASS]: verifySignUpFormHeaderVisibility
+2025-08-13 19:44:22 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:44:22 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:44:22 [main] DEBUG utils.LogUtil - Setting up test resources
+2025-08-13 19:44:22 [main] DEBUG utils.LogUtil - Set up successfully
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+2025-08-13 19:44:22 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2025-08-13 19:44:22 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up form can be populated and submitted.
+2025-08-13 19:44:24 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:44:25 [main] DEBUG utils.LogUtil - Entering: "Jami Rosenbaum"
+2025-08-13 19:44:25 [main] DEBUG utils.LogUtil - Entering: "freeman.herman@hotmail.com"
+2025-08-13 19:44:37 [main] INFO  utils.LogUtil - ** Verifying enter account information page is visible**
+2025-08-13 19:44:37 [main] INFO  utils.LogUtil - ** Enter account information page is visible**
+2025-08-13 19:44:37 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:44:37 [main] DEBUG utils.LogUtil - [UPDATING AND CLOSING RESOURCES]
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save content types part
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save package relationships
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'docProps/core.xml'
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/drawings/drawing1.xml'
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/sharedStrings.xml'
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/styles.xml'
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/theme/theme1.xml'
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/workbook.xml'
+2025-08-13 19:44:37 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/worksheets/sheet1.xml'
+2025-08-13 19:44:37 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:44:37 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:44:37 [main] INFO  utils.LogUtil - [TEST PASS]: verifySignUpFormFunctionality
+2025-08-13 19:44:37 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:44:38 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:44:38 [main] DEBUG utils.LogUtil - Setting up test resources
+2025-08-13 19:44:38 [main] DEBUG utils.LogUtil - Set up successfully
+2025-08-13 19:44:38 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
+2025-08-13 19:44:38 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+2025-08-13 19:44:38 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+2025-08-13 19:44:38 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying sign up account information can be populated and submitted.
+2025-08-13 19:44:39 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:44:39 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:46:08 [main] DEBUG utils.LogUtil - [UPDATING AND CLOSING RESOURCES]
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save content types part
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save package relationships
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'docProps/core.xml'
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/drawings/drawing1.xml'
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/sharedStrings.xml'
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/styles.xml'
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/theme/theme1.xml'
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/workbook.xml'
+2025-08-13 19:46:08 [main] DEBUG org.apache.poi.openxml4j.opc.ZipPackage - Save part 'xl/worksheets/sheet1.xml'
+2025-08-13 19:46:08 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:46:08 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:46:08 [main] ERROR utils.LogUtil - [TEST FAILED]: verifySignUpAccountInformationFunctionality
+2025-08-13 19:46:08 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:46:09 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:46:09 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:46:09 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:46:09 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying API Testing navbar link is visible and clickable.
+2025-08-13 19:46:10 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:46:10 [main] INFO  utils.LogUtil - API Testing nav link is visible
+2025-08-13 19:46:12 [main] INFO  utils.LogUtil - API Testing nav link is clickable
+2025-08-13 19:46:12 [main] INFO  utils.LogUtil - Directed to API Testing successfully
+2025-08-13 19:46:12 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:46:12 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:46:12 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:46:12 [main] INFO  utils.LogUtil - [TEST PASS]: apiTestingNavBarVisibleAndClickable
+2025-08-13 19:46:12 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:46:13 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:46:13 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:46:13 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:46:13 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Cart navbar link is visible and clickable.
+2025-08-13 19:46:15 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:46:15 [main] INFO  utils.LogUtil - Cart nav link is visible
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Cart nav link is clickable
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Directed to Cart successfully
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - [TEST PASS]: cartNavBarVisibleAndClickable
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:46:16 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Contact Us navbar link is visible and clickable.
+2025-08-13 19:46:18 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:46:18 [main] INFO  utils.LogUtil - Contact Us navbar link is visible
+2025-08-13 19:47:45 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:47:45 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:47:45 [main] ERROR utils.LogUtil - [TEST FAILED]: contactUsNavBarVisibleAndClickable
+2025-08-13 19:47:45 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:47:46 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:47:46 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:47:46 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:47:46 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Home navbar link is visible and clickable.
+2025-08-13 19:47:47 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:47:48 [main] INFO  utils.LogUtil - Home nav link is visible
+2025-08-13 19:47:49 [main] INFO  utils.LogUtil - Home nav link is clickable
+2025-08-13 19:47:49 [main] INFO  utils.LogUtil - Directed to homepage successfully
+2025-08-13 19:47:49 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:47:49 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:47:49 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:47:49 [main] INFO  utils.LogUtil - [TEST PASS]: homeNavBarVisibleAndClickable
+2025-08-13 19:47:49 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:47:50 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:47:50 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:47:50 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:47:50 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Products navbar link is visible and clickable.
+2025-08-13 19:47:52 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:47:52 [main] INFO  utils.LogUtil - ** Products nav link is visible **
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - ** Products nav link is clickable **
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - Directed to Products successfully
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - [TEST PASS]: productsNavBarVisibleAndClickable
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:47:54 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Signup Login navbar link is visible and clickable.
+2025-08-13 19:47:56 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:47:56 [main] INFO  utils.LogUtil - Signup Login nav link is visible
+2025-08-13 19:47:57 [main] INFO  utils.LogUtil - Signup Login nav link is clickable
+2025-08-13 19:47:57 [main] INFO  utils.LogUtil - Directed to Signup / Login successfully
+2025-08-13 19:47:57 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:47:57 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:47:57 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:47:57 [main] INFO  utils.LogUtil - [TEST PASS]: signUpLoginNavBarVisibleAndClickable
+2025-08-13 19:47:57 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:47:58 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:47:58 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:47:58 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:47:58 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Test Cases navbar link is visible and clickable.
+2025-08-13 19:48:00 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:48:00 [main] INFO  utils.LogUtil - Test Cases nav link is visible
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Test Cases nav link is clickable
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Directed to Test Cases successfully
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - [TEST PASS]: testCasesNavBarVisibleAndClickable
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Setting up test resources
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - Set up successfully
+2025-08-13 19:48:02 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Video Tutorials navbar link is visible and clickable.
+2025-08-13 19:48:04 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:48:04 [main] INFO  utils.LogUtil - Video Tutorials navbar link is visible
+2025-08-13 19:48:06 [main] INFO  utils.LogUtil - Video Tutorials navbar link is clickable
+2025-08-13 19:48:06 [main] INFO  utils.LogUtil - Directed to Video Tutorials successfully
+2025-08-13 19:48:06 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:48:06 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:48:06 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:48:06 [main] INFO  utils.LogUtil - [TEST PASS]: videoTutorialsNavBarVisibleAndClickable
+2025-08-13 19:48:06 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:48:07 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:48:07 [main] DEBUG utils.LogUtil - Setting up test resources
+2025-08-13 19:48:07 [main] DEBUG utils.LogUtil - Set up successfully
+2025-08-13 19:48:07 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Login form header is visible.
+2025-08-13 19:48:08 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:48:08 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:48:09 [main] INFO  utils.LogUtil - ** Login form header is visible **
+2025-08-13 19:48:09 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:48:09 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:48:09 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:48:09 [main] INFO  utils.LogUtil - [TEST PASS]: verifyLoginFormHeader
+2025-08-13 19:48:09 [main] INFO  utils.LogUtil - Initializing Driver
+2025-08-13 19:48:10 [main] INFO  utils.LogUtil - Driver Initialized
+2025-08-13 19:48:10 [main] DEBUG utils.LogUtil - Setting up test resources
+2025-08-13 19:48:10 [main] DEBUG utils.LogUtil - Set up successfully
+2025-08-13 19:48:10 [main] INFO  utils.LogUtil - [TEST STARTED]: Verifying Login form fields can be populated and submitted successfully.
+2025-08-13 19:48:11 [main] DEBUG utils.LogUtil - Base URL: https://automationexercise.com/
+2025-08-13 19:48:11 [main] INFO  utils.LogUtil - ** Clicking Sign up / Login **
+2025-08-13 19:48:12 [main] INFO  utils.LogUtil - Entering email
+2025-08-13 19:48:12 [main] INFO  utils.LogUtil - Entering password
+2025-08-13 19:48:13 [main] INFO  utils.LogUtil - Submitting login details
+2025-08-13 19:48:14 [main] INFO  utils.LogUtil - User logged in successfully
+2025-08-13 19:48:14 [main] INFO  utils.LogUtil - [TEST COMPLETED]
+2025-08-13 19:48:14 [main] INFO  utils.LogUtil - Quiting Driver
+2025-08-13 19:48:14 [main] INFO  utils.LogUtil - Driver Quit
+2025-08-13 19:48:14 [main] INFO  utils.LogUtil - [TEST PASS]: verifyLoginFormFunctionality

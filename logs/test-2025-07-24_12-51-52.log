@@ -1,0 +1,14 @@
+2025-07-24 12:51:52 [main] INFO  base.BaseTest - == Initializing Driver ==
+2025-07-24 12:51:54 [main] INFO  base.BaseTest - == Driver Initialized ==
+2025-07-24 12:51:54 [main] INFO  smoke.HomePageSmokeTest - == Setting up ==
+2025-07-24 12:51:54 [main] INFO  smoke.HomePageSmokeTest - == Set up successfully ==
+2025-07-24 12:51:54 [main] INFO  smoke.HomePageSmokeTest - == TEST STARTED: Loading home page ==
+2025-07-24 12:51:56 [main] INFO  smoke.HomePageSmokeTest - ** Verifying current url matches expected url **
+2025-07-24 12:51:56 [main] INFO  smoke.HomePageSmokeTest - ** Current url matches expected url **
+2025-07-24 12:51:56 [main] INFO  smoke.HomePageSmokeTest - ** Verifying title matches expected title **
+2025-07-24 12:51:56 [main] INFO  smoke.HomePageSmokeTest - ** Title matches expected title **
+2025-07-24 12:51:56 [main] INFO  smoke.HomePageSmokeTest - ** Verifying homepage logo is visible **
+2025-07-24 12:51:56 [main] INFO  smoke.HomePageSmokeTest - ** Homepage logo is visible **
+2025-07-24 12:51:56 [main] INFO  smoke.HomePageSmokeTest - == TEST COMPLETED: PASSED ==
+2025-07-24 12:51:56 [main] INFO  base.BaseTest - == Quiting Driver ==
+2025-07-24 12:51:56 [main] INFO  base.BaseTest - == Driver Quit ==

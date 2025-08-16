@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN"> <!-- Root element that initializes the Log4j2 config. WARN sets how much internal logging Log4j should do itself  -->
+    <Appenders> <!-- Appenders are log destinations - where logs should go (Console, File, Database)-->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT"> <!-- Logs output to the console. Name of appender you will refer to later in <AppenderRef>-->
+            													<!-- SYSTEM_OUT outputs to standard output (can use SYSTEM_ERR)-->
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        			<!--  sets pattern for console output-->
+				</Console>
+			<!-- Appender for file output. By adding a date/time a new file is created each time-->
+        <File name="FileAppender" fileName="logs/test-${date:yyyy-MM-dd_HH-mm-ss}.log"> <!-- Writes logs to a file-->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

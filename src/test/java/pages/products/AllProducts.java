@@ -26,7 +26,7 @@ public class AllProducts extends BasePage{
 	private By productsOverlay = By.xpath("//div[@class='features_items']//div[@class='product-overlay']");
 	//private By cartModal = By.className("modal-content");
 	//private By productAddedTextField = By.className("modal-title w-100");
-	private By continueShoppingBtn = By.className("btn btn-success close-modal btn-block");
+	private By continueShoppingBtn = By.xpath("//button[contains(text(), 'Continue Shopping')]");
 	
 	
 	public List<WebElement> getAllProducts(){

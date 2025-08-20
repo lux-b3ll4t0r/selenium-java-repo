@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     tools {
+        git 'git local'
         maven 'maven'   // the Maven name you configured in Jenkins
         jdk 'jdk17 local'    // the JDK name you configured in Jenkins
     }

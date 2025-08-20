@@ -17,20 +17,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'   // compiles code, skip tests
+                bat 'mvn clean install -DskipTests'  // compiles code, skip tests
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'   // runs your TestNG tests
+                bat 'mvn test'   // runs your TestNG tests
             }
         }
     }
 
     post {
         always {
-            junit 'test-output/testng-results.xml'   // publish TestNG/JUnit reports
+            junit 'test-output/*.xml'   // publish TestNG/JUnit reports
         }
     }
 }

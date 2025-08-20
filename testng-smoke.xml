@@ -10,6 +10,7 @@
 		<packages>
 			<package name="smoke.homepage" />
 			<package name="smoke.signup_login"/>
+			<package name="smoke.products"/>
 		</packages>
 	</test>
 

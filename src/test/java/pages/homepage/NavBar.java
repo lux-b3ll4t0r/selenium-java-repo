@@ -1,9 +1,7 @@
 package pages.homepage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import utils.BasePage;
 
@@ -12,123 +10,106 @@ public class NavBar extends BasePage{
 	
 	public NavBar(WebDriver driver) {
 		super(driver);
-		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(partialLinkText = "Home")
-	private WebElement homeNav; // having private webelements hides the internal page structure, only exposing well defined actions
-								  // "I want to log in" not "Give me the password field so I can type into it"
-	@FindBy(partialLinkText = "Products")
-	private WebElement productsNav;
+	private By homeNav = By.partialLinkText("Home");
+	private By productsNav = By.partialLinkText("Products");	
+	private By cartNav = By.partialLinkText("Cart");	
+	private By signUpLoginNav = By.partialLinkText("Signup / Login");
+	private By testCasesNav = By.partialLinkText("Test Cases");
+	private By apiTestingNav = By.partialLinkText("API Testing");
+	private By videoTutorialsNav = By.partialLinkText("Video Tutorials");
+	private By contactUsNav = By.partialLinkText("Contact us");
+	private By homePageLogo = By.xpath("//img[@alt='Website for automation practice']");
+	private By loggedInAs = By.xpath("//a[contains(text(), 'Logged in as')]/b");
+	private By logoutButton = By.xpath("//a[@href='/logout']");
 	
-	@FindBy(partialLinkText = "Cart")
-	private WebElement cartNav;
 	
-	@FindBy(partialLinkText = "Signup / Login")
-	private WebElement signUpLoginNav;
-	
-	@FindBy(partialLinkText = "Test Cases")
-	private WebElement testCasesNav;
-	
-	@FindBy(partialLinkText = "API Testing")
-	private WebElement apiTestingNav;
-	
-	@FindBy(partialLinkText = "Video Tutorials")
-	private WebElement videoTutorialsNav;
-	
-	@FindBy(partialLinkText = "Contact us")
-	private WebElement contactUsNav;
-	
-	@FindBy(xpath = "//img[@alt='Website for automation practice']")
-	private WebElement homePageLogo;
-	
-	@FindBy(xpath = "//a[contains(text(), 'Logged in as')]/b")
-	private WebElement loggedInAs;
-	
-	@FindBy(xpath = "//a[@href='/logout']")
-	private WebElement logoutButton;
-	
-	public WebElement getHomePageLogo() {
-		return homePageLogo;
-	}
-	
-	public WebElement getHomeNav() {
-		return homeNav;
-	}
-	
-	public WebElement getProductsNav() {
-		return productsNav;
-	}
-	
-	public WebElement getCartNav() {
-		return cartNav;
-	}
-	
-	public WebElement getSignUpLoginNav() {
-		return signUpLoginNav;
-	}
-	
-	public WebElement getTestCasesNav() {
-		return testCasesNav;
-	}
-	
-	public WebElement getApiTestingNav() {
-		return apiTestingNav;
-	}
-	
-	public WebElement getVideoTutorialsNav() {
-		return videoTutorialsNav;
-	}
-	
-	public WebElement getContactUsNav() {
-		return contactUsNav;
-	}
-	
-	public WebElement getLoggedInAs() {
-		return loggedInAs;
-	}
-	
-	public WebElement getLogoutButton() {
-		return logoutButton;
-	}
 	
 	public void clickLogoutButton() {
-		logoutButton.click();
+		clickElement(logoutButton);
 	}
 	
 	public void clickHomeNav() {
-		homeNav.click();
+		clickElement(homeNav);
 	}
 	
 	public void clickProductsNav() {
-		productsNav.click();
+		clickElement(productsNav);
 	}
 	
 	public void clickCartNav() {
-		cartNav.click();
+		clickElement(cartNav);
 	}
 	
 	public void clickSignUpLoginNav() {
-		signUpLoginNav.click();
+		clickElement(signUpLoginNav);
 	}
 	
 	public void clickTestCasesNav() {
-		testCasesNav.click();
+		clickElement(testCasesNav);
 	}
 	
 	public void clickApiTestingNav() {
-		apiTestingNav.click();
+		clickElement(apiTestingNav);
 	}
 	
 	public void clickVideoTutorialsNav() {
-		videoTutorialsNav.click();
+		clickElement(videoTutorialsNav);
 	}
 	
 	public void clickContactUsNav() {
-		contactUsNav.click();
+		clickElement(contactUsNav);
+	}
+	
+	public boolean isHomeNavVisible() {
+		return isElementVisible(homeNav);
+	}
+	
+	public boolean isProductsNavVisible() {
+		return isElementVisible(productsNav);
+	}
+	
+	public boolean isCartNavVisible() {
+		return isElementVisible(cartNav);
+	}
+	
+	public boolean isSignUpLoginNavVisible() {
+		return isElementVisible(signUpLoginNav);
+	}
+	
+	public boolean isTestCasesNavVisible() {
+		return isElementVisible(testCasesNav);
+	}
+	
+	public boolean isApiTestingNavVisible() {
+		return isElementVisible(apiTestingNav);
+	}
+	
+	public boolean isVideoTutorialsNavVisible() {
+		return isElementVisible(videoTutorialsNav);
+	}
+	
+	public boolean isContactUsNavVisible() {
+		return isElementVisible(contactUsNav);
+	}
+	
+	public boolean isLogoutButtonVisible() {
+		return isElementVisible(logoutButton);
+	}
+	
+	public boolean isLoggedInAsVisible() {
+		return isElementVisible(loggedInAs);
+	}
+	
+	public boolean isHomePageLogoVisible() {
+		return isElementVisible(homePageLogo);
 	}
 	
 	
-	
-
 }
+
+
+
+
+

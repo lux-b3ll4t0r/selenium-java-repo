@@ -19,32 +19,29 @@ public class AllProducts extends BasePage{
 	public AllProducts(WebDriver driver) {
 		super(driver);
 		actions = new Actions(driver);
-		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//h2[contains(text(), 'All Products')]")
-	private WebElement allProductsHeader;
+	private By allProductsHeader = By.xpath("//h2[contains(text(), 'All Products')]");
+	private By allProducts = By.xpath("//div[@class='features_items']//div[@class='col-sm-4']");
+	private By productsOverlay = By.xpath("//div[@class='features_items']//div[@class='product-overlay']");
+	//private By cartModal = By.className("modal-content");
+	//private By productAddedTextField = By.className("modal-title w-100");
+	private By continueShoppingBtn = By.className("btn btn-success close-modal btn-block");
 	
-	@FindBy(xpath = "//div[@class='features_items']//div[@class='col-sm-4']")
-	private List<WebElement> allProducts;
 	
-	@FindBy(xpath = "//div[@class='features_items']//div[@class='product-overlay']")
-	private List<WebElement> productsOverlay;
+	public List<WebElement> getAllProducts(){
+		return waitForVisibilityOfAllElementsLocatedBy(allProducts);
+	}
 	
-	@FindBy(className = "modal-content")
-	private WebElement cartModal;
-	
-	@FindBy(className = "modal-title w-100")
-	private WebElement productAddedTextField;
-	
-	@FindBy(className = "btn btn-success close-modal btn-block")
-	private WebElement continueShoppingBtn;
+	public List<WebElement> getAllProductsOverlay(){
+		return waitForVisibilityOfAllElementsLocatedBy(productsOverlay);
+	}
 	
 	public String getPrice(int productIndex) {
 			
 		checkIfIndexTooHigh(productIndex);
-		
-		WebElement productPrice = allProducts.get(productIndex).findElement(By.xpath("//div[@class='productinfo text-center']/h2"));
+
+		WebElement productPrice = getAllProducts().get(productIndex).findElement(By.xpath("//div[@class='productinfo text-center']/h2"));
 		return productPrice.getText();
 	}
 	
@@ -52,7 +49,7 @@ public class AllProducts extends BasePage{
 		
 		checkIfIndexTooHigh(productIndex);
 		
-		WebElement productType = allProducts.get(productIndex).findElement(By.xpath("//div[@class='productinfo text-center']/p"));
+		WebElement productType = getAllProducts().get(productIndex).findElement(By.xpath("//div[@class='productinfo text-center']/p"));
 		return productType.getText();
 			
 	}
@@ -60,33 +57,33 @@ public class AllProducts extends BasePage{
 	public String getOverlayPrice(int productIndex) {
 		
 		checkIfIndexTooHigh(productIndex);
-		
 		moveCursorToProduct(productIndex);
-		wait.until(ExpectedConditions.visibilityOf(productsOverlay.get(productIndex)));
 		
-		WebElement overlayPrice = productsOverlay.get(productIndex).findElement(By.xpath("//div[@class='features_items']//div[@class='product-overlay']//h2"));
+		waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
+		
+		WebElement overlayPrice = getAllProductsOverlay().get(productIndex).findElement(By.xpath("//div[@class='features_items']//div[@class='product-overlay']//h2"));
 		return overlayPrice.getText();
 	}
 	
 	public String getOverlayProductType(int productIndex) {
 		
 		checkIfIndexTooHigh(productIndex);
-		
 		moveCursorToProduct(productIndex);
-		wait.until(ExpectedConditions.visibilityOf(productsOverlay.get(productIndex)));
 		
-		WebElement overlayProductType = productsOverlay.get(productIndex).findElement(By.xpath("//div[@class='features_items']//div[@class='product-overlay']//p"));
+		waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
+		
+		WebElement overlayProductType = getAllProductsOverlay().get(productIndex).findElement(By.xpath("//div[@class='features_items']//div[@class='product-overlay']//p"));
 		return overlayProductType.getText();
 	}
 	
 	public void clickOverlayAddToCart(int productIndex) {
 		
 		checkIfIndexTooHigh(productIndex);
-		
 		moveCursorToProduct(productIndex);
-		wait.until(ExpectedConditions.visibilityOf(productsOverlay.get(productIndex)));
 		
-		WebElement overlayAddToCartBtn = productsOverlay.get(productIndex).findElement(By.xpath("//a[@class='btn btn-default add-to-cart']"));
+		waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
+		
+		WebElement overlayAddToCartBtn = getAllProductsOverlay().get(productIndex).findElement(By.xpath("//a[@class='btn btn-default add-to-cart']"));
 		overlayAddToCartBtn.click();
 	}
 	
@@ -94,25 +91,34 @@ public class AllProducts extends BasePage{
 		
 		checkIfIndexTooHigh(productIndex);
 		
-		WebElement viewProductBtn = allProducts.get(productIndex).findElement(By.xpath("//div[@class='choose']//a[contains(text(), 'View Product')]"));
+		WebElement viewProductBtn = getAllProducts().get(productIndex).findElement(By.xpath("//div[@class='choose']//a[contains(text(), 'View Product')]"));
 		viewProductBtn.click();
 	}
 
 	public void clickContinueShopping() {
 		
-		continueShoppingBtn.click();
+		clickElement(continueShoppingBtn);
 	}
 	public void moveCursorToProduct(int productIndex) {
 		
 		checkIfIndexTooHigh(productIndex);
-		actions.moveToElement(allProducts.get(productIndex)).perform();
+		actions.moveToElement(getAllProducts().get(productIndex)).perform();
 	}
 	
 	public int checkIfIndexTooHigh(int productIndex) {
-		if(productIndex >= allProducts.size()) {
-			productIndex = allProducts.size() - 1;
+		if(productIndex >= getAllProducts().size()) {
+			productIndex = getAllProducts().size() - 1;
 		}
 		
 		return productIndex;
+	}
+	
+	public boolean isAllProductsHeaderVisible() {
+		return isElementVisible(allProductsHeader);
+	}
+	
+	public boolean isProductsListDisplayed() {
+		
+		return !getAllProducts().isEmpty();
 	}
 }

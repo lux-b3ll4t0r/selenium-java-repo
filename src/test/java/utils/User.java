@@ -1,5 +1,8 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.github.javafaker.Faker;
 
 public class User {
@@ -26,12 +29,52 @@ public class User {
 		company = faker.company().name();
 		address1 = faker.address().streetAddress();
 		address2 = faker.address().secondaryAddress();
-		randInt = MathUtils.getRandomIntWithRange(0, 6);
-		country = countries[randInt];
+		country = countries[randInt = MathUtils.getRandomIntWithRange(0, 6)];
 		state = faker.address().state();
 		city = faker.address().city();
 		zipCode = Integer.valueOf(faker.numerify("#####"));
 		mobileNumber = faker.numerify("###-###-####");
+	}
+	
+	public String toSafeString() {
+
+		List<Object> userData = new ArrayList<>();
+		
+		return "[User: Title: " + title + 
+		" First Name: " + firstName +
+		" Last Name: " + lastName +
+		" Email: " + maskEmail(email) +
+		" Password: " + maskPassword(password) +
+		" Birth Day: " + day +
+		" Birth Month: " + month +
+		" Birth Year: " + year +
+		" Company: " + company +
+		" Address 1: " + address1 + 
+		" Address 2: " + address2 +
+		" Country: " + country +
+		" State: " + state +
+		" City: " + city + 
+		" Zipcode: " + zipCode + 
+		" Mobile Number: " + maskPhone(mobileNumber) + "]";
+		
+	}
+	
+	private String maskEmail(String email) {
+	    if (email == null || !email.contains("@")) return "hidden";
+	    String[] parts = email.split("@");
+	    String prefix = parts[0];
+	    return prefix.charAt(0) + "***" + prefix.charAt(prefix.length() - 1) + "@" + parts[1];
+	}
+	
+	private String maskPassword(String password) {
+	    return (password == null) ? "hidden" : "****";
+	}
+	
+	private String maskPhone(String phone) {
+	    if (phone == null || phone.length() < 4) return "hidden";
+	    String[] parts = phone.split("-");
+	    return "***-" + "***-" + parts[2];
+	    
 	}
 	
 	public String getBirthday() {

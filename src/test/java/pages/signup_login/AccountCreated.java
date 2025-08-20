@@ -1,5 +1,6 @@
 package pages.signup_login;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,20 +12,17 @@ public class AccountCreated extends BasePage{
 	
 	public AccountCreated(WebDriver driver) {
 		super(driver);
-		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//h2/b[contains(text(), 'Account Created!')]")
-	WebElement accountCreated;
+	private By accountCreated = By.xpath("//h2/b[contains(text(), 'Account Created!')]");
+	private By continueButton = By.xpath("//a[@data-qa = 'continue-button']");
 	
-	@FindBy(xpath = "//a[@data-qa = 'continue-button']")
-	WebElement continueButton;
-	
-	public WebElement getAccountCreated() {
-		return accountCreated;
+
+	public boolean isAccountCreatedMessageVisible() {
+		return isElementVisible(accountCreated);
 	}
 	
 	public void clickContinue() {
-		continueButton.click();
+		clickElement(continueButton);
 	}
 }

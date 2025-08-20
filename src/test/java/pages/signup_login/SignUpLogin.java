@@ -18,79 +18,30 @@ public class SignUpLogin extends BasePage{
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//div[@class='login-form']/h2[text()='Login to your account']")
-	private WebElement loginFormH2;
-	
-	@FindBy(xpath = "//form[@action='/login']/input[@name='email']")
-	private WebElement loginEmailInput;
-	
-	@FindBy(xpath = "//form[@action='/login']/input[@name='password']")
-	private WebElement passwordInput;
-	
-	@FindBy(xpath = "//form[@action='/login']/button[@data-qa='login-button']")
-	private WebElement loginButton;
-	
-	@FindBy(xpath = "//div[@class='signup-form']/h2[text()='New User Signup!']")
-	private WebElement signUpFormH2;
-	
-	@FindBy(xpath = "//form[@action='/signup']/input[@name='name']")
-	private WebElement nameInput;
-	
-	@FindBy(xpath = "//form[@action='/signup']/input[@name='email']")
-	private WebElement signUpEmailInput;
-	
-	@FindBy(xpath = "//form[@action='/signup']/button[@data-qa='signup-button']")
-	private WebElement signUpButton;
-	
-	@FindBy(xpath = "//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]")
-	private WebElement emailExistMsg;
+	private By loginHeader = By.xpath("//div[@class='login-form']/h2[text()='Login to your account']");
+	private By loginEmailInput = By.xpath("//form[@action='/login']/input[@name='email']");
+	private By passwordInput = By.xpath("//form[@action='/login']/input[@name='password']");
+	private By loginButton = By.xpath("//form[@action='/login']/button[@data-qa='login-button']");
+	private By signUpFormH2 = By.xpath("//div[@class='signup-form']/h2[text()='New User Signup!']");
+	private By nameInput = By.xpath("//form[@action='/signup']/input[@name='name']");
+	private By signUpEmailInput = By.xpath("//form[@action='/signup']/input[@name='email']");
+	private By signUpButton = By.xpath("//form[@action='/signup']/button[@data-qa='signup-button']");
+	private By emailExistMsg = By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]");
 	
 	public void startUserSignUp(String name, String email) {
 		
-		nameInput.sendKeys(name);
-		signUpEmailInput.sendKeys(email);
-		signUpButton.click();
-	}
-	
-	
-	public WebElement getLoginFormH2() {
-		return loginFormH2;
-	}
-	
-	public WebElement getLoginEmailInput() {
-		return loginEmailInput;
-	}
-	
-	public WebElement getPasswordInput() {
-		return passwordInput;
-	}
-	
-	public WebElement getLoginButton() {
-		return loginButton;
+		enterSignUpName(name);
+		enterSignUpEmail(email);
+		clickSignUpButton();
 	}
 	
 	public void clickLoginButton() {
-		loginButton.click();
+		clickElement(loginButton);
 	}
-	
-	public WebElement getSignUpFormH2() {
-		return signUpFormH2;
-	}
-	
-	public WebElement getNameInput() {
-		return nameInput;
-	}
-	
-	public WebElement getSignUpEmailInput() {
-		return signUpEmailInput;
-	}
-	
-	public WebElement getSignUpButton() {
-		return signUpButton;
-	}
+
 	
 	public void clickSignUpButton() {
-		signUpButton.click();
+		clickElement(signUpButton);
 	}
 	
 	public void enterLoginEmail(String email) {
@@ -109,14 +60,30 @@ public class SignUpLogin extends BasePage{
 		sendKeysTo(signUpEmailInput, email);
 	}
 	
+	public boolean isLoginHeaderVisible() {
+		return isElementVisible(loginHeader);
+	}
+	
+	public boolean isSignUpHeaderVisible() {
+		return isElementVisible(signUpFormH2);
+	}
+	
 	public boolean isEmailErrorDisplayed() {
 		
 		return !driver.findElements(By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]")).isEmpty();
 	}
 	
+	public String getLoginEmailText() {
+		return getInputText(loginEmailInput);
+	}
+	
+	public String getPasswordText() {
+		return getInputText(passwordInput);
+	}
+	
 	public void login(String email, String password) {
-		sendKeysTo(loginEmailInput, email);
-		sendKeysTo(passwordInput, password);
+		enterLoginEmail(email);
+		enterLoginPassword(password);
 		clickLoginButton();
 	}
 	
@@ -127,8 +94,8 @@ public class SignUpLogin extends BasePage{
 		
 		while(attempts < 5 && success == false) {
 			
-			sendKeysTo(nameInput, name);
-			sendKeysTo(signUpEmailInput, email);
+			enterSignUpName(name);
+			enterSignUpEmail(email);
 			clickSignUpButton();
 			
 			if(isEmailErrorDisplayed() == false) {

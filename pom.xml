@@ -47,6 +47,19 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.5</version> <!-- or latest -->
 		</dependency>
-
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.1.2</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>testng-smoke.xml</suiteXmlFile> <!-- Path to your TestNG suite -->
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

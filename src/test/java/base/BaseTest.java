@@ -43,12 +43,12 @@ public class BaseTest {
 		// Set test in LogUtil so logs go to ExtentReports
 		LogUtil.setExtentTest(test);
 		
-		LogUtil.info("Initializing Driver");
+		LogUtil.debug("Initializing Driver");
 		driverFactory = new DriverFactory();
 		driverFactory.initDriver();
 		driver = driverFactory.getDriver();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(8));
-		LogUtil.info("Driver Initialized");
+		LogUtil.debug("Driver Initialized");
 
 	}
 	
@@ -57,9 +57,9 @@ public class BaseTest {
 		
 		String testName = result.getMethod().getMethodName();
 		
-		LogUtil.info("Quiting Driver");
+		LogUtil.debug("Quiting Driver");
 		driverFactory.quitDriver();
-		LogUtil.info("Driver Quit");
+		LogUtil.debug("Driver Quit");
 		
 		if(result.getStatus() == ITestResult.FAILURE) {
 			Throwable throwable = result.getThrowable();

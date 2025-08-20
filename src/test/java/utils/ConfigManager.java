@@ -45,13 +45,36 @@ public class ConfigManager {
 	public static String getPassword() {
 		return get("password");
 	}
+		
+	public static boolean isHeadless() {
+		return Boolean.parseBoolean(get("headless"));
+	}
+	
+	public static String getProductsUrl() {
+		return get("productsUrl");
+	}
+	
+	public static String getCartUrl() {
+		return get("cartUrl");
+	}
 	
 	public static String getLoginUrl() {
 		return get("loginUrl");
 	}
 	
-	public static boolean isHeadless() {
-		return Boolean.parseBoolean(get("headless"));
+	public static String getTestCasesUrl() {
+		return get("testCasesUrl");
 	}
-
+	
+	public static String getApiTestingUrl() {
+		return get("apiTestingUrl");
+	}
+	
+	public static String getVideoTutorialsUrl() {
+		return get("videoTutorialsUrl");
+	}
+	
+	public static String contactUsUrl() {
+		return get("contactUsUrl");
+	}
 }

@@ -10,7 +10,7 @@ import pages.homepage.NavBar;
 import utils.ConfigManager;
 import utils.LogUtil;
 
-public class NavBarTests extends BaseTest{
+public class NavBarTest extends BaseTest{
 	
 	private NavBar navBar;
 	

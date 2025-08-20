@@ -8,9 +8,9 @@
 			</run>
 		</groups>
 		<packages>
-			<package name="smoke.homepage" />
-			<package name="smoke.signup_login"/>
-			<package name="smoke.products"/>
+			<package name="tests.smoke.homepage" />
+			<package name="tests.smoke.signup_login"/>
+			<package name="tests.smoke.products"/>
 		</packages>
 	</test>
 

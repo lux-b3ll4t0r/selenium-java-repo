@@ -30,7 +30,7 @@ pipeline {
 
     post {
         always {
-            junit 'test-output\\*.xml'   // publish TestNG/JUnit reports
+            junit 'target/surefire-reports/*.xml'   // publish TestNG/JUnit reports
         }
     }
 }

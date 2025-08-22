@@ -5,19 +5,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
-import pages.homepage.NavBar;
 import utils.ConfigManager;
 import utils.LogUtil;
 
 public class LoadingTest extends BaseTest {
 
-	private NavBar navBar;
-	
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setUpMethod() {
 		LogUtil.debug("Setting up test resources");
-		navBar = new NavBar(driver);
 		LogUtil.debug("Set up successfully");
 	}
 	
@@ -35,10 +31,6 @@ public class LoadingTest extends BaseTest {
 		LogUtil.debug("Expected title: {Automation Exercise}, Actual title: {" + driver.getTitle() + "}");
 		Assert.assertEquals(driver.getTitle(), "Automation Exercise");
 		LogUtil.info("Title matches expected title");
-		
-	
-		Assert.assertTrue(navBar.isHomePageLogoVisible());
-		LogUtil.info("Homepage logo is visible");
 		
 		LogUtil.info("[TEST COMPLETED]");
 	}

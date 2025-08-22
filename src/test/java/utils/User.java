@@ -11,6 +11,8 @@ public class User {
 	private int day, month, year, zipCode;
 	boolean newsLetter, optin;
 	
+	
+	
 	public void generateRandomUser() {
 		
 		Faker faker = new Faker();

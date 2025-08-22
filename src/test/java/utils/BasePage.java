@@ -29,9 +29,6 @@ public class BasePage {
 		element.click();
 	}
 	
-	public void waitForUrlToBe(String url) {
-		wait.until(ExpectedConditions.urlToBe(url));
-	}
 	
 	public String getInputText(By locator) {
 		WebElement element = waitForVisibitliyOfElementLocated(locator);
@@ -43,6 +40,10 @@ public class BasePage {
 		return element.isDisplayed();
 	}
 
+	public void waitForUrlToBe(String url) {
+		wait.until(ExpectedConditions.urlToBe(url));
+	}
+	
 	public WebElement waitForVisibitliyOfElementLocated(By locator) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}

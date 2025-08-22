@@ -34,9 +34,9 @@ public class CheckoutDisplayTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
-	public void checkOutDisplayTest() {
+	public void checkOutVisibleTest() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying items are displayed during checkout.");
+		LogUtil.info("[TEST STARTED]: Verifying items are visible during checkout.");
 		
 		driver.get(ConfigManager.getBaseUrl());
 		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
@@ -56,19 +56,19 @@ public class CheckoutDisplayTest extends BaseTest{
 		cart.clickCheckOutBtn();
 		
 		Assert.assertTrue(checkout.isDeliveryAddressVisible(), "Delivery address is not visible");
-		LogUtil.info("Delivery address is displayed");
+		LogUtil.info("Delivery address is visible");
 		
 		Assert.assertTrue(checkout.isBillingAddressVisible(), "Billing address is not visible");
-		LogUtil.info("Billing address is displayed");
+		LogUtil.info("Billing address is visible");
 		
 		Assert.assertTrue(checkout.isCartInfoVisible(), "Cart info is not visible");
-		LogUtil.info("Cart info is displayed");
+		LogUtil.info("Cart info is visible");
 		
 		Assert.assertTrue(checkout.isOrderMsgVisible(), "Order message is not visible");
-		LogUtil.info("Order message is displayed");
+		LogUtil.info("Order message is visible");
 		
 		Assert.assertTrue(checkout.isPlaceOrderBtnVisible(), "Place order button is not visible");
-		LogUtil.info("Place order button is displayed");
+		LogUtil.info("Place order button is visible");
 		
 		LogUtil.info("[TEST COMPLETED]");
 	}

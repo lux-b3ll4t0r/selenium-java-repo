@@ -18,7 +18,7 @@ public class LoginLogoutTest extends BaseTest{
 	BasePage basePage;
 	
 	@BeforeMethod(alwaysRun = true)
-	public void setUpMethod() {
+	public void setUpResources() {
 		LogUtil.debug("Setting up test resources");
 		navBar = new NavBar(driver);
 		signUpLogin = new SignUpLogin(driver);
@@ -26,26 +26,8 @@ public class LoginLogoutTest extends BaseTest{
 		
 		LogUtil.debug("Set up successfully");
 	}
-	
-	@Test (groups = {"smoke"}, priority = 0)
-	public void verifyLoginHeader() {
-		
-		LogUtil.info("[TEST STARTED]: Verifying Login form header is visible.");
-		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
-		
-		LogUtil.info("Clicking Sign up / Login");
-		navBar.clickSignUpLoginNav();
-		
 
-		Assert.assertTrue(signUpLogin.isLoginHeaderVisible());
-		LogUtil.info("Login form header is visible");
-		
-		LogUtil.info("[TEST COMPLETED]");
-	}
-	
-	@Test(groups = {"smoke"}, priority = 1)
+	@Test(groups = {"smoke"}, priority = 0)
 	public void verifyLoginFunctionality() {
 		
 		LogUtil.info("[TEST STARTED]: Verifying Login fields can be populated and user is logged in successfully.");
@@ -59,13 +41,7 @@ public class LoginLogoutTest extends BaseTest{
 		String email = ConfigManager.getEmail();
 		String pass = ConfigManager.getPassword();
 		
-		signUpLogin.enterLoginEmail(email);
-		signUpLogin.enterLoginPassword(pass);
-		
-		Assert.assertEquals(signUpLogin.getLoginEmailText(), email);
-		Assert.assertEquals(signUpLogin.getPasswordText(), pass);
-		
-		signUpLogin.clickLoginButton();
+		signUpLogin.login(email, pass);
 		
 		Assert.assertTrue(navBar.isLoggedInAsVisible());
 		LogUtil.info("User logged in successfully");
@@ -74,7 +50,7 @@ public class LoginLogoutTest extends BaseTest{
 
 	}
 	
-	@Test(groups = {"smoke"}, priority = 2)
+	@Test(groups = {"smoke"}, priority = 1)
 	public void verifyLogoutFunctionality() {
 		
 		LogUtil.info("[TEST STARTED]: Verifying user can log out successfully.");

@@ -25,7 +25,7 @@ public class CartItemsDisplayTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
-	public void verifyCartItemsDisplayed() {
+	public void verifyCartItemsVisible() {
 		
 		LogUtil.info("[TEST STARTED]: Verifying items added to cart are visible.");
 		
@@ -42,7 +42,7 @@ public class CartItemsDisplayTest extends BaseTest{
 		LogUtil.debug("Directed to Cart url successfully");
 		
 		Assert.assertTrue(cart.isCartInfoVisible());
-		LogUtil.info("Added items are displayed in cart.");
+		LogUtil.info("Added items are visible in cart.");
 		
 		Assert.assertTrue(cart.isCheckOutBtnVisible());
 		LogUtil.info("Proceed to checkout button is visible.");

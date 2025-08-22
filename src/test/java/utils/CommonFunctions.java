@@ -12,6 +12,7 @@ public class CommonFunctions extends BasePage{
 	
 	private NavBar navBar; 
 	private SignUpLogin login;
+
 	
 	public CommonFunctions(WebDriver driver) {
 		super(driver);

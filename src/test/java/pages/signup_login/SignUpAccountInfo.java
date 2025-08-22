@@ -2,9 +2,9 @@ package pages.signup_login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.support.FindBy;
+//import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import utils.BasePage;
@@ -15,11 +15,11 @@ public class SignUpAccountInfo extends BasePage{
 		super(driver);
 	}
 	private By accInfoHeader = By.xpath("//h2/b[contains(text(), 'Enter Account Information')]");
-	private By addressInfoHeader = By.xpath("//h2/b[contains(text(), 'Address Information')]");
+	//private By addressInfoHeader = By.xpath("//h2/b[contains(text(), 'Address Information')]");
 	private By gender1Button = By.id("id_gender1");
 	private By gender2Button = By.id("id_gender2");
-	private By nameInput = By.id("name");
-	private By emailInput = By.id("email");
+	//private By nameInput = By.id("name");
+	//private By emailInput = By.id("email");
 	private By passwordInput = By.id("password");
 	private By daySelector = By.id("days");
 	private By monthSelector = By.id("months");

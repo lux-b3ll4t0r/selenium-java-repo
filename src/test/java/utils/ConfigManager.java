@@ -74,7 +74,11 @@ public class ConfigManager {
 		return get("videoTutorialsUrl");
 	}
 	
-	public static String contactUsUrl() {
+	public static String getContactUsUrl() {
 		return get("contactUsUrl");
+	}
+	
+	public static String getPicsPath() {
+		return get("picsPath");
 	}
 }

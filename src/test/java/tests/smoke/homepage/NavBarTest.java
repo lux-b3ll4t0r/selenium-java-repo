@@ -173,7 +173,7 @@ public class NavBarTest extends BaseTest{
 	public void contactUsNavBarVisibleAndClickable() {
 		LogUtil.info("[TEST STARTED]: Verifying Contact Us navbar link is visible and clickable.");
 		
-		String contactUsUrl = ConfigManager.contactUsUrl();
+		String contactUsUrl = ConfigManager.getContactUsUrl();
 		driver.get(ConfigManager.getBaseUrl());
 		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
 		

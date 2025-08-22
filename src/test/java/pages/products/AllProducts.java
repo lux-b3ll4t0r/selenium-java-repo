@@ -6,9 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import utils.BasePage;
 
@@ -23,11 +20,14 @@ public class AllProducts extends BasePage{
 	
 	private By allProductsHeader = By.xpath("//h2[contains(text(), 'All Products')]");
 	private By allProducts = By.xpath("//div[@class='features_items']//div[@class='col-sm-4']");
+	private By featuredItems = By.className("features_items");
 	private By productsOverlay = By.xpath("//div[@class='features_items']//div[@class='product-overlay']");
 	//private By cartModal = By.className("modal-content");
 	//private By productAddedTextField = By.className("modal-title w-100");
 	private By continueShoppingBtn = By.xpath("//button[contains(text(), 'Continue Shopping')]");
-	
+	private By searchProduct = By.id("search_product");
+	private By searchProductBtn = By.id("submit_search");
+	private By searchedProductsHeader = By.xpath("//div[@class ='features_items']/h2");
 	
 	public List<WebElement> getAllProducts(){
 		return waitForVisibilityOfAllElementsLocatedBy(allProducts);
@@ -35,6 +35,11 @@ public class AllProducts extends BasePage{
 	
 	public List<WebElement> getAllProductsOverlay(){
 		return waitForVisibilityOfAllElementsLocatedBy(productsOverlay);
+	}
+	
+	public void searchProduct(String product) {
+		sendKeysTo(searchProduct, product);
+		clickElement(searchProductBtn);
 	}
 	
 	public String getPrice(int productIndex) {
@@ -117,8 +122,12 @@ public class AllProducts extends BasePage{
 		return isElementVisible(allProductsHeader);
 	}
 	
-	public boolean isProductsListDisplayed() {
+	public boolean isProductsListVisible() {
 		
-		return !getAllProducts().isEmpty();
+		return isElementVisible(featuredItems);
+	}
+	
+	public boolean isSearchedProductsHeaderVisible() {
+		return isElementVisible(searchedProductsHeader);
 	}
 }

@@ -1,7 +1,5 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import com.github.javafaker.Faker;
 
@@ -36,10 +34,7 @@ public class User {
 		mobileNumber = faker.numerify("###-###-####");
 	}
 	
-	public String toSafeString() {
-
-		List<Object> userData = new ArrayList<>();
-		
+	public String toSafeString() {	
 		return "[User: Title: " + title + 
 		" First Name: " + firstName +
 		" Last Name: " + lastName +

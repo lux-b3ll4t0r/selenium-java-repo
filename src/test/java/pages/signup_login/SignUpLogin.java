@@ -2,8 +2,6 @@ package pages.signup_login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.github.javafaker.Faker;
@@ -26,7 +24,7 @@ public class SignUpLogin extends BasePage{
 	private By nameInput = By.xpath("//form[@action='/signup']/input[@name='name']");
 	private By signUpEmailInput = By.xpath("//form[@action='/signup']/input[@name='email']");
 	private By signUpButton = By.xpath("//form[@action='/signup']/button[@data-qa='signup-button']");
-	private By emailExistMsg = By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]");
+	//private By emailExistMsg = By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]");
 	
 	public void startUserSignUp(String name, String email) {
 		

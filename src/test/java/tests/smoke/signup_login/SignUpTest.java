@@ -187,6 +187,7 @@ public class SignUpTest extends BaseTest{
 		ExcelUtils.updateByColumnHeader(sheet, "mobile_number", mobileNumber);
 		
 		LogUtil.info("Submitting sign up account info");
+		signUpAccInfo.waitForAdIfShown();
 		signUpAccInfo.clickCreateAccount();
 		
 		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible());

@@ -1,7 +1,9 @@
 package pages.signup_login;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.FindBy;
 //import org.openqa.selenium.support.PageFactory;
@@ -37,6 +39,7 @@ public class SignUpAccountInfo extends BasePage{
 	private By zipCodeInput = By.id("zipcode");
 	private By mobileNumberInput = By.id("mobile_number");
 	private By createAccountButton = By.xpath("//button[@data-qa='create-account']");
+	private By aswift_3 = By.id("aswift_3");
 	
 	public void selectTitle(String title) {
 		switch(title) {
@@ -141,6 +144,20 @@ public class SignUpAccountInfo extends BasePage{
 	
 	public boolean isAccountInfoHeaderVisible() {
 		return isElementVisible(accInfoHeader);
+	}
+	
+	public void waitForAdIfShown() {
+		
+		try {
+			WebElement ad = driver.findElement(aswift_3);
+			
+			if(ad.isDisplayed()) {
+				waitForInvisibilityOfElementLocatedBy(aswift_3);
+			}
+			
+		}catch(NoSuchElementException e) {
+			
+		}
 	}
 	/////////////////////////////////////////////
 	

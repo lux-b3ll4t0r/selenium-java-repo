@@ -59,6 +59,10 @@ public class BasePage {
 		wait.until(ExpectedConditions.urlToBe(url));
 	}
 	
+	public void waitForInvisibilityOfElementLocatedBy(By locator) {
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
+	
 	public WebElement waitForVisibitliyOfElementLocated(By locator) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
@@ -74,4 +78,5 @@ public class BasePage {
 	public List<WebElement> waitForVisibilityOfAllElementsLocatedBy(By locator) {
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 	}
+	
 }

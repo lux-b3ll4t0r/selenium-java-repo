@@ -46,15 +46,28 @@ public class ContactUsTest extends BaseTest {
 		
 		Faker faker = new Faker();
 	
-		contactUs.enterName(faker.name().fullName());
-		contactUs.enterEmail(faker.internet().emailAddress());
-		contactUs.enterSubject(faker.book().title());
-		contactUs.enterMessage(faker.lorem().paragraph());
+		String name = faker.name().fullName();
+		contactUs.enterName(name);
+		LogUtil.debug("Name: " + name);
+		
+		String email = faker.internet().emailAddress();
+		contactUs.enterEmail(email);
+		LogUtil.debug("Email: " + email);
+		
+		String subject = faker.book().title();
+		contactUs.enterSubject(subject);
+		LogUtil.debug("Subject: " + subject);
+		
+		String message = faker.lorem().paragraph();
+		contactUs.enterMessage(message);
+		LogUtil.debug("Message: " + message);
+		
 		contactUs.uploadFile(System.getProperty("user.dir") + "/" + ConfigManager.getPicsPath() + "icon.png");
 		
 		LogUtil.info("Submitting form");
 		contactUs.clickSubmit();
 		
+		LogUtil.info("Accepting alert");
 		basePage.acceptAlert();
 		
 		

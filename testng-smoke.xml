@@ -9,8 +9,11 @@
 		</groups>
 		<packages>
 			<package name="tests.smoke.homepage" />
-			<package name="tests.smoke.signup_login"/>
-			<package name="tests.smoke.products"/>
+			<package name="tests.smoke.signup_login" />
+			<package name="tests.smoke.products" />
+			<package name="tests.smoke.cart" />
+			<package name="tests.smoke.checkout"/>
+			<package name="tests.smoke.contactus"/>
 		</packages>
 	</test>
 

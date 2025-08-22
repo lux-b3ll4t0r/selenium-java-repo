@@ -3,6 +3,7 @@ package utils;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +14,13 @@ public class BasePage {
 	
 	protected WebDriver driver;
 	protected WebDriverWait wait;
+	
+	/*
+	 * 	All pages extend this class first.
+	 *  	Use these methods to interact with most elements
+	 *  	If you're going to interact with an element without
+	 *  	a basepage i
+	 * */	
 	
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
@@ -29,11 +37,18 @@ public class BasePage {
 		element.click();
 	}
 	
+	public void acceptAlert(){
+		wait.until(ExpectedConditions.alertIsPresent());
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
 	
 	public String getInputText(By locator) {
 		WebElement element = waitForVisibitliyOfElementLocated(locator);
 		return element.getAttribute("value");
 	}
+	
+	
 	
 	public boolean isElementVisible(By locator) {
 		WebElement element = waitForVisibitliyOfElementLocated(locator);

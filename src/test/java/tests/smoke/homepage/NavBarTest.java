@@ -20,6 +20,7 @@ public class NavBarTest extends BaseTest{
 	public void setUpMethod() {
 		LogUtil.info("Setting up test resources");
 		navBar = new NavBar(driver);
+		basePage = new BasePage(driver);
 		LogUtil.info("Set up successfully");
 	}
 	

@@ -9,6 +9,7 @@ import com.github.javafaker.Faker;
 import base.BaseTest;
 import pages.contactus.ContactUs;
 import pages.homepage.NavBar;
+import utils.BasePage;
 import utils.ConfigManager;
 import utils.LogUtil;
 
@@ -16,12 +17,14 @@ public class ContactUsTest extends BaseTest {
 
 	private NavBar navBar;
 	private ContactUs contactUs;
-
+	private BasePage basePage;
+	
 	@BeforeMethod(alwaysRun = true)
 	public void setupResources() {
 		LogUtil.debug("Setting up test resources");
 		navBar = new NavBar(driver);
 		contactUs = new ContactUs(driver);
+		basePage = new BasePage(driver);
 		LogUtil.debug("Set up successfully");
 	}
 
@@ -51,7 +54,9 @@ public class ContactUsTest extends BaseTest {
 		
 		LogUtil.info("Submitting form");
 		contactUs.clickSubmit();
-		contactUs.closeAlert();
+		
+		basePage.acceptAlert();
+		
 		
 		Assert.assertTrue(contactUs.isSuccessMessageVisible(), "Success message not visible");
 		LogUtil.info("Form submitted successfully.");

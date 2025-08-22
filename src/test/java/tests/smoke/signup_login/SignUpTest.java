@@ -1,4 +1,4 @@
-package tests.functional.signup;
+package tests.smoke.signup_login;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

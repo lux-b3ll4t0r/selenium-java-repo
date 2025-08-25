@@ -27,28 +27,28 @@ public class CartItemsDisplayTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
-	public void verifyCartItemsVisible() {
+	public void verifying_added_items_() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying items added to cart are visible.");
+		LogUtil.info("* Verifying items added to cart are visible.");
 		
+		LogUtil.info("Navigating to: " + ConfigManager.getBaseUrl());
 		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
 		
 		featuredItems.clickAddToCartBtn();
-		LogUtil.info("Adding item to cart");
+		LogUtil.info("Adding item to Cart.");
 		
-		LogUtil.info("Navigating to Cart");
+		LogUtil.info("Navigating to Cart.");
 		featuredItems.clickPopupViewCart();
 		
 		Assert.assertEquals(driver.getCurrentUrl(), ConfigManager.getCartUrl());
-		LogUtil.debug("Directed to Cart url successfully");
+		LogUtil.debug("Directed to Cart url successfully.");
 		
 		Assert.assertTrue(cart.isCartInfoVisible());
-		LogUtil.info("Added items are visible in cart.");
+		LogUtil.info("Added items are visible in Cart.");
 		
 		Assert.assertTrue(cart.isCheckOutBtnVisible());
-		LogUtil.info("Proceed to checkout button is visible.");
+		LogUtil.info("Proceed to Checkout button is visible.");
 		
-		LogUtil.info("[TEST COMPLETED]");
+
 	}
 }

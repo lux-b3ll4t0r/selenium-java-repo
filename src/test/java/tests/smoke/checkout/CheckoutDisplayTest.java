@@ -38,10 +38,10 @@ public class CheckoutDisplayTest extends BaseTest{
 	@Test(groups = {"smoke"}, priority = 0)
 	public void checkOutVisibleTest() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying items are visible during checkout.");
+		LogUtil.info("* Verifying added itemsand customer details are visible during checkout.");
 		
+		LogUtil.info("Navigating to: " + ConfigManager.getBaseUrl());
 		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
 	
 		LogUtil.info("Logging in user since checking out is only available to logged in users.");
 		String email = ConfigManager.getEmail();
@@ -50,11 +50,11 @@ public class CheckoutDisplayTest extends BaseTest{
 		navBar.clickSignUpLoginNav();
 		login.login(email, pass);
 		
-		LogUtil.info("Adding item to cart and navigating to cart");
+		LogUtil.info("Adding item to cart and navigating to cart.");
 		featuredItems.clickAddToCartBtn();
 		featuredItems.clickPopupViewCart();
 		
-		LogUtil.info("Proceeding to checkout");
+		LogUtil.info("Proceeding to checkout.");
 		cart.clickCheckOutBtn();
 		
 		Assert.assertTrue(checkout.isDeliveryAddressVisible(), "Delivery address is not visible");
@@ -63,15 +63,14 @@ public class CheckoutDisplayTest extends BaseTest{
 		Assert.assertTrue(checkout.isBillingAddressVisible(), "Billing address is not visible");
 		LogUtil.info("Billing address is visible");
 		
-		Assert.assertTrue(checkout.isCartInfoVisible(), "Cart info is not visible");
-		LogUtil.info("Cart info is visible");
+		Assert.assertTrue(checkout.isCartInfoVisible(), "Item info is not visible");
+		LogUtil.info("Item info is visible");
 		
 		Assert.assertTrue(checkout.isOrderMsgVisible(), "Order message is not visible");
 		LogUtil.info("Order message is visible");
 		
 		Assert.assertTrue(checkout.isPlaceOrderBtnVisible(), "Place order button is not visible");
 		LogUtil.info("Place order button is visible");
-		
-		LogUtil.info("[TEST COMPLETED]");
+
 	}
 }

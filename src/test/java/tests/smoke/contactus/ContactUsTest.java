@@ -33,12 +33,12 @@ public class ContactUsTest extends BaseTest {
 	@Test(groups = { "smoke" }, priority = 0)
 	public void contactUsSubmitTest() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying contact form submits successfully.");
+		LogUtil.info("* Verifying contact form submits successfully.");
 
+		LogUtil.info("Navigating to: " + ConfigManager.getBaseUrl());
 		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
 		
-		LogUtil.info("Navigating to Contact Us page");
+		LogUtil.info("Navigating to: " + ConfigManager.getContactUsUrl());
 		navBar.clickContactUsNav();
 		
 		Assert.assertEquals(driver.getCurrentUrl(), ConfigManager.getContactUsUrl());
@@ -66,17 +66,15 @@ public class ContactUsTest extends BaseTest {
 		
 		contactUs.uploadFile(System.getProperty("user.dir") + "/" + ConfigManager.getPicsPath() + "icon.png");
 		
-		LogUtil.info("Submitting form");
+		LogUtil.info("Submitting form.");
 		contactUs.clickSubmit();
 		
-		LogUtil.info("Accepting alert");
+		LogUtil.debug("Closing alert.");
 		basePage.acceptAlert();
 		
 		
 		Assert.assertTrue(contactUs.isSuccessMessageVisible(), "Success message not visible");
-		LogUtil.info("Form submitted successfully.");
-		
-		LogUtil.info("[TEST COMPLETED]");
+		LogUtil.info("Success message shown.");
 		
 	}
 

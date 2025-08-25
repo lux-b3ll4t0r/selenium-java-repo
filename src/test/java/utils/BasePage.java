@@ -54,7 +54,7 @@ public class BasePage {
 		WebElement element = waitForVisibitliyOfElementLocated(locator);
 		return element.isDisplayed();
 	}
-
+	
 	public void waitForUrlToBe(String url) {
 		wait.until(ExpectedConditions.urlToBe(url));
 	}

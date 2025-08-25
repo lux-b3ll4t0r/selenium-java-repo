@@ -43,6 +43,7 @@ public class BaseTest {
 		// Set test in LogUtil so logs go to ExtentReports
 		LogUtil.setExtentTest(test);
 		
+		LogUtil.info("==================== [TEST START]: " + method.getName() + " ====================");
 		LogUtil.debug("Initializing Driver");
 		driverFactory = new DriverFactory();
 		driverFactory.initDriver();
@@ -69,6 +70,8 @@ public class BaseTest {
 		}else if(result.getStatus() == ITestResult.SUCCESS) {
 			LogUtil.pass("[TEST PASS]: " + testName);
 		}
+		
+		LogUtil.info("==================== [TEST END] ====================");
 	}
 	
 	@AfterSuite(alwaysRun = true)

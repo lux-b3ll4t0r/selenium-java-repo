@@ -43,6 +43,8 @@ public class ProductsDisplayTest extends BaseTest{
 		Assert.assertTrue(products.isProductsListVisible(), "Products not visible");
 		LogUtil.info("All Products are visible");
 		
+		LogUtil.info("[TEST COMPLETED]: Verifying all products are listed in the Products page");
+		
 	}
 	
 	@Test(groups = {"smoke"}, priority = 1)

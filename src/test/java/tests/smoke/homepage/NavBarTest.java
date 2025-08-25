@@ -3,6 +3,7 @@ package tests.smoke.homepage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
@@ -11,6 +12,7 @@ import utils.BasePage;
 import utils.ConfigManager;
 import utils.LogUtil;
 
+@Listeners(utils.TestListener.class)
 public class NavBarTest extends BaseTest{
 	
 	private NavBar navBar;

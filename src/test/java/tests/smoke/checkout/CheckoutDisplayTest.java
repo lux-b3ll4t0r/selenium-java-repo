@@ -2,6 +2,7 @@ package tests.smoke.checkout;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
@@ -13,6 +14,7 @@ import pages.signup_login.SignUpLogin;
 import utils.ConfigManager;
 import utils.LogUtil;
 
+@Listeners(utils.TestListener.class)
 public class CheckoutDisplayTest extends BaseTest{
 
 	private FeaturedItems featuredItems;

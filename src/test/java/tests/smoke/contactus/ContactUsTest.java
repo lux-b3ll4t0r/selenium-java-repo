@@ -2,6 +2,7 @@ package tests.smoke.contactus;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
@@ -13,6 +14,7 @@ import utils.BasePage;
 import utils.ConfigManager;
 import utils.LogUtil;
 
+@Listeners(utils.TestListener.class)
 public class ContactUsTest extends BaseTest {
 
 	private NavBar navBar;

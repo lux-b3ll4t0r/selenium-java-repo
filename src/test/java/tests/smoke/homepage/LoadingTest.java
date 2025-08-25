@@ -2,12 +2,14 @@ package tests.smoke.homepage;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
 import utils.ConfigManager;
 import utils.LogUtil;
 
+@Listeners(utils.TestListener.class)
 public class LoadingTest extends BaseTest {
 
 	

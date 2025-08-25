@@ -2,6 +2,7 @@ package tests.smoke.cart;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
@@ -10,6 +11,7 @@ import pages.homepage.FeaturedItems;
 import utils.ConfigManager;
 import utils.LogUtil;
 
+@Listeners(utils.TestListener.class)
 public class CartItemsDisplayTest extends BaseTest{
 	
 	private FeaturedItems featuredItems;

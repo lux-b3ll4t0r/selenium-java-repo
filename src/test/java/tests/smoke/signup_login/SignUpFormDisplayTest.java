@@ -2,6 +2,7 @@ package tests.smoke.signup_login;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import base.BaseTest;
 import pages.homepage.NavBar;
@@ -9,7 +10,7 @@ import pages.signup_login.SignUpLogin;
 import utils.ConfigManager;
 import utils.LogUtil;
 
-
+@Listeners(utils.TestListener.class)
 public class SignUpFormDisplayTest extends BaseTest{
 	
 	private SignUpLogin signUpLogin;

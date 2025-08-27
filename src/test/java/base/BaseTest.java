@@ -52,8 +52,6 @@ public class BaseTest {
 		LogUtil.setExtentTest(test);
 		
 		BasePage.clearCookies();
-		((JavascriptExecutor) BasePage.getDriver()).executeScript("window.localStorage.clear();");
-		((JavascriptExecutor) BasePage.getDriver()).executeScript("window.sessionStorage.clear();");
 		
 		LogUtil.info("==================== [TEST START]: " + method.getName() + " ====================");
 	}

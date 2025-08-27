@@ -106,7 +106,7 @@ public class SignUpTest extends BaseTest{
 		LogUtil.info("* Verifying submitting new user account information functionality.");
 		
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(ConfigManager.getBaseUrl());
+		BasePage.get(UrlConstants.BASE);
 		
 		LogUtil.info("Clicking Sign up / Login.");
 		navBar.clickSignUpLoginNav();

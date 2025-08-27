@@ -6,9 +6,10 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import constants.UrlConstants;
 import pages.cart.Cart;
 import pages.homepage.FeaturedItems;
-import utils.ConfigManager;
+import utils.BasePage;
 import utils.LogUtil;
 
 @Listeners(utils.TestListener.class)
@@ -20,10 +21,10 @@ public class CartItemsDisplayTest extends BaseTest{
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setupResources() {
-		LogUtil.debug("Setting up test resources");
-		featuredItems = new FeaturedItems(driver);
-		cart = new Cart(driver);
-		LogUtil.debug("Set up successfully");
+		LogUtil.trace("Setting up test resources");
+		featuredItems = new FeaturedItems();
+		cart = new Cart();
+		LogUtil.trace("Set up successfully");
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
@@ -31,8 +32,8 @@ public class CartItemsDisplayTest extends BaseTest{
 		
 		LogUtil.info("* Verifying items added to cart are visible.");
 		
-		LogUtil.info("Navigating to: " + ConfigManager.getBaseUrl());
-		driver.get(ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		featuredItems.clickAddToCartBtn();
 		LogUtil.info("Adding item to Cart.");
@@ -40,7 +41,7 @@ public class CartItemsDisplayTest extends BaseTest{
 		LogUtil.info("Navigating to Cart.");
 		featuredItems.clickPopupViewCart();
 		
-		Assert.assertEquals(driver.getCurrentUrl(), ConfigManager.getCartUrl());
+		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.CART);
 		LogUtil.debug("Directed to Cart url successfully.");
 		
 		Assert.assertTrue(cart.isCartInfoVisible());

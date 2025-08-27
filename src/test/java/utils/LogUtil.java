@@ -46,10 +46,22 @@ public class LogUtil {
 	}
 	
 	public static void fail(String message, Throwable t) {
-		logger.error(message);
+		logger.error(message + ": [STACK TRACE]: " + t.getMessage());
 		ExtentTest test = extentTest.get();
 		
 		if(test != null) test.fail(message + t.getMessage());
+	}
+	
+	public static void warn(String message, Throwable t) {
+		logger.warn(message + ": [STACK TRACE]: " + t.getMessage());
+	}
+	
+	public static void warn(String message) {
+		logger.warn(message);
+	}
+	
+	public static void trace(String message) {
+		logger.trace(message);
 	}
 	
 	public static void error(String message, Throwable t) {

@@ -1,37 +1,34 @@
 package tests.smoke.homepage;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import constants.UrlConstants;
 import pages.homepage.NavBar;
 import utils.BasePage;
-import utils.ConfigManager;
 import utils.LogUtil;
 
 @Listeners(utils.TestListener.class)
 public class NavBarTest extends BaseTest{
 	
 	private NavBar navBar;
-	private BasePage basePage;
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setUpMethod() {
-		LogUtil.info("Setting up test resources");
-		navBar = new NavBar(driver);
-		basePage = new BasePage(driver);
-		LogUtil.info("Set up successfully");
+		LogUtil.debug("Setting up test resources");
+		navBar = new NavBar();
+		LogUtil.debug("Set up successfully");
 	}
 	
 	@Test(groups = {"smoke"})
 	public void homeNavBarVisibleAndClickable() {
-		LogUtil.info("[TEST STARTED]: Verifying Home navbar link is visible and clickable.");
+		LogUtil.info("* Verifying Home navbar link is visible and clickable.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 
 		Assert.assertTrue(navBar.isHomeNavVisible());
 		LogUtil.info("Home nav link is visible");
@@ -39,39 +36,37 @@ public class NavBarTest extends BaseTest{
 		navBar.clickHomeNav();
 		LogUtil.info("Home nav link is clickable");
 		
-		basePage.waitForUrlToBe(ConfigManager.getBaseUrl());
-		LogUtil.info("Directed to homepage successfully");
+		BasePage.waitForUrlToBe(UrlConstants.BASE);
+		LogUtil.info("Directed to homepage: [" + UrlConstants.BASE + "] successfully");
 		
-		LogUtil.info("[TEST COMPLETED]");
+
 	}
 	
 	@Test(groups = {"smoke"})
 	public void productsNavBarVisibleAndClickable() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying Products navbar link is visible and clickable.");
+		LogUtil.info("* Verifying Products navbar link is visible and clickable.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 
 		Assert.assertTrue(navBar.isProductsNavVisible());
-		LogUtil.info("** Products nav link is visible **");
+		LogUtil.info("Products nav link is visible");
 		
 		navBar.clickProductsNav();
-		LogUtil.info("** Products nav link is clickable **");
+		LogUtil.info("Products nav link is clickable");
 		
-		basePage.waitForUrlToBe(ConfigManager.getProductsUrl());
-		LogUtil.info("Directed to Products successfully");
+		BasePage.waitForUrlToBe(UrlConstants.PRODUCTS);
+		LogUtil.info("Directed to Products: " + UrlConstants.PRODUCTS + "] successfully");
 		
-		
-		LogUtil.info("[TEST COMPLETED]");
 	}
 	
 	@Test(groups = {"smoke"})
 	public void cartNavBarVisibleAndClickable() {
-		LogUtil.info("[TEST STARTED]: Verifying Cart navbar link is visible and clickable.");
+		LogUtil.info("* Verifying Cart navbar link is visible and clickable.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		Assert.assertTrue(navBar.isCartNavVisible());
 		LogUtil.info("Cart nav link is visible");
@@ -79,19 +74,17 @@ public class NavBarTest extends BaseTest{
 		navBar.clickCartNav();
 		LogUtil.info("Cart nav link is clickable");
 		
-		basePage.waitForUrlToBe(ConfigManager.getCartUrl());
-		LogUtil.info("Directed to Cart successfully");
-		
-		LogUtil.info("[TEST COMPLETED]");
+		BasePage.waitForUrlToBe(UrlConstants.CART);
+		LogUtil.info("Directed to Cart: " + UrlConstants.CART + "] successfully");
+
 	}
 	
 	@Test(groups = {"smoke"})
 	public void signUpLoginNavBarVisibleAndClickable() {
-		LogUtil.info("[TEST STARTED]: Verifying Signup Login navbar link is visible and clickable.");
+		LogUtil.info("* Verifying Signup Login navbar link is visible and clickable.");
 		
-		String loginUrl = ConfigManager.getLoginUrl();
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		Assert.assertTrue(navBar.isSignUpLoginNavVisible());
 		LogUtil.info("Signup Login nav link is visible");
@@ -99,20 +92,18 @@ public class NavBarTest extends BaseTest{
 		navBar.clickSignUpLoginNav();
 		LogUtil.info("Signup Login nav link is clickable");
 		
-		wait.until(ExpectedConditions.urlToBe(loginUrl));
-		Assert.assertEquals(driver.getCurrentUrl(), loginUrl);
-		LogUtil.info("Directed to Signup / Login successfully");
+		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
+		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.LOGIN);
+		LogUtil.info("Directed to Signup / Login: [" + UrlConstants.LOGIN + "] successfully");
 		
-		LogUtil.info("[TEST COMPLETED]");
 	}
 	
 	@Test (groups = {"smoke"})
 	public void testCasesNavBarVisibleAndClickable() {
-		LogUtil.info("[TEST STARTED]: Verifying Test Cases navbar link is visible and clickable.");
+		LogUtil.info("* Verifying Test Cases navbar link is visible and clickable.");
 		
-	
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		Assert.assertTrue(navBar.isTestCasesNavVisible());
 		LogUtil.info("Test Cases nav link is visible");
@@ -120,18 +111,17 @@ public class NavBarTest extends BaseTest{
 		navBar.clickTestCasesNav();
 		LogUtil.info("Test Cases nav link is clickable");
 		
-		basePage.waitForUrlToBe(ConfigManager.getTestCasesUrl());
-		LogUtil.info("Directed to Test Cases successfully");
-		
-		LogUtil.info("[TEST COMPLETED]");
+		BasePage.waitForUrlToBe(UrlConstants.TEST_CASES);
+		LogUtil.info("Directed to Test Cases: [" + UrlConstants.TEST_CASES + "] successfully");
+
 	}
 	
 	@Test(groups = {"smoke"})
 	public void apiTestingNavBarVisibleAndClickable() {
-		LogUtil.info("[TEST STARTED]: Verifying API Testing navbar link is visible and clickable.");
+		LogUtil.info("* Verifying API Testing navbar link is visible and clickable.");
 
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		Assert.assertTrue(navBar.isApiTestingNavVisible());
 		LogUtil.info("API Testing nav link is visible");
@@ -139,18 +129,17 @@ public class NavBarTest extends BaseTest{
 		navBar.clickApiTestingNav();
 		LogUtil.info("API Testing nav link is clickable");
 		
-		basePage.waitForUrlToBe(ConfigManager.getApiTestingUrl());
-		LogUtil.info("Directed to API Testing successfully");
-		
-		LogUtil.info("[TEST COMPLETED]");
+		BasePage.waitForUrlToBe(UrlConstants.API_TESTING);
+		LogUtil.info("Directed to API Testing: [" + UrlConstants.API_TESTING + "] successfully");
+
 	}
 	
 	@Test(groups = {"smoke"})
 	public void videoTutorialsNavBarVisibleAndClickable() {
-		LogUtil.info("[TEST STARTED]: Verifying Video Tutorials navbar link is visible and clickable.");
+		LogUtil.info("* Verifying Video Tutorials navbar link is visible and clickable.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		Assert.assertTrue(navBar.isVideoTutorialsNavVisible());
 		LogUtil.info("Video Tutorials navbar link is visible");
@@ -158,18 +147,17 @@ public class NavBarTest extends BaseTest{
 		navBar.clickVideoTutorialsNav();
 		LogUtil.info("Video Tutorials navbar link is clickable");
 		
-		basePage.waitForUrlToBe(ConfigManager.getVideoTutorialsUrl());
-		LogUtil.info("Directed to Video Tutorials successfully");
-		
-		LogUtil.info("[TEST COMPLETED]");
+		BasePage.waitForUrlToBe(UrlConstants.VIDEO_TUTORIALS);
+		LogUtil.info("Directed to Video Tutorials: [" + UrlConstants.VIDEO_TUTORIALS+ "] successfully");
+
 	}
 	
 	@Test(groups = {"smoke"})
 	public void contactUsNavBarVisibleAndClickable() {
-		LogUtil.info("[TEST STARTED]: Verifying Contact Us navbar link is visible and clickable.");
+		LogUtil.info("* Verifying Contact Us navbar link is visible and clickable.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		Assert.assertTrue(navBar.isContactUsNavVisible());
 		LogUtil.info("Contact Us navbar link is visible");
@@ -177,9 +165,8 @@ public class NavBarTest extends BaseTest{
 		navBar.clickContactUsNav();
 		LogUtil.info("Contact Us navbar link is clickable");
 		
-		basePage.waitForUrlToBe(ConfigManager.getContactUsUrl());
-		LogUtil.info("Directed to Contact Us successfully");
-		
-		LogUtil.info("[TEST COMPLETED]");
+		BasePage.waitForUrlToBe(UrlConstants.CONTACT_US);
+		LogUtil.info("Directed to Contact Us: [" + UrlConstants.CONTACT_US + "] successfully");
+
 	}
 }

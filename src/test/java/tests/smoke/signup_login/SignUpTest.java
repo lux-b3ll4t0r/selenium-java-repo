@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import base.BaseTest;
+import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.signup_login.AccountCreated;
 import pages.signup_login.SignUpAccountInfo;
@@ -29,7 +30,6 @@ public class SignUpTest extends BaseTest{
 	private AccountCreated accountCreated;
 	private User newUser;
 	private NavBar navBar;
-	private BasePage basePage;
 	private FileInputStream fis;
 	private Workbook workbook;
 	private Sheet sheet;
@@ -37,14 +37,19 @@ public class SignUpTest extends BaseTest{
 	@BeforeMethod(alwaysRun = true)
 	public void setUpMethod() {
 		LogUtil.debug("Setting up test resources");
-		signUpLogin = new SignUpLogin(driver);
-		signUpAccInfo = new SignUpAccountInfo(driver);
-		basePage = new BasePage(driver);
+		signUpLogin = new SignUpLogin();
+		signUpAccInfo = new SignUpAccountInfo();
 		newUser = new User();
-		accountCreated = new AccountCreated(driver);
-		navBar = new NavBar(driver);		
+		accountCreated = new AccountCreated();
+		navBar = new NavBar();		
 		LogUtil.debug("Set up successfully");
 		
+		
+		/*
+		 * TODO: Get rid of and implement DB
+		 * 
+		 * 
+		 * */
 		try {
 			fis = new FileInputStream(ConfigManager.get("excelData") + ConfigManager.get("excelTestFile"));
 			workbook = new XSSFWorkbook(fis);
@@ -65,13 +70,13 @@ public class SignUpTest extends BaseTest{
 	@Test (groups = {"smoke"}, priority = 0)
 	public void verifyUserSignUp() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying a new user can sign up to reach the account information page.");
+		LogUtil.info("* Verifying a new user can sign up to reach the account information page.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		navBar.clickSignUpLoginNav();
-		basePage.waitForUrlToBe(ConfigManager.getLoginUrl());
+		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
 		
 		newUser = new User();
 		newUser.generateRandomUser();
@@ -84,8 +89,6 @@ public class SignUpTest extends BaseTest{
 		
 		Assert.assertTrue(signUpAccInfo.isAccountInfoHeaderVisible());
 		LogUtil.info("Enter account information page is visible");
-		
-		LogUtil.info("[TEST COMPLETED]");
 		
 		
 	}
@@ -100,15 +103,15 @@ public class SignUpTest extends BaseTest{
 	@Test(groups = {"smoke"}, priority = 1)
 	public void verifySubmittingNewUserAccountInformation() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying submitting new user account information functionality.");
+		LogUtil.info("* Verifying submitting new user account information functionality.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(ConfigManager.getBaseUrl());
 		
-		LogUtil.info("** Clicking Sign up / Login **");
+		LogUtil.info("Clicking Sign up / Login.");
 		navBar.clickSignUpLoginNav();
 		
-		basePage.waitForUrlToBe(ConfigManager.getLoginUrl());
+		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
 		
 		newUser = new User(); // creates a new user
 		newUser.generateRandomUser(); // generates that users info
@@ -195,7 +198,6 @@ public class SignUpTest extends BaseTest{
 		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible());
 		LogUtil.info("Account created successfully");
 		
-		LogUtil.info("[TEST COMPLETED]");
 	}
 	
 	@AfterMethod(alwaysRun = true)

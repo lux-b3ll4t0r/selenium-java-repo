@@ -1,20 +1,14 @@
 package pages.signup_login;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 import com.github.javafaker.Faker;
 
 import utils.BasePage;
+import utils.DriverFactory;
+import utils.LogUtil;
 
-public class SignUpLogin extends BasePage{
-
-	
-	public SignUpLogin(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(driver, this);
-	}
+public class SignUpLogin {
 	
 	private By loginHeader = By.xpath("//div[@class='login-form']/h2[text()='Login to your account']");
 	private By loginEmailInput = By.xpath("//form[@action='/login']/input[@name='email']");
@@ -34,49 +28,49 @@ public class SignUpLogin extends BasePage{
 	}
 	
 	public void clickLoginButton() {
-		clickElement(loginButton);
+		BasePage.clickElement(loginButton);
 	}
 
 	
 	public void clickSignUpButton() {
-		clickElement(signUpButton);
+		BasePage.clickElement(signUpButton);
 	}
 	
 	public void enterLoginEmail(String email) {
-		sendKeysTo(loginEmailInput, email);
+		BasePage.sendKeysTo(loginEmailInput, email);
 	}
 	
 	public void enterLoginPassword(String password) {
-		sendKeysTo(passwordInput, password);
+		BasePage.sendKeysTo(passwordInput, password);
 	}
 	
 	public void enterSignUpName(String name) {
-		sendKeysTo(nameInput, name);
+		BasePage.sendKeysTo(nameInput, name);
 	}
 	
 	public void enterSignUpEmail(String email) {
-		sendKeysTo(signUpEmailInput, email);
+		BasePage.sendKeysTo(signUpEmailInput, email);
 	}
 	
 	public boolean isLoginHeaderVisible() {
-		return isElementVisible(loginHeader);
+		return BasePage.isElementVisible(loginHeader);
 	}
 	
 	public boolean isSignUpHeaderVisible() {
-		return isElementVisible(signUpFormH2);
+		return BasePage.isElementVisible(signUpFormH2);
 	}
 	
 	public boolean isEmailErrorDisplayed() {
 		
-		return !driver.findElements(By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]")).isEmpty();
+		return !DriverFactory.getDriver().findElements(By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]")).isEmpty();
 	}
 	
 	public String getLoginEmailText() {
-		return getInputText(loginEmailInput);
+		return BasePage.getInputText(loginEmailInput);
 	}
 	
 	public String getPasswordText() {
-		return getInputText(passwordInput);
+		return BasePage.getInputText(passwordInput);
 	}
 	
 	public void login(String email, String password) {
@@ -100,11 +94,12 @@ public class SignUpLogin extends BasePage{
 				success = true;
 				break;
 			}else {
-				System.out.println("Attempting to retry with new email.");
+				attempts++;
+				LogUtil.warn("An email error was displayed -> Attempting new email address, assuming email is already in use (Attempt: " + attempts + ")");
 				Faker faker = new Faker();
 				email = faker.internet().emailAddress();
 			}
-			attempts++;
+			
 		}
 	}
 }

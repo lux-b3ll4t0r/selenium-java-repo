@@ -1,29 +1,25 @@
 package pages.cart;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import utils.BasePage;
 
-public class Cart extends BasePage{
+public class Cart {
 
-	public Cart(WebDriver driver) {
-		super(driver);
-	}
 	
 	private By cartInfo = By.id("cart_info");
 	private By checkOutBtn = By.xpath("//a[@class='btn btn-default check_out']");
 	
 	public boolean isCartInfoVisible() {
-		return isElementVisible(cartInfo);
+		return BasePage.isElementVisible(cartInfo);
 	}
 	
 	public boolean isCheckOutBtnVisible() {
-		return isElementVisible(checkOutBtn);
+		return BasePage.isElementVisible(checkOutBtn);
 	}
 	
 	public void clickCheckOutBtn() {
-		clickElement(checkOutBtn);
+		BasePage.clickElement(checkOutBtn);
 	}
 	
 }

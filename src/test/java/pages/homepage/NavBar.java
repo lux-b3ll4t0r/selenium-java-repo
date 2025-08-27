@@ -1,16 +1,10 @@
 package pages.homepage;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import utils.BasePage;
 
-public class NavBar extends BasePage{
-	
-	
-	public NavBar(WebDriver driver) {
-		super(driver);
-	}
+public class NavBar {
 	
 	private By homeNav = By.partialLinkText("Home");
 	private By productsNav = By.partialLinkText("Products");	
@@ -27,83 +21,83 @@ public class NavBar extends BasePage{
 	
 	
 	public void clickLogoutButton() {
-		clickElement(logoutButton);
+		BasePage.clickElement(logoutButton);
 	}
 	
 	public void clickHomeNav() {
-		clickElement(homeNav);
+		BasePage.clickElement(homeNav);
 	}
 	
 	public void clickProductsNav() {
-		clickElement(productsNav);
+		BasePage.clickElement(productsNav);
 	}
 	
 	public void clickCartNav() {
-		clickElement(cartNav);
+		BasePage.clickElement(cartNav);
 	}
 	
 	public void clickSignUpLoginNav() {
-		clickElement(signUpLoginNav);
+		BasePage.clickElement(signUpLoginNav);
 	}
 	
 	public void clickTestCasesNav() {
-		clickElement(testCasesNav);
+		BasePage.clickElement(testCasesNav);
 	}
 	
 	public void clickApiTestingNav() {
-		clickElement(apiTestingNav);
+		BasePage.clickElement(apiTestingNav);
 	}
 	
 	public void clickVideoTutorialsNav() {
-		clickElement(videoTutorialsNav);
+		BasePage.clickElement(videoTutorialsNav);
 	}
 	
 	public void clickContactUsNav() {
-		clickElement(contactUsNav);
+		BasePage.clickElement(contactUsNav);
 	}
 	
 	public boolean isHomeNavVisible() {
-		return isElementVisible(homeNav);
+		return BasePage.isElementVisible(homeNav);
 	}
 	
 	public boolean isProductsNavVisible() {
-		return isElementVisible(productsNav);
+		return BasePage.isElementVisible(productsNav);
 	}
 	
 	public boolean isCartNavVisible() {
-		return isElementVisible(cartNav);
+		return BasePage.isElementVisible(cartNav);
 	}
 	
 	public boolean isSignUpLoginNavVisible() {
-		return isElementVisible(signUpLoginNav);
+		return BasePage.isElementVisible(signUpLoginNav);
 	}
 	
 	public boolean isTestCasesNavVisible() {
-		return isElementVisible(testCasesNav);
+		return BasePage.isElementVisible(testCasesNav);
 	}
 	
 	public boolean isApiTestingNavVisible() {
-		return isElementVisible(apiTestingNav);
+		return BasePage.isElementVisible(apiTestingNav);
 	}
 	
 	public boolean isVideoTutorialsNavVisible() {
-		return isElementVisible(videoTutorialsNav);
+		return BasePage.isElementVisible(videoTutorialsNav);
 	}
 	
 	public boolean isContactUsNavVisible() {
-		return isElementVisible(contactUsNav);
+		return BasePage.isElementVisible(contactUsNav);
 	}
 	
 	public boolean isLogoutButtonVisible() {
-		return isElementVisible(logoutButton);
+		return BasePage.isElementVisible(logoutButton);
 	}
 	
 	public boolean isLoggedInAsVisible() {
-		return isElementVisible(loggedInAs);
+		return BasePage.isElementVisible(loggedInAs);
 	}
 	
 	public boolean isHomePageLogoVisible() {
-		return isElementVisible(homePageLogo);
+		return BasePage.isElementVisible(homePageLogo);
 	}
 	
 	

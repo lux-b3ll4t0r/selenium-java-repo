@@ -2,7 +2,6 @@ package pages.signup_login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.FindBy;
@@ -11,11 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import utils.BasePage;
 
-public class SignUpAccountInfo extends BasePage{
+public class SignUpAccountInfo {
 	
-	public SignUpAccountInfo(WebDriver driver) {
-		super(driver);
-	}
 	private By accInfoHeader = By.xpath("//h2/b[contains(text(), 'Enter Account Information')]");
 	//private By addressInfoHeader = By.xpath("//h2/b[contains(text(), 'Address Information')]");
 	private By gender1Button = By.id("id_gender1");
@@ -44,10 +40,10 @@ public class SignUpAccountInfo extends BasePage{
 	public void selectTitle(String title) {
 		switch(title) {
 		case "Mr":
-			clickElement(gender1Button);
+			BasePage.clickElement(gender1Button);
 			break;
 		case "Mrs":
-			clickElement(gender2Button);
+			BasePage.clickElement(gender2Button);
 			break;
 			default:
 				throw new IllegalArgumentException("Title: " + title + " not found.");
@@ -55,7 +51,7 @@ public class SignUpAccountInfo extends BasePage{
 	}
 	
 	public void selectDay(int day) {
-		Select selector = new Select(driver.findElement(daySelector));
+		Select selector = new Select(BasePage.getDriver().findElement(daySelector));
 		
 		if(day >= 1 && day <= 31) {
 			selector.selectByVisibleText(String.valueOf(day));
@@ -65,7 +61,7 @@ public class SignUpAccountInfo extends BasePage{
 	}
 	
 	public void selectMonth(int month) {
-		Select selector = new Select(driver.findElement(monthSelector));
+		Select selector = new Select(BasePage.getDriver().findElement(monthSelector));
 		
 		if(month >= 1 && month <= 12) {
 			selector.selectByIndex(month);
@@ -75,7 +71,7 @@ public class SignUpAccountInfo extends BasePage{
 	}
 	
 	public void selectYear(int year) {
-		Select selector = new Select(driver.findElement(yearSelector));
+		Select selector = new Select(BasePage.getDriver().findElement(yearSelector));
 		
 		if(year >= 1900 && year <= 2025) {
 			selector.selectByValue(String.valueOf(year));
@@ -86,73 +82,73 @@ public class SignUpAccountInfo extends BasePage{
 	}
 	
 	public void clickSignUpForNewsLetter() {
-		clickElement(newsLetterButton);
+		BasePage.clickElement(newsLetterButton);
 	}
 	
 	public void clickReceiveSpecialOffers() {
-		clickElement(specialOffersButton);
+		BasePage.clickElement(specialOffersButton);
 	}
 	
 	public void clickCreateAccount() {
-		clickElement(createAccountButton);
+		BasePage.clickElement(createAccountButton);
 	}
 	
 	public void enterFirstName(String firstName) {
-		sendKeysTo(firstNameInput, firstName);
+		BasePage.sendKeysTo(firstNameInput, firstName);
 	}
 	
 	public void enterLastName(String lastName) {
-		sendKeysTo(lastNameInput, lastName);
+		BasePage.sendKeysTo(lastNameInput, lastName);
 	}
 	
 	public void enterCompany(String company) {
-		sendKeysTo(companyInput, company);
+		BasePage.sendKeysTo(companyInput, company);
 	}
 	
 	public void enterAddress1(String address1) {
-		sendKeysTo(address1Input, address1);
+		BasePage.sendKeysTo(address1Input, address1);
 	}
 	
 	public void enterAddress2(String address2) {
-		sendKeysTo(address2Input, address2);
+		BasePage.sendKeysTo(address2Input, address2);
 	}
 	
 	public void selectCountry(String country) {
-		Select selector = new Select(driver.findElement(countrySelector));
+		Select selector = new Select(BasePage.getDriver().findElement(countrySelector));
 		selector.selectByValue(country);
 	}
 	
 	public void enterState(String state) {
-		sendKeysTo(stateInput, state);
+		BasePage.sendKeysTo(stateInput, state);
 	}
 	
 	public void enterCity(String city) {
-		sendKeysTo(cityInput, city);
+		BasePage.sendKeysTo(cityInput, city);
 	}
 	
 	public void enterZipCode(int zipCode) {
-		sendKeysTo(zipCodeInput, String.valueOf(zipCode));
+		BasePage.sendKeysTo(zipCodeInput, String.valueOf(zipCode));
 	}
 	
 	public void enterMobileNumber(String mobileNumber) {
-		sendKeysTo(mobileNumberInput, mobileNumber);
+		BasePage.sendKeysTo(mobileNumberInput, mobileNumber);
 	}
 	
 	public void enterPassword(String password) {
-		sendKeysTo(passwordInput, password);
+		BasePage.sendKeysTo(passwordInput, password);
 	}
 	
 	public boolean isAccountInfoHeaderVisible() {
-		return isElementVisible(accInfoHeader);
+		return BasePage.isElementVisible(accInfoHeader);
 	}
 	
 	public void waitForAdIfShown() {
 		
 		try {
-			WebElement ad = driver.findElement(aswift_3);
+			WebElement ad = BasePage.getDriver().findElement(aswift_3);
 			
 			if(ad.isDisplayed()) {
-				waitForInvisibilityOfElementLocatedBy(aswift_3);
+				BasePage.waitForInvisibilityOfElementLocatedBy(aswift_3);
 			}
 			
 		}catch(NoSuchElementException e) {

@@ -23,7 +23,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'mvn test'   // runs your TestNG tests
+                withCredentials([usernamePassword(
+                    credentialsId: 'mysql-db-connection',
+                    usernameVariable: 'DB_USER',
+                    passwordVariable: 'DB_PASS'  )]) {
+
+                     bat 'mvn test'   // runs your TestNG tests
+                        
+                }
             }
         }
     }

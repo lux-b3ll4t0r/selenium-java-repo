@@ -1,15 +1,10 @@
 package pages.homepage;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import utils.BasePage;
 
-public class FeaturedItems extends BasePage{
-	
-	public FeaturedItems(WebDriver driver) {
-		super(driver);
-	}
+public class FeaturedItems {
 	
 	private By featuredItems = By.className("features_items");
 	private By addToCartBtn = By.xpath("//a[@class='btn btn-default add-to-cart']");
@@ -18,18 +13,18 @@ public class FeaturedItems extends BasePage{
 	
 	
 	public boolean isFeaturedItemsVisible() {
-		return isElementVisible(featuredItems);
+		return BasePage.isElementVisible(featuredItems);
 	}
 	
 	public void clickAddToCartBtn() {
-		clickElement(addToCartBtn);
+		BasePage.clickElement(addToCartBtn);
 	}
 	
 	public void clickContinueShoppingBtn() {
-		clickElement(continueShoppingBtn);
+		BasePage.clickElement(continueShoppingBtn);
 	}
 	
 	public void clickPopupViewCart() {
-		clickElement(popupViewCart);
+		BasePage.clickElement(popupViewCart);
 	}
 }

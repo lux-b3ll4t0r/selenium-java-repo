@@ -1,15 +1,11 @@
 package pages.checkout;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import utils.BasePage;
 
-public class Checkout extends BasePage{
-	
-	public Checkout(WebDriver driver) {
-		super(driver);
-	}
+public class Checkout {
+
 	
 	private By deliveryAddress = By.id("address_delivery");
 	private By billingAddress = By.id("address_invoice");
@@ -18,22 +14,22 @@ public class Checkout extends BasePage{
 	private By orderMsg = By.id("ordermsg");
 	
 	public boolean isDeliveryAddressVisible() {
-		return isElementVisible(deliveryAddress);
+		return BasePage.isElementVisible(deliveryAddress);
 	}
 	
 	public boolean isBillingAddressVisible() {
-		return isElementVisible(billingAddress);
+		return BasePage.isElementVisible(billingAddress);
 	}
 	
 	public boolean isCartInfoVisible() {
-		return isElementVisible(cartInfo);
+		return BasePage.isElementVisible(cartInfo);
 	}
 	
 	public boolean isPlaceOrderBtnVisible() {
-		return isElementVisible(placeOrderBtn);
+		return BasePage.isElementVisible(placeOrderBtn);
 	}
 	
 	public boolean isOrderMsgVisible() {
-		return isElementVisible(orderMsg);
+		return BasePage.isElementVisible(orderMsg);
 	}
 }

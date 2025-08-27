@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.github.javafaker.Faker;
 
 import base.BaseTest;
+import constants.UrlConstants;
 import pages.contactus.ContactUs;
 import pages.homepage.NavBar;
 import utils.BasePage;
@@ -19,14 +20,12 @@ public class ContactUsTest extends BaseTest {
 
 	private NavBar navBar;
 	private ContactUs contactUs;
-	private BasePage basePage;
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setupResources() {
 		LogUtil.debug("Setting up test resources");
-		navBar = new NavBar(driver);
-		contactUs = new ContactUs(driver);
-		basePage = new BasePage(driver);
+		navBar = new NavBar();
+		contactUs = new ContactUs();
 		LogUtil.debug("Set up successfully");
 	}
 
@@ -35,13 +34,13 @@ public class ContactUsTest extends BaseTest {
 		
 		LogUtil.info("* Verifying contact form submits successfully.");
 
-		LogUtil.info("Navigating to: " + ConfigManager.getBaseUrl());
-		driver.get(ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
-		LogUtil.info("Navigating to: " + ConfigManager.getContactUsUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.CONTACT_US);
 		navBar.clickContactUsNav();
 		
-		Assert.assertEquals(driver.getCurrentUrl(), ConfigManager.getContactUsUrl());
+		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.CONTACT_US);
 		LogUtil.debug("Directed to Contact Us url successfully.");
 		
 		LogUtil.info("Filling out Contact Us form.");
@@ -70,7 +69,7 @@ public class ContactUsTest extends BaseTest {
 		contactUs.clickSubmit();
 		
 		LogUtil.debug("Closing alert.");
-		basePage.acceptAlert();
+		BasePage.acceptAlertSafe();
 		
 		
 		Assert.assertTrue(contactUs.isSuccessMessageVisible(), "Success message not visible");

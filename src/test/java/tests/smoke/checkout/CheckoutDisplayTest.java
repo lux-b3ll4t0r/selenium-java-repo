@@ -6,11 +6,13 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import constants.UrlConstants;
 import pages.cart.Cart;
 import pages.checkout.Checkout;
 import pages.homepage.FeaturedItems;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
+import utils.BasePage;
 import utils.ConfigManager;
 import utils.LogUtil;
 
@@ -26,24 +28,24 @@ public class CheckoutDisplayTest extends BaseTest{
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setupResources() {
-		LogUtil.debug("Setting up test resources");
-		featuredItems = new FeaturedItems(driver);
-		navBar = new NavBar(driver);
-		login = new SignUpLogin(driver);
-		cart = new Cart(driver);
-		checkout = new Checkout(driver);
-		LogUtil.debug("Set up successfully");
+		LogUtil.trace("Setting up test resources");
+		featuredItems = new FeaturedItems();
+		navBar = new NavBar();
+		login = new SignUpLogin();
+		cart = new Cart();
+		checkout = new Checkout();
+		LogUtil.trace("Set up successfully");
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
 	public void checkOutVisibleTest() {
 		
-		LogUtil.info("* Verifying added itemsand customer details are visible during checkout.");
+		LogUtil.info("* Verifying added items and customer details are visible during checkout.");
 		
-		LogUtil.info("Navigating to: " + ConfigManager.getBaseUrl());
-		driver.get(ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 	
-		LogUtil.info("Logging in user since checking out is only available to logged in users.");
+		LogUtil.info("Logging in user.");
 		String email = ConfigManager.getEmail();
 		String pass = ConfigManager.getPassword();
 		
@@ -57,20 +59,20 @@ public class CheckoutDisplayTest extends BaseTest{
 		LogUtil.info("Proceeding to checkout.");
 		cart.clickCheckOutBtn();
 		
-		Assert.assertTrue(checkout.isDeliveryAddressVisible(), "Delivery address is not visible");
-		LogUtil.info("Delivery address is visible");
+		Assert.assertTrue(checkout.isDeliveryAddressVisible(), "Delivery address is not visible.");
+		LogUtil.info("Delivery address is visible.");
 		
-		Assert.assertTrue(checkout.isBillingAddressVisible(), "Billing address is not visible");
-		LogUtil.info("Billing address is visible");
+		Assert.assertTrue(checkout.isBillingAddressVisible(), "Billing address is not visible.");
+		LogUtil.info("Billing address is visible.");
 		
-		Assert.assertTrue(checkout.isCartInfoVisible(), "Item info is not visible");
-		LogUtil.info("Item info is visible");
+		Assert.assertTrue(checkout.isCartInfoVisible(), "Item info is not visible.");
+		LogUtil.info("Item info is visible.");
 		
-		Assert.assertTrue(checkout.isOrderMsgVisible(), "Order message is not visible");
-		LogUtil.info("Order message is visible");
+		Assert.assertTrue(checkout.isOrderMsgVisible(), "Order message is not visible.");
+		LogUtil.info("Order message is visible.");
 		
-		Assert.assertTrue(checkout.isPlaceOrderBtnVisible(), "Place order button is not visible");
-		LogUtil.info("Place order button is visible");
+		Assert.assertTrue(checkout.isPlaceOrderBtnVisible(), "Place order button is not visible.");
+		LogUtil.info("Place order button is visible.");
 
 	}
 }

@@ -6,6 +6,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
 import utils.BasePage;
@@ -21,23 +22,23 @@ public class LoginLogoutTest extends BaseTest{
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setUpResources() {
-		LogUtil.debug("Setting up test resources");
-		navBar = new NavBar(driver);
-		signUpLogin = new SignUpLogin(driver);
-		basePage = new BasePage(driver);
+		LogUtil.trace("Setting up test resources");
+		navBar = new NavBar();
+		signUpLogin = new SignUpLogin();
+		basePage = new BasePage();
 		
-		LogUtil.debug("Set up successfully");
+		LogUtil.trace("Set up successfully");
 	}
 
 	@Test(groups = {"smoke"}, priority = 0)
 	public void verifyLoginFunctionality() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying Login fields can be populated and user is logged in successfully.");
+		LogUtil.info("* Verifying Login fields can be populated and user is logged in successfully.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
-		LogUtil.info("Clicking Sign up / Login");
+		LogUtil.info("Navigating to Sign up / Login: [" + UrlConstants.LOGIN + "]");
 		navBar.clickSignUpLoginNav();
 		
 		String email = ConfigManager.getEmail();
@@ -46,21 +47,19 @@ public class LoginLogoutTest extends BaseTest{
 		signUpLogin.login(email, pass);
 		
 		Assert.assertTrue(navBar.isLoggedInAsVisible());
-		LogUtil.info("User logged in successfully");
-		
-		LogUtil.info("[TEST COMPLETED]");
+		LogUtil.info("User logged in successfully.");
 
 	}
 	
 	@Test(groups = {"smoke"}, priority = 1)
 	public void verifyLogoutFunctionality() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying user can log out successfully.");
+		LogUtil.info("* Verifying user can log out successfully.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
-		LogUtil.info("Clicking Sign up / Login");
+		LogUtil.info("Navigating to: Sign up / Login: [" + UrlConstants.LOGIN + "]");
 		navBar.clickSignUpLoginNav();
 		
 		String email = ConfigManager.getEmail();
@@ -68,17 +67,17 @@ public class LoginLogoutTest extends BaseTest{
 		
 		signUpLogin.login(email, pass);
 		
+		LogUtil.info("Logging in.");
 		Assert.assertTrue(navBar.isLoggedInAsVisible());
-		LogUtil.info("User logged in");
+		LogUtil.info("Logged in.");
+		
+		LogUtil.info("Logging user out.");
 		navBar.clickLogoutButton();
-		LogUtil.info("Logging user out");
 		
-		basePage.waitForUrlToBe(ConfigManager.getLoginUrl());
-		Assert.assertEquals(driver.getCurrentUrl(), ConfigManager.getLoginUrl());
-		LogUtil.info("User logged out successfully");
-		
-		LogUtil.info("[TEST COMPLETED]");
-		
+		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
+		Assert.assertFalse(navBar.isLoggedInAsVisible());
+		Assert.assertFalse(navBar.isLogoutButtonVisible());
+		LogUtil.info("User logged out successfully.");	
 		
 	}
 }

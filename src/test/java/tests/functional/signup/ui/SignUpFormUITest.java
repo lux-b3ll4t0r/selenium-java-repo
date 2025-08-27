@@ -1,17 +1,18 @@
-package tests.smoke.signup_login;
+package tests.functional.signup.ui;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import base.BaseTest;
+import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
-import utils.ConfigManager;
+import utils.BasePage;
 import utils.LogUtil;
 
 @Listeners(utils.TestListener.class)
-public class SignUpFormDisplayTest extends BaseTest{
+public class SignUpFormUITest extends BaseTest{
 	
 	private SignUpLogin signUpLogin;
 	private NavBar navBar;
@@ -19,28 +20,28 @@ public class SignUpFormDisplayTest extends BaseTest{
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setUpMethod() {
-		LogUtil.debug("Setting up test resources");
-		signUpLogin = new SignUpLogin(driver);
-		navBar = new NavBar(driver);		
-		LogUtil.debug("Set up successfully");
+		LogUtil.trace("Setting up test resources");
+		signUpLogin = new SignUpLogin();
+		navBar = new NavBar();		
+		LogUtil.trace("Set up successfully");
 		
 		
 	}
 	
-	@Test(groups = {"smoke"}, priority = 0)
+	@Test(groups = {"headersTests"}, priority = 0)
 	public void verifySignUpFormHeaderVisibility() {
 		
-		LogUtil.info("[TEST STARTED]: Verifying sign up form header is visible.");
+		LogUtil.info("* Verifying sign up form header is visible.");
 		
-		driver.get(ConfigManager.getBaseUrl());
-		LogUtil.debug("Base URL: " + ConfigManager.getBaseUrl());
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		BasePage.get(UrlConstants.BASE);
 		
 		navBar.clickSignUpLoginNav();
 	
 		Assert.assertTrue(signUpLogin.isSignUpHeaderVisible());
-		LogUtil.info("** Sign up form header is visible **");
+		LogUtil.info("Sign up form header is visible");
 		
-		LogUtil.info("[TEST COMPLETED]");
+	
 		
 
 	}

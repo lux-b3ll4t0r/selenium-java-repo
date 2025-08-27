@@ -81,4 +81,8 @@ public class ConfigManager {
 	public static String getPicsPath() {
 		return get("picsPath");
 	}
+	
+	public static String getDbLocalUrl() {
+		return get("dbLocalUrl");
+	}
 }

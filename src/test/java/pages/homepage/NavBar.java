@@ -7,13 +7,13 @@ import utils.BasePage;
 public class NavBar {
 	
 	private By homeNav = By.partialLinkText("Home");
-	private By productsNav = By.partialLinkText("Products");	
-	private By cartNav = By.partialLinkText("Cart");	
-	private By signUpLoginNav = By.partialLinkText("Signup / Login");
-	private By testCasesNav = By.partialLinkText("Test Cases");
-	private By apiTestingNav = By.partialLinkText("API Testing");
+	private By productsNav = By.xpath("//a[@href='/products']");	
+	private By cartNav = By.xpath("//a[@href='/view_cart']");	
+	private By signUpLoginNav = By.xpath("//a[@href='/login']");
+	private By testCasesNav = By.xpath("//a[@href='/test_cases']");
+	private By apiTestingNav = By.xpath("//a[@href='/api_list']");
 	private By videoTutorialsNav = By.partialLinkText("Video Tutorials");
-	private By contactUsNav = By.partialLinkText("Contact us");
+	private By contactUsNav = By.xpath("//a[@href='/contact_us']");
 	private By homePageLogo = By.xpath("//img[@alt='Website for automation practice']");
 	private By loggedInAs = By.xpath("//a[contains(text(), 'Logged in as')]/b");
 	private By logoutButton = By.xpath("//a[@href='/logout']");
@@ -100,6 +100,13 @@ public class NavBar {
 		return BasePage.isElementVisible(homePageLogo);
 	}
 	
+	public By getLoggedInAs() {
+		return loggedInAs;
+	}
+	
+	public By getLogoutButton() {
+		return logoutButton;
+	}
 	
 }
 

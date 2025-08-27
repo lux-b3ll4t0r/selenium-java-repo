@@ -2,6 +2,7 @@ package base;
 
 import java.lang.reflect.Method;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -50,8 +51,11 @@ public class BaseTest {
 		// Set test in LogUtil so logs go to ExtentReports
 		LogUtil.setExtentTest(test);
 		
+		BasePage.clearCookies();
+		((JavascriptExecutor) BasePage.getDriver()).executeScript("window.localStorage.clear();");
+		((JavascriptExecutor) BasePage.getDriver()).executeScript("window.sessionStorage.clear();");
+		
 		LogUtil.info("==================== [TEST START]: " + method.getName() + " ====================");
-
 	}
 	
 	@AfterMethod(alwaysRun = true)

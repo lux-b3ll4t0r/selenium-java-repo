@@ -36,13 +36,13 @@ public class SignUpTest extends BaseTest{
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setUpMethod() {
-		LogUtil.debug("Setting up test resources");
+		LogUtil.trace("Setting up test resources");
 		signUpLogin = new SignUpLogin();
 		signUpAccInfo = new SignUpAccountInfo();
 		newUser = new User();
 		accountCreated = new AccountCreated();
 		navBar = new NavBar();		
-		LogUtil.debug("Set up successfully");
+		LogUtil.trace("Set up successfully");
 		
 		
 		/*

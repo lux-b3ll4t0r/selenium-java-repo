@@ -19,6 +19,12 @@ public class BasePage {
 		BasePage.safeSetup();
 	}
 	
+	public static WebElement waitForVisibitliyOfElementLocated(By locator, int duration) {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+	}
+	
 	public static void safeSetup() {
 		
 		try {
@@ -47,6 +53,13 @@ public class BasePage {
 		
 		if(BasePage.isSetup()) {
 			driver.get(url);
+		}
+	}
+	
+	public static void clearCookies() {
+		
+		if(BasePage.isSetup()) {
+			driver.manage().deleteAllCookies();
 		}
 	}
 	

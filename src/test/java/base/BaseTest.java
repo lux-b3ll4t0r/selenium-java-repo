@@ -87,10 +87,6 @@ public class BaseTest {
 			extent.flush();
 		}
 	}
-	
-	public WebDriver getDriver() {
-		return DriverFactory.getDriver();
-	}
 
 }
 

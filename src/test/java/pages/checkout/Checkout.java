@@ -2,7 +2,7 @@ package pages.checkout;
 
 import org.openqa.selenium.By;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class Checkout {
 
@@ -14,22 +14,22 @@ public class Checkout {
 	private By orderMsg = By.id("ordermsg");
 	
 	public boolean isDeliveryAddressVisible() {
-		return BasePage.isElementVisible(deliveryAddress);
+		return Webtool.isElementVisible(deliveryAddress);
 	}
 	
 	public boolean isBillingAddressVisible() {
-		return BasePage.isElementVisible(billingAddress);
+		return Webtool.isElementVisible(billingAddress);
 	}
 	
 	public boolean isCartInfoVisible() {
-		return BasePage.isElementVisible(cartInfo);
+		return Webtool.isElementVisible(cartInfo);
 	}
 	
 	public boolean isPlaceOrderBtnVisible() {
-		return BasePage.isElementVisible(placeOrderBtn);
+		return Webtool.isElementVisible(placeOrderBtn);
 	}
 	
 	public boolean isOrderMsgVisible() {
-		return BasePage.isElementVisible(orderMsg);
+		return Webtool.isElementVisible(orderMsg);
 	}
 }

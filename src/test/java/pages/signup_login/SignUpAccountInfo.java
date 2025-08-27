@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class SignUpAccountInfo {
 	
@@ -40,10 +40,10 @@ public class SignUpAccountInfo {
 	public void selectTitle(String title) {
 		switch(title) {
 		case "Mr":
-			BasePage.clickElement(gender1Button);
+			Webtool.clickElement(gender1Button);
 			break;
 		case "Mrs":
-			BasePage.clickElement(gender2Button);
+			Webtool.clickElement(gender2Button);
 			break;
 			default:
 				throw new IllegalArgumentException("Title: " + title + " not found.");
@@ -51,7 +51,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void selectDay(int day) {
-		Select selector = new Select(BasePage.getDriver().findElement(daySelector));
+		Select selector = new Select(Webtool.getDriver().findElement(daySelector));
 		
 		if(day >= 1 && day <= 31) {
 			selector.selectByVisibleText(String.valueOf(day));
@@ -61,7 +61,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void selectMonth(int month) {
-		Select selector = new Select(BasePage.getDriver().findElement(monthSelector));
+		Select selector = new Select(Webtool.getDriver().findElement(monthSelector));
 		
 		if(month >= 1 && month <= 12) {
 			selector.selectByIndex(month);
@@ -71,7 +71,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void selectYear(int year) {
-		Select selector = new Select(BasePage.getDriver().findElement(yearSelector));
+		Select selector = new Select(Webtool.getDriver().findElement(yearSelector));
 		
 		if(year >= 1900 && year <= 2025) {
 			selector.selectByValue(String.valueOf(year));
@@ -82,73 +82,73 @@ public class SignUpAccountInfo {
 	}
 	
 	public void clickSignUpForNewsLetter() {
-		BasePage.clickElement(newsLetterButton);
+		Webtool.clickElement(newsLetterButton);
 	}
 	
 	public void clickReceiveSpecialOffers() {
-		BasePage.clickElement(specialOffersButton);
+		Webtool.clickElement(specialOffersButton);
 	}
 	
 	public void clickCreateAccount() {
-		BasePage.clickElement(createAccountButton);
+		Webtool.clickElement(createAccountButton);
 	}
 	
 	public void enterFirstName(String firstName) {
-		BasePage.sendKeysTo(firstNameInput, firstName);
+		Webtool.sendKeysTo(firstNameInput, firstName);
 	}
 	
 	public void enterLastName(String lastName) {
-		BasePage.sendKeysTo(lastNameInput, lastName);
+		Webtool.sendKeysTo(lastNameInput, lastName);
 	}
 	
 	public void enterCompany(String company) {
-		BasePage.sendKeysTo(companyInput, company);
+		Webtool.sendKeysTo(companyInput, company);
 	}
 	
 	public void enterAddress1(String address1) {
-		BasePage.sendKeysTo(address1Input, address1);
+		Webtool.sendKeysTo(address1Input, address1);
 	}
 	
 	public void enterAddress2(String address2) {
-		BasePage.sendKeysTo(address2Input, address2);
+		Webtool.sendKeysTo(address2Input, address2);
 	}
 	
 	public void selectCountry(String country) {
-		Select selector = new Select(BasePage.getDriver().findElement(countrySelector));
+		Select selector = new Select(Webtool.getDriver().findElement(countrySelector));
 		selector.selectByValue(country);
 	}
 	
 	public void enterState(String state) {
-		BasePage.sendKeysTo(stateInput, state);
+		Webtool.sendKeysTo(stateInput, state);
 	}
 	
 	public void enterCity(String city) {
-		BasePage.sendKeysTo(cityInput, city);
+		Webtool.sendKeysTo(cityInput, city);
 	}
 	
 	public void enterZipCode(int zipCode) {
-		BasePage.sendKeysTo(zipCodeInput, String.valueOf(zipCode));
+		Webtool.sendKeysTo(zipCodeInput, String.valueOf(zipCode));
 	}
 	
 	public void enterMobileNumber(String mobileNumber) {
-		BasePage.sendKeysTo(mobileNumberInput, mobileNumber);
+		Webtool.sendKeysTo(mobileNumberInput, mobileNumber);
 	}
 	
 	public void enterPassword(String password) {
-		BasePage.sendKeysTo(passwordInput, password);
+		Webtool.sendKeysTo(passwordInput, password);
 	}
 	
 	public boolean isAccountInfoHeaderVisible() {
-		return BasePage.isElementVisible(accInfoHeader);
+		return Webtool.isElementVisible(accInfoHeader);
 	}
 	
 	public void waitForAdIfShown() {
 		
 		try {
-			WebElement ad = BasePage.getDriver().findElement(aswift_3);
+			WebElement ad = Webtool.getDriver().findElement(aswift_3);
 			
 			if(ad.isDisplayed()) {
-				BasePage.waitForInvisibilityOfElementLocatedBy(aswift_3);
+				Webtool.waitForInvisibilityOfElementLocatedBy(aswift_3);
 			}
 			
 		}catch(NoSuchElementException e) {

@@ -2,7 +2,7 @@ package pages.homepage;
 
 import org.openqa.selenium.By;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class NavBar {
 	
@@ -15,89 +15,89 @@ public class NavBar {
 	private By videoTutorialsNav = By.partialLinkText("Video Tutorials");
 	private By contactUsNav = By.xpath("//a[@href='/contact_us']");
 	private By homePageLogo = By.xpath("//img[@alt='Website for automation practice']");
-	private By loggedInAs = By.xpath("//a[contains(text(), 'Logged in as')]/b");
+	private By loggedInAs = By.xpath("//i[@class='fa fa-user']/parent::a");
 	private By logoutButton = By.xpath("//a[@href='/logout']");
 	
 	
 	
 	public void clickLogoutButton() {
-		BasePage.clickElement(logoutButton);
+		Webtool.clickElement(logoutButton);
 	}
 	
 	public void clickHomeNav() {
-		BasePage.clickElement(homeNav);
+		Webtool.clickElement(homeNav);
 	}
 	
 	public void clickProductsNav() {
-		BasePage.clickElement(productsNav);
+		Webtool.clickElement(productsNav);
 	}
 	
 	public void clickCartNav() {
-		BasePage.clickElement(cartNav);
+		Webtool.clickElement(cartNav);
 	}
 	
 	public void clickSignUpLoginNav() {
-		BasePage.clickElement(signUpLoginNav);
+		Webtool.clickElement(signUpLoginNav);
 	}
 	
 	public void clickTestCasesNav() {
-		BasePage.clickElement(testCasesNav);
+		Webtool.clickElement(testCasesNav);
 	}
 	
 	public void clickApiTestingNav() {
-		BasePage.clickElement(apiTestingNav);
+		Webtool.clickElement(apiTestingNav);
 	}
 	
 	public void clickVideoTutorialsNav() {
-		BasePage.clickElement(videoTutorialsNav);
+		Webtool.clickElement(videoTutorialsNav);
 	}
 	
 	public void clickContactUsNav() {
-		BasePage.clickElement(contactUsNav);
+		Webtool.clickElement(contactUsNav);
 	}
 	
 	public boolean isHomeNavVisible() {
-		return BasePage.isElementVisible(homeNav);
+		return Webtool.isElementVisible(homeNav);
 	}
 	
 	public boolean isProductsNavVisible() {
-		return BasePage.isElementVisible(productsNav);
+		return Webtool.isElementVisible(productsNav);
 	}
 	
 	public boolean isCartNavVisible() {
-		return BasePage.isElementVisible(cartNav);
+		return Webtool.isElementVisible(cartNav);
 	}
 	
 	public boolean isSignUpLoginNavVisible() {
-		return BasePage.isElementVisible(signUpLoginNav);
+		return Webtool.isElementVisible(signUpLoginNav);
 	}
 	
 	public boolean isTestCasesNavVisible() {
-		return BasePage.isElementVisible(testCasesNav);
+		return Webtool.isElementVisible(testCasesNav);
 	}
 	
 	public boolean isApiTestingNavVisible() {
-		return BasePage.isElementVisible(apiTestingNav);
+		return Webtool.isElementVisible(apiTestingNav);
 	}
 	
 	public boolean isVideoTutorialsNavVisible() {
-		return BasePage.isElementVisible(videoTutorialsNav);
+		return Webtool.isElementVisible(videoTutorialsNav);
 	}
 	
 	public boolean isContactUsNavVisible() {
-		return BasePage.isElementVisible(contactUsNav);
+		return Webtool.isElementVisible(contactUsNav);
 	}
 	
 	public boolean isLogoutButtonVisible() {
-		return BasePage.isElementVisible(logoutButton);
+		return Webtool.isElementVisible(logoutButton);
 	}
 	
 	public boolean isLoggedInAsVisible() {
-		return BasePage.isElementVisible(loggedInAs);
+		return Webtool.isElementVisible(loggedInAs);
 	}
 	
 	public boolean isHomePageLogoVisible() {
-		return BasePage.isElementVisible(homePageLogo);
+		return Webtool.isElementVisible(homePageLogo);
 	}
 	
 	public By getLoggedInAs() {

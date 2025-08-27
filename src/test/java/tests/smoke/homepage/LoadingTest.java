@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 import constants.UrlConstants;
 import pages.homepage.HomePage;
-import utils.BasePage;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class LoadingTest extends BaseTest {
@@ -21,17 +21,16 @@ public class LoadingTest extends BaseTest {
 		LogUtil.trace("Setting up test resources");
 		homePage = new HomePage();
 		LogUtil.trace("Set up successfully");
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 	
 	@Test(groups = {"smoke"})
 	public void testHomePageLoads() {
 		LogUtil.info("* Verifying Homepage loads successfully.");
-		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
 
-		LogUtil.debug("Expected URL: {}, Actual URL: {}", UrlConstants.BASE, BasePage.getCurrentUrl());
-		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.BASE, "Current url doesn't match base url.");
+		LogUtil.debug("Expected URL: {}, Actual URL: {}", UrlConstants.BASE, Webtool.getCurrentUrl());
+		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.BASE, "Current url doesn't match base url.");
 			
 		Assert.assertTrue(homePage.isHomePageVisible());
 		LogUtil.info("All main elements of the homepage are visible. " + homePage.getBody());

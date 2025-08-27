@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class HomePage {
 	
@@ -26,23 +26,23 @@ public class HomePage {
 	}
 	
 	public boolean isMainHeaderVisible() {
-		return BasePage.isElementVisible(main_header);
+		return Webtool.isElementVisible(main_header);
 	}
 	
 	public boolean isSliderSectionVisible() {
-		return BasePage.isElementVisible(slider_section);
+		return Webtool.isElementVisible(slider_section);
 	}
 	
 	public boolean isLeftSiderBarVisible() {
-		return BasePage.isElementVisible(left_sidebar);
+		return Webtool.isElementVisible(left_sidebar);
 	}
 	
 	public boolean isItemsContainerVisible() {
-		return BasePage.isElementVisible(items_list);
+		return Webtool.isElementVisible(items_list);
 	}
 	
 	public boolean isFooterVisible() {
-		return BasePage.isElementVisible(footer);
+		return Webtool.isElementVisible(footer);
 	}
 	
 	public List<By> getBody() {

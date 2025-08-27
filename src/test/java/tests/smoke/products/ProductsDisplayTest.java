@@ -9,15 +9,15 @@ import base.BaseTest;
 import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.products.AllProducts;
-import utils.BasePage;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class ProductsDisplayTest extends BaseTest{
 	
 	NavBar navBar;
 	AllProducts products;
-	BasePage basePage;
+	Webtool basePage;
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setupResources() {
@@ -25,6 +25,9 @@ public class ProductsDisplayTest extends BaseTest{
 		navBar = new NavBar();
 		products = new AllProducts();
 		LogUtil.trace("Set up successfully");
+		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 	
 	
@@ -32,10 +35,7 @@ public class ProductsDisplayTest extends BaseTest{
 	@Test(groups = {"smoke"}, priority = 0)
 	public void verifyProductsListIsDisplayed() {
 		
-		LogUtil.info("* Verifying all products are listed in the Products page");
-		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
+		LogUtil.info("* Verifying all products are listed in the Products page");	
 		
 		LogUtil.info("Clicking Products link");
 		navBar.clickProductsNav();
@@ -50,16 +50,13 @@ public class ProductsDisplayTest extends BaseTest{
 	public void verifySearchedProductsDisplayed() {
 		LogUtil.info("* Verifying products are shown when searching for a product");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		LogUtil.info("Clicking Products link");
 		navBar.clickProductsNav();
 		
 		LogUtil.info("Searching for product: \"shirt\"");
 		products.searchProduct("shirt");
 		
-		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.PRODUCTS + "?search=shirt");
+		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.PRODUCTS + "?search=shirt");
 		Assert.assertTrue(products.isProductsListVisible());
 		LogUtil.info("Directed to correct url, and products relating to search are shown successfully");
 		

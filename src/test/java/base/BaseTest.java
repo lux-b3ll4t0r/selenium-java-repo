@@ -3,7 +3,7 @@ package base;
 import java.lang.reflect.Method;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -15,10 +15,10 @@ import org.testng.annotations.BeforeSuite;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
-import utils.BasePage;
 import utils.DriverFactory;
 import utils.ExtentReportManager;
 import utils.LogUtil;
+import utils.Webtool;
 
 public class BaseTest {
 	
@@ -36,7 +36,7 @@ public class BaseTest {
 		LogUtil.trace("Initializing Driver");
 		DriverFactory.setupDriver();
 		LogUtil.trace("Driver Initialized");
-		BasePage.safeSetup();
+		Webtool.safeSetup();
 	}
 	
 	@BeforeMethod(alwaysRun = true)
@@ -51,7 +51,14 @@ public class BaseTest {
 		// Set test in LogUtil so logs go to ExtentReports
 		LogUtil.setExtentTest(test);
 		
-		BasePage.clearCookies();
+		
+		// Uncomment this line to create a new driver instance after each test
+		// Must also uncomment the quit method in AfterMethod, or handle driver quit manually
+			//LogUtil.trace("Initializing Driver");
+			//DriverFactory.setupDriver();
+			//LogUtil.trace("Driver Initialized");
+		
+		Webtool.clearCookies();
 		
 		LogUtil.info("==================== [TEST START]: " + method.getName() + " ====================");
 	}
@@ -61,6 +68,14 @@ public class BaseTest {
 		
 		String testName = result.getMethod().getMethodName();
 		
+		try {
+			JavascriptExecutor js = (JavascriptExecutor) Webtool.getDriver();
+			js.executeScript("window.localStorage.clear();");
+			js.executeScript("window.sessionStorage.clear();");
+		}catch(WebDriverException wde) {
+			LogUtil.warn("Failed to clear local/session storage: " + wde.getMessage());
+		}
+		
 		if(result.getStatus() == ITestResult.FAILURE) {
 			Throwable throwable = result.getThrowable();
 			LogUtil.fail("[TEST FAILED]: " + testName, throwable);
@@ -69,6 +84,11 @@ public class BaseTest {
 		}else if(result.getStatus() == ITestResult.SUCCESS) {
 			LogUtil.pass("[TEST PASS]: " + testName);
 		}
+		
+		// Only uncomment this if driver is being setup in BeforeMethod
+			//LogUtil.debug("Quiting Driver");
+			//DriverFactory.quitDriver();
+			//LogUtil.debug("Driver Quit");
 		
 		LogUtil.info("==================== [TEST END] ====================");
 	}

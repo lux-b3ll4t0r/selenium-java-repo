@@ -15,13 +15,12 @@ public class ScreenshotUtils {
 		String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 		String screenshotName = testName + "_" + timestamp + ".png";
 		String screenshotPath = System.getProperty("user.dir") + "/test-output/screenshots/" + screenshotName;
-		
-		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		
+
 		try {
+			File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(srcFile, new File(screenshotPath));
 		}catch(Exception e) {
-			e.printStackTrace();
+			LogUtil.warn("Failed to take a screenshot: " + e.getMessage());
 		}
 		
 		return screenshotPath;

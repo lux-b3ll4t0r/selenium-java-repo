@@ -9,7 +9,6 @@ public class TestListener implements ITestListener{
 	
 	@Override
 	public void onTestFailure(ITestResult result) {
-		Object testClass = result.getInstance();
 		WebDriver driver = DriverFactory.getDriver();
 		
 		String testName = result.getName();

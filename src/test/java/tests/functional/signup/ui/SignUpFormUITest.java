@@ -4,12 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import base.BaseTest;
 import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
-import utils.BasePage;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class SignUpFormUITest extends BaseTest{
@@ -34,7 +35,7 @@ public class SignUpFormUITest extends BaseTest{
 		LogUtil.info("* Verifying sign up form header is visible.");
 		
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 		
 		navBar.clickSignUpLoginNav();
 	

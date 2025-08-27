@@ -2,7 +2,7 @@ package pages.homepage;
 
 import org.openqa.selenium.By;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class FeaturedItems {
 	
@@ -13,18 +13,18 @@ public class FeaturedItems {
 	
 	
 	public boolean isFeaturedItemsVisible() {
-		return BasePage.isElementVisible(featuredItems);
+		return Webtool.isElementVisible(featuredItems);
 	}
 	
 	public void clickAddToCartBtn() {
-		BasePage.clickElement(addToCartBtn);
+		Webtool.clickElement(addToCartBtn);
 	}
 	
 	public void clickContinueShoppingBtn() {
-		BasePage.clickElement(continueShoppingBtn);
+		Webtool.clickElement(continueShoppingBtn);
 	}
 	
 	public void clickPopupViewCart() {
-		BasePage.clickElement(popupViewCart);
+		Webtool.clickElement(popupViewCart);
 	}
 }

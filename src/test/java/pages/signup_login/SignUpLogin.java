@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 
 import com.github.javafaker.Faker;
 
-import utils.BasePage;
 import utils.DriverFactory;
 import utils.LogUtil;
+import utils.Webtool;
 
 public class SignUpLogin {
 	
@@ -28,36 +28,36 @@ public class SignUpLogin {
 	}
 	
 	public void clickLoginButton() {
-		BasePage.clickElement(loginButton);
+		Webtool.clickElement(loginButton);
 	}
 
 	
 	public void clickSignUpButton() {
-		BasePage.clickElement(signUpButton);
+		Webtool.clickElement(signUpButton);
 	}
 	
 	public void enterLoginEmail(String email) {
-		BasePage.sendKeysTo(loginEmailInput, email);
+		Webtool.sendKeysTo(loginEmailInput, email);
 	}
 	
 	public void enterLoginPassword(String password) {
-		BasePage.sendKeysTo(passwordInput, password);
+		Webtool.sendKeysTo(passwordInput, password);
 	}
 	
 	public void enterSignUpName(String name) {
-		BasePage.sendKeysTo(nameInput, name);
+		Webtool.sendKeysTo(nameInput, name);
 	}
 	
 	public void enterSignUpEmail(String email) {
-		BasePage.sendKeysTo(signUpEmailInput, email);
+		Webtool.sendKeysTo(signUpEmailInput, email);
 	}
 	
 	public boolean isLoginHeaderVisible() {
-		return BasePage.isElementVisible(loginHeader);
+		return Webtool.isElementVisible(loginHeader);
 	}
 	
 	public boolean isSignUpHeaderVisible() {
-		return BasePage.isElementVisible(signUpFormH2);
+		return Webtool.isElementVisible(signUpFormH2);
 	}
 	
 	public boolean isEmailErrorDisplayed() {
@@ -66,11 +66,11 @@ public class SignUpLogin {
 	}
 	
 	public String getLoginEmailText() {
-		return BasePage.getInputText(loginEmailInput);
+		return Webtool.getInputText(loginEmailInput);
 	}
 	
 	public String getPasswordText() {
-		return BasePage.getInputText(passwordInput);
+		return Webtool.getInputText(passwordInput);
 	}
 	
 	public void login(String email, String password) {

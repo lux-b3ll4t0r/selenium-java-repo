@@ -12,9 +12,9 @@ import pages.checkout.Checkout;
 import pages.homepage.FeaturedItems;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
-import utils.BasePage;
 import utils.ConfigManager;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class CheckoutDisplayTest extends BaseTest{
@@ -35,15 +35,14 @@ public class CheckoutDisplayTest extends BaseTest{
 		cart = new Cart();
 		checkout = new Checkout();
 		LogUtil.trace("Set up successfully");
+		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
 	public void checkOutVisibleTest() {
-		
 		LogUtil.info("* Verifying added items and customer details are visible during checkout.");
-		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
 	
 		LogUtil.info("Logging in user.");
 		String email = ConfigManager.getEmail();

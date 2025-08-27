@@ -11,9 +11,9 @@ import base.BaseTest;
 import constants.UrlConstants;
 import pages.contactus.ContactUs;
 import pages.homepage.NavBar;
-import utils.BasePage;
 import utils.ConfigManager;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class ContactUsTest extends BaseTest {
@@ -27,20 +27,19 @@ public class ContactUsTest extends BaseTest {
 		navBar = new NavBar();
 		contactUs = new ContactUs();
 		LogUtil.debug("Set up successfully");
+		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 
 	@Test(groups = { "smoke" }, priority = 0)
 	public void contactUsSubmitTest() {
-		
 		LogUtil.info("* Verifying contact form submits successfully.");
-
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
 		
 		LogUtil.info("Navigating to: " + UrlConstants.CONTACT_US);
 		navBar.clickContactUsNav();
 		
-		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.CONTACT_US);
+		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.CONTACT_US);
 		LogUtil.debug("Directed to Contact Us url successfully.");
 		
 		LogUtil.info("Filling out Contact Us form.");
@@ -69,7 +68,7 @@ public class ContactUsTest extends BaseTest {
 		contactUs.clickSubmit();
 		
 		LogUtil.debug("Closing alert.");
-		BasePage.acceptAlertSafe();
+		Webtool.acceptAlertSafe();
 		
 		
 		Assert.assertTrue(contactUs.isSuccessMessageVisible(), "Success message not visible");

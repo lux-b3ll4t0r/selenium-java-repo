@@ -2,7 +2,7 @@ package pages.signup_login;
 
 import org.openqa.selenium.By;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class AccountCreated {
 	
@@ -11,10 +11,10 @@ public class AccountCreated {
 	
 
 	public boolean isAccountCreatedMessageVisible() {
-		return BasePage.isElementVisible(accountCreated);
+		return Webtool.isElementVisible(accountCreated);
 	}
 	
 	public void clickContinue() {
-		BasePage.clickElement(continueButton);
+		Webtool.clickElement(continueButton);
 	}
 }

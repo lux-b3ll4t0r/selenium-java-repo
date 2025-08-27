@@ -4,7 +4,7 @@ package utils;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
 
-public class CommonFunctions extends BasePage{
+public class CommonFunctions extends Webtool{
 	
 	private NavBar navBar; 
 	private SignUpLogin login;

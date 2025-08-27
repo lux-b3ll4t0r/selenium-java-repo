@@ -9,34 +9,32 @@ import base.BaseTest;
 import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
-import utils.BasePage;
 import utils.ConfigManager;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class LoginLogoutTest extends BaseTest{
 	
 	NavBar navBar;
 	SignUpLogin signUpLogin;
-	BasePage basePage;
+	Webtool basePage;
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setUpResources() {
 		LogUtil.trace("Setting up test resources");
 		navBar = new NavBar();
 		signUpLogin = new SignUpLogin();
-		basePage = new BasePage();
-		
 		LogUtil.trace("Set up successfully");
+		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 
 	@Test(groups = {"smoke"}, priority = 0)
 	public void verifyLoginFunctionality() {
 		
 		LogUtil.info("* Verifying Login fields can be populated and user is logged in successfully.");
-		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
 		
 		LogUtil.info("Navigating to Sign up / Login: [" + UrlConstants.LOGIN + "]");
 		navBar.clickSignUpLoginNav();
@@ -56,9 +54,6 @@ public class LoginLogoutTest extends BaseTest{
 		
 		LogUtil.info("* Verifying user can log out successfully.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		LogUtil.info("Navigating to: Sign up / Login: [" + UrlConstants.LOGIN + "]");
 		navBar.clickSignUpLoginNav();
 		
@@ -74,10 +69,7 @@ public class LoginLogoutTest extends BaseTest{
 		LogUtil.info("Logging user out.");
 		navBar.clickLogoutButton();
 		
-		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
-		
-	
-		
-		
+		Webtool.waitForUrlToBe(UrlConstants.LOGIN);
+		LogUtil.info("User logged out.");
 	}
 }

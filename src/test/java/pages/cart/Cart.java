@@ -2,7 +2,7 @@ package pages.cart;
 
 import org.openqa.selenium.By;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class Cart {
 
@@ -11,15 +11,15 @@ public class Cart {
 	private By checkOutBtn = By.xpath("//a[@class='btn btn-default check_out']");
 	
 	public boolean isCartInfoVisible() {
-		return BasePage.isElementVisible(cartInfo);
+		return Webtool.isElementVisible(cartInfo);
 	}
 	
 	public boolean isCheckOutBtnVisible() {
-		return BasePage.isElementVisible(checkOutBtn);
+		return Webtool.isElementVisible(checkOutBtn);
 	}
 	
 	public void clickCheckOutBtn() {
-		BasePage.clickElement(checkOutBtn);
+		Webtool.clickElement(checkOutBtn);
 	}
 	
 }

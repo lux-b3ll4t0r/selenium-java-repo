@@ -3,7 +3,7 @@ package pages.contactus;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class ContactUs {
 	
@@ -18,65 +18,65 @@ public class ContactUs {
 	
 	
 	public boolean isContactUsHeaderVisible() {
-		return BasePage.isElementVisible(contactUsHeader);
+		return Webtool.isElementVisible(contactUsHeader);
 	}
 	
 	public void enterName(String name) {
-		BasePage.sendKeysTo(nameInput, name);
+		Webtool.sendKeysTo(nameInput, name);
 	}
 	
 	public boolean isNameInputVisible() {
-		return BasePage.isElementVisible(nameInput);
+		return Webtool.isElementVisible(nameInput);
 	}
 	
 	public void enterEmail(String email) {
-		BasePage.sendKeysTo(emailInput, email);
+		Webtool.sendKeysTo(emailInput, email);
 	}
 	
 	public boolean isEmailInputVisible() {
-		return BasePage.isElementVisible(emailInput);
+		return Webtool.isElementVisible(emailInput);
 	}
 	
 	public void enterSubject(String subject) {
-		BasePage.sendKeysTo(subjectInput, subject);
+		Webtool.sendKeysTo(subjectInput, subject);
 	}
 	
 	public boolean isSubjectInputVisible() {
-		return BasePage.isElementVisible(subjectInput);
+		return Webtool.isElementVisible(subjectInput);
 	}
 	
 	public void enterMessage(String message) {
-		BasePage.sendKeysTo(messageInput, message);
+		Webtool.sendKeysTo(messageInput, message);
 	}
 	
 	public boolean isMessageInputVisible() {
-		return BasePage.isElementVisible(messageInput);
+		return Webtool.isElementVisible(messageInput);
 	}
 	
 	public void uploadFile(String filePath) {
-		BasePage.sendKeysTo(fileUpload, filePath);
+		Webtool.sendKeysTo(fileUpload, filePath);
 	}
 	
 	public boolean isUploadFileInputVisible() {
-		return BasePage.isElementVisible(fileUpload);
+		return Webtool.isElementVisible(fileUpload);
 	}
 	
 	public void clickSubmit() {
-		BasePage.clickElement(submitBtn);
+		Webtool.clickElement(submitBtn);
 	}
 	
 	public boolean isSubmitBtnVisible() {
-		return BasePage.isElementVisible(submitBtn);
+		return Webtool.isElementVisible(submitBtn);
 	}
 	
 	public void closeAlert() {
 		
-		Alert alert = BasePage.getDriver().switchTo().alert();
+		Alert alert = Webtool.getDriver().switchTo().alert();
 		alert.accept();
 	}
 	
 	public boolean isSuccessMessageVisible() {
-		return BasePage.isElementVisible(successMsg);
+		return Webtool.isElementVisible(successMsg);
 	}
 	
 	

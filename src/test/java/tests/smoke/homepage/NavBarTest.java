@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 import constants.UrlConstants;
 import pages.homepage.NavBar;
-import utils.BasePage;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class NavBarTest extends BaseTest{
@@ -21,14 +21,14 @@ public class NavBarTest extends BaseTest{
 		LogUtil.debug("Setting up test resources");
 		navBar = new NavBar();
 		LogUtil.debug("Set up successfully");
+		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 	
 	@Test(groups = {"smoke"})
 	public void homeNavBarVisibleAndClickable() {
 		LogUtil.info("* Verifying Home navbar link is visible and clickable.");
-		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
 
 		Assert.assertTrue(navBar.isHomeNavVisible());
 		LogUtil.info("Home nav link is visible");
@@ -36,7 +36,7 @@ public class NavBarTest extends BaseTest{
 		navBar.clickHomeNav();
 		LogUtil.info("Home nav link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.BASE);
+		Webtool.waitForUrlToBe(UrlConstants.BASE);
 		LogUtil.info("Directed to homepage: [" + UrlConstants.BASE + "] successfully");
 		
 
@@ -44,19 +44,15 @@ public class NavBarTest extends BaseTest{
 	
 	@Test(groups = {"smoke"})
 	public void productsNavBarVisibleAndClickable() {
-		
 		LogUtil.info("* Verifying Products navbar link is visible and clickable.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-
 		Assert.assertTrue(navBar.isProductsNavVisible());
 		LogUtil.info("Products nav link is visible");
 		
 		navBar.clickProductsNav();
 		LogUtil.info("Products nav link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.PRODUCTS);
+		Webtool.waitForUrlToBe(UrlConstants.PRODUCTS);
 		LogUtil.info("Directed to Products: " + UrlConstants.PRODUCTS + "] successfully");
 		
 	}
@@ -65,16 +61,13 @@ public class NavBarTest extends BaseTest{
 	public void cartNavBarVisibleAndClickable() {
 		LogUtil.info("* Verifying Cart navbar link is visible and clickable.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		Assert.assertTrue(navBar.isCartNavVisible());
 		LogUtil.info("Cart nav link is visible");
 
 		navBar.clickCartNav();
 		LogUtil.info("Cart nav link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.CART);
+		Webtool.waitForUrlToBe(UrlConstants.CART);
 		LogUtil.info("Directed to Cart: " + UrlConstants.CART + "] successfully");
 
 	}
@@ -83,17 +76,14 @@ public class NavBarTest extends BaseTest{
 	public void signUpLoginNavBarVisibleAndClickable() {
 		LogUtil.info("* Verifying Signup Login navbar link is visible and clickable.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		Assert.assertTrue(navBar.isSignUpLoginNavVisible());
 		LogUtil.info("Signup Login nav link is visible");
 
 		navBar.clickSignUpLoginNav();
 		LogUtil.info("Signup Login nav link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
-		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.LOGIN);
+		Webtool.waitForUrlToBe(UrlConstants.LOGIN);
+		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.LOGIN);
 		LogUtil.info("Directed to Signup / Login: [" + UrlConstants.LOGIN + "] successfully");
 		
 	}
@@ -102,16 +92,13 @@ public class NavBarTest extends BaseTest{
 	public void testCasesNavBarVisibleAndClickable() {
 		LogUtil.info("* Verifying Test Cases navbar link is visible and clickable.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		Assert.assertTrue(navBar.isTestCasesNavVisible());
 		LogUtil.info("Test Cases nav link is visible");
 
 		navBar.clickTestCasesNav();
 		LogUtil.info("Test Cases nav link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.TEST_CASES);
+		Webtool.waitForUrlToBe(UrlConstants.TEST_CASES);
 		LogUtil.info("Directed to Test Cases: [" + UrlConstants.TEST_CASES + "] successfully");
 
 	}
@@ -119,9 +106,6 @@ public class NavBarTest extends BaseTest{
 	@Test(groups = {"smoke"})
 	public void apiTestingNavBarVisibleAndClickable() {
 		LogUtil.info("* Verifying API Testing navbar link is visible and clickable.");
-
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
 		
 		Assert.assertTrue(navBar.isApiTestingNavVisible());
 		LogUtil.info("API Testing nav link is visible");
@@ -129,7 +113,7 @@ public class NavBarTest extends BaseTest{
 		navBar.clickApiTestingNav();
 		LogUtil.info("API Testing nav link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.API_TESTING);
+		Webtool.waitForUrlToBe(UrlConstants.API_TESTING);
 		LogUtil.info("Directed to API Testing: [" + UrlConstants.API_TESTING + "] successfully");
 
 	}
@@ -138,16 +122,13 @@ public class NavBarTest extends BaseTest{
 	public void videoTutorialsNavBarVisibleAndClickable() {
 		LogUtil.info("* Verifying Video Tutorials navbar link is visible and clickable.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		Assert.assertTrue(navBar.isVideoTutorialsNavVisible());
 		LogUtil.info("Video Tutorials navbar link is visible");
 		
 		navBar.clickVideoTutorialsNav();
 		LogUtil.info("Video Tutorials navbar link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.VIDEO_TUTORIALS);
+		Webtool.waitForUrlToBe(UrlConstants.VIDEO_TUTORIALS);
 		LogUtil.info("Directed to Video Tutorials: [" + UrlConstants.VIDEO_TUTORIALS+ "] successfully");
 
 	}
@@ -156,16 +137,13 @@ public class NavBarTest extends BaseTest{
 	public void contactUsNavBarVisibleAndClickable() {
 		LogUtil.info("* Verifying Contact Us navbar link is visible and clickable.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		Assert.assertTrue(navBar.isContactUsNavVisible());
 		LogUtil.info("Contact Us navbar link is visible");
 		
 		navBar.clickContactUsNav();
 		LogUtil.info("Contact Us navbar link is clickable");
 		
-		BasePage.waitForUrlToBe(UrlConstants.CONTACT_US);
+		Webtool.waitForUrlToBe(UrlConstants.CONTACT_US);
 		LogUtil.info("Directed to Contact Us: [" + UrlConstants.CONTACT_US + "] successfully");
 
 	}

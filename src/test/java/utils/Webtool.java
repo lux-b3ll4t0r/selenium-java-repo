@@ -10,19 +10,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public class Webtool {
 	
 	private static WebDriver driver;
 	private static WebDriverWait wait;
 	
 	public static void main(String[] args) {
-		BasePage.safeSetup();
-	}
-	
-	public static WebElement waitForVisibitliyOfElementLocated(By locator, int duration) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-
+		Webtool.safeSetup();
 	}
 	
 	public static void safeSetup() {
@@ -37,38 +31,36 @@ public class BasePage {
 	
 	}
 	
-	public static boolean isSetup() {
-		if(driver != null && wait != null) {
-			return true;
-		}
-		
-		return false;
-	}
 	
 	public static WebDriver getDriver() {
-		return BasePage.driver;
+		return Webtool.driver;
 	}
 	
 	public static void get(String url) {
 		
-		if(BasePage.isSetup()) {
+		if(Webtool.isSetup()) {
 			driver.get(url);
 		}
 	}
 	
 	public static void clearCookies() {
 		
-		if(BasePage.isSetup()) {
+		if(Webtool.isSetup()) {
 			driver.manage().deleteAllCookies();
 		}
 	}
 	
 	public static String getCurrentUrl() {
-		if(BasePage.isSetup()) {
+		if(Webtool.isSetup()) {
 			return driver.getCurrentUrl();
 		}
 		
 		return "";
+	}
+	
+	public static String getInputText(By locator) {
+		WebElement element = waitForVisibitliyOfElementLocated(locator);
+		return element.getAttribute("value");
 	}
 	
 	public static void sendKeysTo(By locator, String text) {
@@ -97,12 +89,14 @@ public class BasePage {
 		
 	}
 	
-	public static String getInputText(By locator) {
-		WebElement element = waitForVisibitliyOfElementLocated(locator);
-		return element.getAttribute("value");
+	
+	public static boolean isSetup() {
+		if(driver != null && wait != null) {
+			return true;
+		}
+		
+		return false;
 	}
-	
-	
 	
 	public static boolean isElementVisible(By locator) {
 		WebElement element = waitForVisibitliyOfElementLocated(locator);
@@ -119,6 +113,12 @@ public class BasePage {
 	
 	public static WebElement waitForVisibitliyOfElementLocated(By locator) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	
+	public static WebElement waitForVisibitliyOfElementLocated(By locator, int duration) {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
 	}
 	
 	public static WebElement waitForVisibilityOfElement(WebElement element) {

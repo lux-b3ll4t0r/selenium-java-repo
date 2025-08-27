@@ -9,8 +9,8 @@ import base.BaseTest;
 import constants.UrlConstants;
 import pages.cart.Cart;
 import pages.homepage.FeaturedItems;
-import utils.BasePage;
 import utils.LogUtil;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class CartItemsDisplayTest extends BaseTest{
@@ -33,7 +33,7 @@ public class CartItemsDisplayTest extends BaseTest{
 		LogUtil.info("* Verifying items added to cart are visible.");
 		
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 		
 		featuredItems.clickAddToCartBtn();
 		LogUtil.info("Adding item to Cart.");
@@ -41,7 +41,7 @@ public class CartItemsDisplayTest extends BaseTest{
 		LogUtil.info("Navigating to Cart.");
 		featuredItems.clickPopupViewCart();
 		
-		Assert.assertEquals(BasePage.getCurrentUrl(), UrlConstants.CART);
+		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.CART);
 		LogUtil.debug("Directed to Cart url successfully.");
 		
 		Assert.assertTrue(cart.isCartInfoVisible());

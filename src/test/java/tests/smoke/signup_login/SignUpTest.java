@@ -10,17 +10,18 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import base.BaseTest;
 import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.signup_login.AccountCreated;
 import pages.signup_login.SignUpAccountInfo;
 import pages.signup_login.SignUpLogin;
-import utils.BasePage;
 import utils.ConfigManager;
 import utils.ExcelUtils;
 import utils.LogUtil;
 import utils.User;
+import utils.Webtool;
 
 @Listeners(utils.TestListener.class)
 public class SignUpTest extends BaseTest{
@@ -44,6 +45,8 @@ public class SignUpTest extends BaseTest{
 		navBar = new NavBar();		
 		LogUtil.trace("Set up successfully");
 		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 		
 		/*
 		 * TODO: Get rid of and implement DB
@@ -72,11 +75,8 @@ public class SignUpTest extends BaseTest{
 		
 		LogUtil.info("* Verifying a new user can sign up to reach the account information page.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		navBar.clickSignUpLoginNav();
-		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
+		Webtool.waitForUrlToBe(UrlConstants.LOGIN);
 		
 		newUser = new User();
 		newUser.generateRandomUser();
@@ -105,13 +105,10 @@ public class SignUpTest extends BaseTest{
 		
 		LogUtil.info("* Verifying submitting new user account information functionality.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		BasePage.get(UrlConstants.BASE);
-		
 		LogUtil.info("Clicking Sign up / Login.");
 		navBar.clickSignUpLoginNav();
 		
-		BasePage.waitForUrlToBe(UrlConstants.LOGIN);
+		Webtool.waitForUrlToBe(UrlConstants.LOGIN);
 		
 		newUser = new User(); // creates a new user
 		newUser.generateRandomUser(); // generates that users info

@@ -27,7 +27,7 @@ public class DriverFactory {
 		return threadLocalDriver.get();
 	}
 		
-	public static void setupChromeOptions() {
+	private static void setupChromeOptions() {
 		chromeOptions = new ChromeOptions();
 		
 		if(isHeadless) chromeOptions.addArguments("--headless=new");
@@ -35,19 +35,19 @@ public class DriverFactory {
 		chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
 	}
 	
-	public static void setupFirefoxOptions() {
+	private static void setupFirefoxOptions() {
 		FirefoxOptions firefoxOptions = new FirefoxOptions();
 		if(isHeadless) firefoxOptions.addArguments("--headless");
 	
 	}
 	
-	public static void setupEdgeOptions() {
+	private static void setupEdgeOptions() {
 		EdgeOptions edgeOptions = new EdgeOptions();
 		if(isHeadless) edgeOptions.addArguments("--headless=new");
 	
 	}
 	
-	public static void setDriver() {
+	private static void setDriver() {
 
 		switch(browser) {
 		case "chrome":

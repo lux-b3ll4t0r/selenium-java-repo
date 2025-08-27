@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import utils.BasePage;
+import utils.Webtool;
 
 public class AllProducts{
 	
@@ -14,7 +14,7 @@ public class AllProducts{
 	
 	public AllProducts() {
 
-		actions = new Actions(BasePage.getDriver());
+		actions = new Actions(Webtool.getDriver());
 	}
 	
 	private By allProductsHeader = By.xpath("//h2[contains(text(), 'All Products')]");
@@ -29,16 +29,16 @@ public class AllProducts{
 	private By searchedProductsHeader = By.xpath("//div[@class ='features_items']/h2");
 	
 	public List<WebElement> getAllProducts(){
-		return BasePage.waitForVisibilityOfAllElementsLocatedBy(allProducts);
+		return Webtool.waitForVisibilityOfAllElementsLocatedBy(allProducts);
 	}
 	
 	public List<WebElement> getAllProductsOverlay(){
-		return BasePage.waitForVisibilityOfAllElementsLocatedBy(productsOverlay);
+		return Webtool.waitForVisibilityOfAllElementsLocatedBy(productsOverlay);
 	}
 	
 	public void searchProduct(String product) {
-		BasePage.sendKeysTo(searchProduct, product);
-		BasePage.clickElement(searchProductBtn);
+		Webtool.sendKeysTo(searchProduct, product);
+		Webtool.clickElement(searchProductBtn);
 	}
 	
 	public String getPrice(int productIndex) {
@@ -63,7 +63,7 @@ public class AllProducts{
 		checkIfIndexTooHigh(productIndex);
 		moveCursorToProduct(productIndex);
 		
-		BasePage.waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
+		Webtool.waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
 		
 		WebElement overlayPrice = getAllProductsOverlay().get(productIndex).findElement(By.xpath("//div[@class='features_items']//div[@class='product-overlay']//h2"));
 		return overlayPrice.getText();
@@ -74,7 +74,7 @@ public class AllProducts{
 		checkIfIndexTooHigh(productIndex);
 		moveCursorToProduct(productIndex);
 		
-		BasePage.waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
+		Webtool.waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
 		
 		WebElement overlayProductType = getAllProductsOverlay().get(productIndex).findElement(By.xpath("//div[@class='features_items']//div[@class='product-overlay']//p"));
 		return overlayProductType.getText();
@@ -85,7 +85,7 @@ public class AllProducts{
 		checkIfIndexTooHigh(productIndex);
 		moveCursorToProduct(productIndex);
 		
-		BasePage.waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
+		Webtool.waitForVisibilityOfElement(getAllProductsOverlay().get(productIndex));
 		
 		WebElement overlayAddToCartBtn = getAllProductsOverlay().get(productIndex).findElement(By.xpath("//a[@class='btn btn-default add-to-cart']"));
 		overlayAddToCartBtn.click();
@@ -101,7 +101,7 @@ public class AllProducts{
 
 	public void clickContinueShopping() {
 		
-		BasePage.clickElement(continueShoppingBtn);
+		Webtool.clickElement(continueShoppingBtn);
 	}
 	public void moveCursorToProduct(int productIndex) {
 		
@@ -118,15 +118,15 @@ public class AllProducts{
 	}
 	
 	public boolean isAllProductsHeaderVisible() {
-		return BasePage.isElementVisible(allProductsHeader);
+		return Webtool.isElementVisible(allProductsHeader);
 	}
 	
 	public boolean isProductsListVisible() {
 		
-		return BasePage.isElementVisible(featuredItems);
+		return Webtool.isElementVisible(featuredItems);
 	}
 	
 	public boolean isSearchedProductsHeaderVisible() {
-		return BasePage.isElementVisible(searchedProductsHeader);
+		return Webtool.isElementVisible(searchedProductsHeader);
 	}
 }

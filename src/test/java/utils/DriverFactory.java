@@ -32,6 +32,7 @@ public class DriverFactory {
 		
 		if(isHeadless) chromeOptions.addArguments("--headless=new");
 		chromeOptions.addArguments("--start-maximized");
+		chromeOptions.addArguments("--window-size=1920,1080");
 		chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
 	}
 	

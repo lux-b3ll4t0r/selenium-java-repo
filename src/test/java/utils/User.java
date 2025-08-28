@@ -5,12 +5,10 @@ import com.github.javafaker.Faker;
 
 public class User {
 		
-	private String title, firstName, lastName, email, password, company, 
+	private String title, firstName, lastName, email, password, company, newsLetter, optin,
 	address1, address2, country, state, city, mobileNumber;
 	private String[] countries = {"India", "United States", "Canada", "Australia", "Israel", "New Zealand", "Singapore"};
-	private int day, month, year, zipCode;
-	boolean newsLetter, optin;
-	
+	private int day, month, year, zipCode;	
 	
 	
 	public void generateRandomUser() {
@@ -27,6 +25,8 @@ public class User {
 		month = MathUtils.getRandomIntWithRange(1, 12);
 		year = MathUtils.getRandomIntWithRange(1900, 2025);
 		company = faker.company().name();
+		newsLetter = MathUtils.getRandomIntWithRange(0, 1) == 0 ? "false": "true";
+		optin = MathUtils.getRandomIntWithRange(0, 1) == 0 ? "false": "true";
 		address1 = faker.address().streetAddress();
 		address2 = faker.address().secondaryAddress();
 		country = countries[randInt = MathUtils.getRandomIntWithRange(0, 6)];
@@ -46,6 +46,8 @@ public class User {
 		" Birth Month: " + month +
 		" Birth Year: " + year +
 		" Company: " + company +
+		" Newsletter: " + newsLetter +
+		" Optin: " + optin +
 		" Address 1: " + address1 + 
 		" Address 2: " + address2 +
 		" Country: " + country +
@@ -113,11 +115,11 @@ public class User {
 		return year;
 	}
 
-	public boolean getNewsLetter() {
+	public String getNewsLetter() {
 		return newsLetter;
 	}
 
-	public boolean getOptin() {
+	public String getOptin() {
 		return optin;
 	}
 

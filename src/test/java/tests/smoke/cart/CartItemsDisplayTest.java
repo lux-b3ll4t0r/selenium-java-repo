@@ -25,15 +25,15 @@ public class CartItemsDisplayTest extends BaseTest{
 		featuredItems = new FeaturedItems();
 		cart = new Cart();
 		LogUtil.trace("Set up successfully");
+		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
 	public void verifying_added_items_() {
 		
 		LogUtil.info("* Verifying items added to cart are visible.");
-		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		Webtool.get(UrlConstants.BASE);
 		
 		featuredItems.clickAddToCartBtn();
 		LogUtil.info("Adding item to Cart.");

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,7 +17,7 @@ public class Webtool {
 	private static WebDriverWait wait;
 	
 	public static void main(String[] args) {
-		Webtool.safeSetup();
+
 	}
 	
 	public static void safeSetup() {
@@ -108,7 +109,12 @@ public class Webtool {
 	}
 	
 	public static void waitForInvisibilityOfElementLocatedBy(By locator) {
+		
+		try {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+		}catch(TimeoutException e) {
+			LogUtil.warn("Unable to wait for invisibility of element: " + locator);
+		}
 	}
 	
 	public static WebElement waitForVisibitliyOfElementLocated(By locator) {

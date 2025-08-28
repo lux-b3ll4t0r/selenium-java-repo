@@ -85,4 +85,10 @@ public class ConfigManager {
 	public static String getDbLocalUrl() {
 		return get("dbLocalUrl");
 	}
+	
+	public static String getLocalDbName() {
+		return get("localDbName");
+	}
+	
+	
 }

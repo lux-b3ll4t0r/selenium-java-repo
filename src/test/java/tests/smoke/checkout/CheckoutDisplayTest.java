@@ -12,7 +12,6 @@ import pages.checkout.Checkout;
 import pages.homepage.FeaturedItems;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
-import utils.ConfigManager;
 import utils.LogUtil;
 import utils.Webtool;
 
@@ -45,8 +44,8 @@ public class CheckoutDisplayTest extends BaseTest{
 		LogUtil.info("* Verifying added items and customer details are visible during checkout.");
 	
 		LogUtil.info("Logging in user.");
-		String email = ConfigManager.getEmail();
-		String pass = ConfigManager.getPassword();
+		String email = System.getenv("UI_USER");
+		String pass = System.getenv("UI_PASS");
 		
 		navBar.clickSignUpLoginNav();
 		login.login(email, pass);

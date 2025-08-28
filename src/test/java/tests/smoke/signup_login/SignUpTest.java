@@ -1,10 +1,7 @@
 package tests.smoke.signup_login;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.sql.Connection;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,9 +14,8 @@ import pages.homepage.NavBar;
 import pages.signup_login.AccountCreated;
 import pages.signup_login.SignUpAccountInfo;
 import pages.signup_login.SignUpLogin;
-import utils.ConfigManager;
-import utils.ExcelUtils;
 import utils.LogUtil;
+import utils.SQLWorkbench;
 import utils.User;
 import utils.Webtool;
 
@@ -31,9 +27,8 @@ public class SignUpTest extends BaseTest{
 	private AccountCreated accountCreated;
 	private User newUser;
 	private NavBar navBar;
-	private FileInputStream fis;
-	private Workbook workbook;
-	private Sheet sheet;
+	private Connection con;
+
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setUpMethod() {
@@ -47,28 +42,9 @@ public class SignUpTest extends BaseTest{
 		
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
-		
-		/*
-		 * TODO: Get rid of and implement DB
-		 * 
-		 * 
-		 * */
-		try {
-			fis = new FileInputStream(ConfigManager.get("excelData") + ConfigManager.get("excelTestFile"));
-			workbook = new XSSFWorkbook(fis);
-			sheet = workbook.getSheet("users");
-		}catch (Throwable t) {
-			LogUtil.error("Excel File Issue: ", t);
-		}
+	
 	}
 
-	
-	/*
-	 * This is a smoke test that verifies the functionality of the initial signup form before
-	 * the account information signup page ->  endpoint "/login"
-	 * 
-	 * 
-	 */
 	
 	@Test (groups = {"smoke"}, priority = 0)
 	public void verifyUserSignUp() {
@@ -119,74 +95,27 @@ public class SignUpTest extends BaseTest{
 		
 		LogUtil.debug("Signing up new user: \"" + name + "\" - \"" + email + "\"");
 		signUpLogin.signUpNewUserWithRetry(name, email);
-		ExcelUtils.updateByColumnHeader(sheet, "name", name);
-		ExcelUtils.updateByColumnHeader(sheet, "email", email);
 		
 		Assert.assertTrue(signUpAccInfo.isAccountInfoHeaderVisible());
 		LogUtil.info("Entering new user account information");
-		
-		String title = newUser.getTitle();
-		signUpAccInfo.selectTitle(title);
-		ExcelUtils.updateByColumnHeader(sheet, "title", title);
-
-		signUpAccInfo.enterPassword(newUser.getPassword());
-		ExcelUtils.updateByColumnHeader(sheet, "password", newUser.getPassword());
-			 
-		int day = newUser.getDay();
-		signUpAccInfo.selectDay(day);
-		ExcelUtils.updateByColumnHeader(sheet, "days", String.valueOf(day));
-		
-		int month = newUser.getMonth();						 
-		signUpAccInfo.selectMonth(month);
-		ExcelUtils.updateByColumnHeader(sheet, "months", String.valueOf(month));
-		
-		int year = newUser.getYear();
-		signUpAccInfo.selectYear(year);
-		ExcelUtils.updateByColumnHeader(sheet, "years", String.valueOf(year));
-		
+	
+		signUpAccInfo.selectTitle(newUser.getTitle());
+		signUpAccInfo.enterPassword(newUser.getPassword()); 
+		signUpAccInfo.selectDay(newUser.getDay());				 
+		signUpAccInfo.selectMonth(newUser.getMonth());
+		signUpAccInfo.selectYear(newUser.getYear());
 		signUpAccInfo.clickSignUpForNewsLetter();
-		ExcelUtils.updateByColumnHeader(sheet, "newsletter", "true");
-		
 		signUpAccInfo.clickReceiveSpecialOffers();
-		ExcelUtils.updateByColumnHeader(sheet, "optin", "true");
-		
 		signUpAccInfo.enterFirstName(newUser.getFirstName());
-		ExcelUtils.updateByColumnHeader(sheet, "first_name", newUser.getFirstName());
-		
 		signUpAccInfo.enterLastName(newUser.getLastName());
-		ExcelUtils.updateByColumnHeader(sheet, "last_name", newUser.getLastName());
-		
-		String company = newUser.getCompany();
-		signUpAccInfo.enterCompany(company);
-		ExcelUtils.updateByColumnHeader(sheet, "company", company);
-		
-		String address1 = newUser.getAddress1();
-		signUpAccInfo.enterAddress1(address1);
-		ExcelUtils.updateByColumnHeader(sheet, "address1", address1);
-		
-		String address2 = newUser.getAddress2();
-		signUpAccInfo.enterAddress2(address2);
-		ExcelUtils.updateByColumnHeader(sheet, "address2", address2);
-		
-		String country = newUser.getCountry();
-		signUpAccInfo.selectCountry(country);
-		ExcelUtils.updateByColumnHeader(sheet, "country", country);
-		
-		String state = newUser.getState();
-		signUpAccInfo.enterState(state);
-		ExcelUtils.updateByColumnHeader(sheet, "state", state);
-		
-		String city = newUser.getCity();
-		signUpAccInfo.enterCity(city);
-		ExcelUtils.updateByColumnHeader(sheet, "city", city);
-		
-		int zipCode = newUser.getZipCode();
-		signUpAccInfo.enterZipCode(zipCode);
-		ExcelUtils.updateByColumnHeader(sheet, "zipcode", String.valueOf(zipCode));
-		
-		String mobileNumber = newUser.getMobileNumber();
-		signUpAccInfo.enterMobileNumber(mobileNumber);
-		ExcelUtils.updateByColumnHeader(sheet, "mobile_number", mobileNumber);
+		signUpAccInfo.enterCompany(newUser.getCompany());
+		signUpAccInfo.enterAddress1(newUser.getAddress1());
+		signUpAccInfo.enterAddress2(newUser.getAddress2());
+		signUpAccInfo.selectCountry(newUser.getCountry());
+		signUpAccInfo.enterState(newUser.getState());
+		signUpAccInfo.enterCity(newUser.getCity());
+		signUpAccInfo.enterZipCode(newUser.getZipCode());
+		signUpAccInfo.enterMobileNumber(newUser.getMobileNumber());
 		
 		LogUtil.info("Submitting sign up account info");
 		signUpAccInfo.waitForAdIfShown();
@@ -195,6 +124,14 @@ public class SignUpTest extends BaseTest{
 		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible());
 		LogUtil.info("Account created successfully");
 		
+		LogUtil.trace("Saving user to DB.");
+		con = SQLWorkbench.connectToLocalDb();
+		SQLWorkbench.saveUser(con, newUser);
+		LogUtil.trace("User saved to DB.");
+		 
+		 
+		
+		
 	}
 	
 	@AfterMethod(alwaysRun = true)
@@ -202,23 +139,9 @@ public class SignUpTest extends BaseTest{
 		
 		LogUtil.debug("[UPDATING AND CLOSING RESOURCES]");
 		
-		try {
-
-			FileOutputStream fos = new FileOutputStream(ConfigManager.get("excelData") + ConfigManager.get("excelTestFile"));
-			
-			if(fis != null) { 
-				fis.close(); 		
-			}
-			
-			if(workbook != null) {
-				workbook.write(fos);
-				fos.close();
-				workbook.close();
-			}
-			
-		}catch (Exception e) {
-			LogUtil.error("Failed to update excel file", e);
-			
+		if(con != null) {
+			SQLWorkbench.closeConnection(con);
 		}
+	
 	}
 }

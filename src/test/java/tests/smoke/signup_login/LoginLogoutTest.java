@@ -9,7 +9,6 @@ import base.BaseTest;
 import constants.UrlConstants;
 import pages.homepage.NavBar;
 import pages.signup_login.SignUpLogin;
-import utils.ConfigManager;
 import utils.LogUtil;
 import utils.Webtool;
 
@@ -39,8 +38,8 @@ public class LoginLogoutTest extends BaseTest{
 		LogUtil.info("Navigating to Sign up / Login: [" + UrlConstants.LOGIN + "]");
 		navBar.clickSignUpLoginNav();
 		
-		String email = ConfigManager.getEmail();
-		String pass = ConfigManager.getPassword();
+		String email = System.getenv("UI_USER");
+		String pass = System.getenv("UI_PASS");
 		
 		signUpLogin.login(email, pass);
 		
@@ -57,8 +56,8 @@ public class LoginLogoutTest extends BaseTest{
 		LogUtil.info("Navigating to: Sign up / Login: [" + UrlConstants.LOGIN + "]");
 		navBar.clickSignUpLoginNav();
 		
-		String email = ConfigManager.getEmail();
-		String pass = ConfigManager.getPassword();
+		String email = System.getenv("UI_USER");
+		String pass = System.getenv("UI_PASS");
 		
 		signUpLogin.login(email, pass);
 		

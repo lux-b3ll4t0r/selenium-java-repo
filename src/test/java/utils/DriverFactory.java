@@ -52,15 +52,12 @@ public class DriverFactory {
 		switch(browser) {
 		case "chrome":
 			threadLocalDriver.set(new ChromeDriver(chromeOptions));
-			threadLocalDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			break;
 		case "firefox":
 			threadLocalDriver.set(new FirefoxDriver(firefoxOptions));
-			threadLocalDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			break;
 		case "edge":
 			threadLocalDriver.set(new EdgeDriver(edgeOptions));
-			threadLocalDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			break;
 		default:
 			throw new IllegalArgumentException("Browser type not recognized: " + browser);

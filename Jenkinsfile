@@ -26,7 +26,13 @@ pipeline {
                 withCredentials([usernamePassword(
                     credentialsId: 'mysql-db-connection',
                     usernameVariable: 'DB_USER',
-                    passwordVariable: 'DB_PASS'  )]) {
+                    passwordVariable: 'DB_PASS'  
+                    ),
+                usernamePassword(
+                    credentialsId: 'ui-creds',
+                    usernameVariable: 'UI_USER',
+                    passwordVariable: 'UI_PASS')
+                ]) {
 
                      bat 'mvn test'   // runs your TestNG tests
                         

@@ -33,7 +33,7 @@ public class ContactUsTest extends BaseTest {
 	}
 
 	@Test(groups = { "smoke" }, priority = 0)
-	public void contactUsSubmitTest() {
+	public void contactus_submit_test() {
 		LogUtil.info("* Verifying contact form submits successfully.");
 		
 		LogUtil.info("Navigating to: " + UrlConstants.CONTACT_US);

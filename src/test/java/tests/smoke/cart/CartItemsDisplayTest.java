@@ -31,7 +31,7 @@ public class CartItemsDisplayTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
-	public void verifying_added_items_() {
+	public void cart_item_added_visibility_test() {
 		
 		LogUtil.info("* Verifying items added to cart are visible.");
 		

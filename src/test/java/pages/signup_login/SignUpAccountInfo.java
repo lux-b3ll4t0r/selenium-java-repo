@@ -1,17 +1,10 @@
 package pages.signup_login;
 
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.support.FindBy;
-//import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import utils.DriverFactory;
 import utils.LogUtil;
 import utils.Webtool;
 
@@ -40,8 +33,6 @@ public class SignUpAccountInfo {
 	private By zipCodeInput = By.id("zipcode");
 	private By mobileNumberInput = By.id("mobile_number");
 	private By createAccountButton = By.xpath("//button[@data-qa='create-account']");
-	private By aswift_3 = By.id("aswift_3");
-	
 	public void selectTitle(String title) {
 		switch(title) {
 		case "Mr":

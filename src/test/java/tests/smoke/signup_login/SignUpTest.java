@@ -47,7 +47,7 @@ public class SignUpTest extends BaseTest{
 
 	
 	@Test (groups = {"smoke"}, priority = 0)
-	public void verifyUserSignUp() {
+	public void initial_signup_test() {
 		
 		LogUtil.info("* Verifying a new user can sign up to reach the account information page.");
 		
@@ -77,7 +77,7 @@ public class SignUpTest extends BaseTest{
 	
 	
 	@Test(groups = {"smoke"}, priority = 1)
-	public void verifySubmittingNewUserAccountInformation() {
+	public void actual_signup_test() {
 		
 		LogUtil.info("* Verifying submitting new user account information functionality.");
 		

@@ -31,7 +31,7 @@ public class LoginLogoutTest extends BaseTest{
 	}
 
 	@Test(groups = {"smoke"}, priority = 0)
-	public void verifyLoginFunctionality() {
+	public void login_test() {
 		
 		LogUtil.info("* Verifying Login fields can be populated and user is logged in successfully.");
 		
@@ -49,7 +49,7 @@ public class LoginLogoutTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"}, priority = 1)
-	public void verifyLogoutFunctionality() {
+	public void logout_test() {
 		
 		LogUtil.info("* Verifying user can log out successfully.");
 		

@@ -26,7 +26,7 @@ public class LoadingTest extends BaseTest {
 	}
 	
 	@Test(groups = {"smoke"})
-	public void testHomePageLoads() {
+	public void homepage_loading_test() {
 		LogUtil.info("* Verifying Homepage loads successfully.");
 
 		LogUtil.debug("Expected URL: {}, Actual URL: {}", UrlConstants.BASE, Webtool.getCurrentUrl());

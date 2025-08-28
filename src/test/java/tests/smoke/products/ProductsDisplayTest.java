@@ -33,7 +33,7 @@ public class ProductsDisplayTest extends BaseTest{
 	
 	
 	@Test(groups = {"smoke"}, priority = 0)
-	public void verifyProductsListIsDisplayed() {
+	public void products_visibility_test() {
 		
 		LogUtil.info("* Verifying all products are listed in the Products page");	
 		
@@ -47,7 +47,7 @@ public class ProductsDisplayTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"}, priority = 1)
-	public void verifySearchedProductsDisplayed() {
+	public void products_search_visibility_test() {
 		LogUtil.info("* Verifying products are shown when searching for a product");
 		
 		LogUtil.info("Clicking Products link");

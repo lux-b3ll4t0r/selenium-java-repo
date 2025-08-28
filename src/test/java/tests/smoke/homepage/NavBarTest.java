@@ -58,7 +58,7 @@ public class NavBarTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"})
-	public void cartNavBarVisibleAndClickable() {
+	public void cart_navigation_test() {
 		LogUtil.info("* Verifying Cart navbar link is visible and clickable.");
 		
 		Assert.assertTrue(navBar.isCartNavVisible());
@@ -73,7 +73,7 @@ public class NavBarTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"})
-	public void signUpLoginNavBarVisibleAndClickable() {
+	public void signup_login_navigation_test() {
 		LogUtil.info("* Verifying Signup Login navbar link is visible and clickable.");
 		
 		Assert.assertTrue(navBar.isSignUpLoginNavVisible());
@@ -89,7 +89,7 @@ public class NavBarTest extends BaseTest{
 	}
 	
 	@Test (groups = {"smoke"})
-	public void testCasesNavBarVisibleAndClickable() {
+	public void test_cases_navigation_test() {
 		LogUtil.info("* Verifying Test Cases navbar link is visible and clickable.");
 		
 		Assert.assertTrue(navBar.isTestCasesNavVisible());
@@ -104,7 +104,7 @@ public class NavBarTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"})
-	public void apiTestingNavBarVisibleAndClickable() {
+	public void api_testing_navigation_Test() {
 		LogUtil.info("* Verifying API Testing navbar link is visible and clickable.");
 		
 		Assert.assertTrue(navBar.isApiTestingNavVisible());
@@ -119,7 +119,7 @@ public class NavBarTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"})
-	public void videoTutorialsNavBarVisibleAndClickable() {
+	public void video_tutorials_navigation_test() {
 		LogUtil.info("* Verifying Video Tutorials navbar link is visible and clickable.");
 		
 		Assert.assertTrue(navBar.isVideoTutorialsNavVisible());
@@ -134,7 +134,7 @@ public class NavBarTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"})
-	public void contactUsNavBarVisibleAndClickable() {
+	public void contact_us_navigation_Test() {
 		LogUtil.info("* Verifying Contact Us navbar link is visible and clickable.");
 		
 		Assert.assertTrue(navBar.isContactUsNavVisible());

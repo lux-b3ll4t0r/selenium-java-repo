@@ -40,7 +40,7 @@ public class CheckoutDisplayTest extends BaseTest{
 	}
 	
 	@Test(groups = {"smoke"}, priority = 0)
-	public void checkOutVisibleTest() {
+	public void checkout_details_visibility_test() {
 		LogUtil.info("* Verifying added items and customer details are visible during checkout.");
 	
 		LogUtil.info("Logging in user.");

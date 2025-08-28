@@ -118,7 +118,6 @@ public class SignUpTest extends BaseTest{
 		signUpAccInfo.enterMobileNumber(newUser.getMobileNumber());
 		
 		LogUtil.info("Submitting sign up account info");
-		signUpAccInfo.waitForAdIfShown();
 		signUpAccInfo.clickCreateAccount();
 		
 		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible());

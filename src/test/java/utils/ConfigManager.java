@@ -90,5 +90,12 @@ public class ConfigManager {
 		return get("localDbName");
 	}
 	
+	public static String getReportPath() {
+		return get("reportPath");
+	}
+	
+	public static String getFullReportPath() {
+		return System.getProperty("user.dir") + get("reportPath");
+	}
 	
 }

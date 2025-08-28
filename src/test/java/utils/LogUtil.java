@@ -3,6 +3,7 @@ package utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 public class LogUtil {
@@ -13,6 +14,7 @@ public class LogUtil {
 	public static void setExtentTest(ExtentTest test) {
 		extentTest.set(test);
 	}
+	
 	
 	public static void removeExtentTest() {
 		extentTest.remove();

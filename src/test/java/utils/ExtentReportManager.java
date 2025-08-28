@@ -1,5 +1,6 @@
 package utils;
 
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
@@ -11,7 +12,7 @@ public class ExtentReportManager {
 		if(extent == null) {
 			
 			// Set output path for report file appending timestamp to avoid overwriting file
-			String reportPath = System.getProperty("user.dir") + "/test-output/extent-reports/ExtentReport.html";
+			String reportPath = ConfigManager.getFullReportPath();
 			
 			// Set up spark reporter
 			ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);

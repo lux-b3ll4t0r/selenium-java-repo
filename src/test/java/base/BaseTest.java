@@ -49,8 +49,7 @@ public class BaseTest {
 		extentTestThread.set(test);
 		
 		// Set test in LogUtil so logs go to ExtentReports
-		LogUtil.setExtentTest(test);
-		
+		LogUtil.setExtentTest(test);	
 		
 		// Uncomment this line to create a new driver instance after each test
 		// Must also uncomment the quit method in AfterMethod, or handle driver quit manually

@@ -1,8 +1,6 @@
 package pages.signup_login;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.FindBy;
 //import org.openqa.selenium.support.PageFactory;
@@ -143,17 +141,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void waitForAdIfShown() {
-		
-		try {
-			WebElement ad = Webtool.getDriver().findElement(aswift_3);
-			
-			if(ad.isDisplayed()) {
-				Webtool.waitForInvisibilityOfElementLocatedBy(aswift_3);
-			}
-			
-		}catch(NoSuchElementException e) {
-			
-		}
+	   Webtool.waitForVisibitliyOfElementLocated(aswift_3, 3);
 	}
 	/////////////////////////////////////////////
 	

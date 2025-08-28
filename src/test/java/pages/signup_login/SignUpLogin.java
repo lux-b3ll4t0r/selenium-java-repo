@@ -1,6 +1,10 @@
 package pages.signup_login;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 
 import com.github.javafaker.Faker;
 
@@ -18,7 +22,7 @@ public class SignUpLogin {
 	private By nameInput = By.xpath("//form[@action='/signup']/input[@name='name']");
 	private By signUpEmailInput = By.xpath("//form[@action='/signup']/input[@name='email']");
 	private By signUpButton = By.xpath("//form[@action='/signup']/button[@data-qa='signup-button']");
-	//private By emailExistMsg = By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]");
+	private By emailExistMsg = By.xpath("//p[contains(text(), 'Email Address already exist!')]");
 	
 	public void startUserSignUp(String name, String email) {
 		
@@ -61,8 +65,13 @@ public class SignUpLogin {
 	}
 	
 	public boolean isEmailErrorDisplayed() {
+
+		List<WebElement> emailErrList = DriverFactory.getDriver().findElements(emailExistMsg);
+		if(!emailErrList.isEmpty()) {
+			return true;
+		}
+		return false;
 		
-		return !DriverFactory.getDriver().findElements(By.xpath("//form[@action = '/signup']/p[contains(text(), 'Email Address already exist!')]")).isEmpty();
 	}
 	
 	public String getLoginEmailText() {
@@ -85,7 +94,6 @@ public class SignUpLogin {
 		boolean success = false;
 		
 		while(attempts < 5 && success == false) {
-			
 			enterSignUpName(name);
 			enterSignUpEmail(email);
 			clickSignUpButton();

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -73,6 +74,11 @@ public class Webtool {
 	public static void clickElement(By locator) {
 		WebElement element = waitForElementToBeClickable(locator);
 		element.click();
+	}
+	
+	public static void scrollToElementLocated(By locator) {
+		WebElement element = waitForElementToBeClickable(locator);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	
 	public static void acceptAlertSafe() {

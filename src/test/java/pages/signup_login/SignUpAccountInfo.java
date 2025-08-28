@@ -3,6 +3,7 @@ package pages.signup_login;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.WebElement;
@@ -94,7 +95,14 @@ public class SignUpAccountInfo {
 	}
 	
 	public void clickCreateAccount() {
+		
+		try {
 		Webtool.clickElement(createAccountButton);
+		}catch(ElementClickInterceptedException e) {
+			LogUtil.warn("Click was intercepted by another element. Attempting to scroll to element and click.");
+			Webtool.scrollToElementLocated(createAccountButton);
+			Webtool.clickElement(createAccountButton);
+		}
 	}
 	
 	public void enterFirstName(String firstName) {

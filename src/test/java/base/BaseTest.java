@@ -103,9 +103,12 @@ public class BaseTest {
 	@AfterSuite(alwaysRun = true)
 	public void tearDownSuite() {
 		
-		if(extent != null) {
+		try {
 			extent.flush();
+		}catch(Exception e) {
+			LogUtil.warn("Failed to flush extent report: " + e.getMessage());
 		}
+		
 	}
 
 }

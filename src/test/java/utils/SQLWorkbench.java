@@ -28,6 +28,7 @@ public class SQLWorkbench {
 	}
 	
 	public static void saveUser(Connection con, User user) {
+		LogUtil.trace("Saving user to DB.");
 		try {
 			PreparedStatement ps = con.prepareStatement(QueryConstants.getInsertUserData());
 			
@@ -51,6 +52,7 @@ public class SQLWorkbench {
 			ps.setString(18, user.getMobileNumber());
 			ps.executeUpdate();
 			ps.close();
+			LogUtil.trace("User saved to DB.");
 		}catch(SQLException | NullPointerException e) {
 			LogUtil.error("Failed to save new user: ", e);
 		}

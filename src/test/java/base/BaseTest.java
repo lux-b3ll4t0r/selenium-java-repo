@@ -95,9 +95,9 @@ public class BaseTest {
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClassTearDown() {
-		LogUtil.debug("Quiting Driver");
+		LogUtil.trace("Quiting Driver");
 		DriverFactory.quitDriver();
-		LogUtil.debug("Driver Quit");
+		LogUtil.trace("Driver Quit");
 	}
 	
 	@AfterSuite(alwaysRun = true)

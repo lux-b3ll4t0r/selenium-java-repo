@@ -1,8 +1,5 @@
 package utils;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
@@ -13,11 +10,8 @@ public class ExtentReportManager {
 		
 		if(extent == null) {
 			
-			// Create timestamp with simple date format to append to report path
-			String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-			
 			// Set output path for report file appending timestamp to avoid overwriting file
-			String reportPath = System.getProperty("user.dir") + "/test-output/extent-reports/ExtentReport_" + timestamp + ".html";
+			String reportPath = System.getProperty("user.dir") + "/test-output/extent-reports/ExtentReport.html";
 			
 			// Set up spark reporter
 			ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);

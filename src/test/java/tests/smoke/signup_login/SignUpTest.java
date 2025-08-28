@@ -123,20 +123,15 @@ public class SignUpTest extends BaseTest{
 		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible());
 		LogUtil.info("Account created successfully");
 		
-		LogUtil.trace("Saving user to DB.");
 		con = SQLWorkbench.connectToLocalDb();
 		SQLWorkbench.saveUser(con, newUser);
-		LogUtil.trace("User saved to DB.");
-		 
-		 
-		
 		
 	}
 	
 	@AfterMethod(alwaysRun = true)
 	public void updateAndCloseResources() {
 		
-		LogUtil.debug("[UPDATING AND CLOSING RESOURCES]");
+		LogUtil.trace("[UPDATING AND CLOSING RESOURCES]");
 		
 		if(con != null) {
 			SQLWorkbench.closeConnection(con);

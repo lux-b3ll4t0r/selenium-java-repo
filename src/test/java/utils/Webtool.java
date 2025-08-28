@@ -77,7 +77,7 @@ public class Webtool {
 	}
 	
 	public static void scrollToElementLocated(By locator) {
-		WebElement element = waitForElementToBeClickable(locator);
+		WebElement element = waitForVisibitliyOfElementLocated(locator);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	

@@ -3,6 +3,7 @@ package pages.contactus;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
+import utils.DriverFactory;
 import utils.Webtool;
 
 public class ContactUs {
@@ -71,7 +72,7 @@ public class ContactUs {
 	
 	public void closeAlert() {
 		
-		Alert alert = Webtool.getDriver().switchTo().alert();
+		Alert alert = DriverFactory.getDriver().switchTo().alert();
 		alert.accept();
 	}
 	

@@ -32,7 +32,7 @@ public class LoadingTest extends BaseTest {
 		LogUtil.debug("Expected URL: {}, Actual URL: {}", UrlConstants.BASE, Webtool.getCurrentUrl());
 		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.BASE, "Current url doesn't match base url.");
 			
-		Assert.assertTrue(homePage.isHomePageVisible());
-		LogUtil.info("All main elements of the homepage are visible. " + homePage.getBody());
+		Assert.assertTrue(homePage.isHomePageVisible(), "Element(s) not visible in the homepage");
+		LogUtil.info("All main elements of the homepage are visible.");
 	}
 }

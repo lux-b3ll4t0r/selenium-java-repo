@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.support.ui.Select;
 
+import utils.DriverFactory;
 import utils.LogUtil;
 import utils.Webtool;
 
@@ -47,7 +48,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void selectDay(int day) {
-		Select selector = new Select(Webtool.getDriver().findElement(daySelector));
+		Select selector = new Select(DriverFactory.getDriver().findElement(daySelector));
 		
 		if(day >= 1 && day <= 31) {
 			selector.selectByVisibleText(String.valueOf(day));
@@ -57,7 +58,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void selectMonth(int month) {
-		Select selector = new Select(Webtool.getDriver().findElement(monthSelector));
+		Select selector = new Select(DriverFactory.getDriver().findElement(monthSelector));
 		
 		if(month >= 1 && month <= 12) {
 			selector.selectByIndex(month);
@@ -67,7 +68,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void selectYear(int year) {
-		Select selector = new Select(Webtool.getDriver().findElement(yearSelector));
+		Select selector = new Select(DriverFactory.getDriver().findElement(yearSelector));
 		
 		if(year >= 1900 && year <= 2025) {
 			selector.selectByValue(String.valueOf(year));
@@ -117,7 +118,7 @@ public class SignUpAccountInfo {
 	}
 	
 	public void selectCountry(String country) {
-		Select selector = new Select(Webtool.getDriver().findElement(countrySelector));
+		Select selector = new Select(DriverFactory.getDriver().findElement(countrySelector));
 		selector.selectByValue(country);
 	}
 	

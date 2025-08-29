@@ -2,6 +2,7 @@ package utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentTest;
 
@@ -14,6 +15,19 @@ public class LogUtil {
 		extentTest.set(test);
 	}
 	
+	public static void logStatus(ITestResult result) {
+		
+		String testName = result.getMethod().getMethodName();
+		
+		if(result.getStatus() == ITestResult.FAILURE) {
+			Throwable throwable = result.getThrowable();
+			LogUtil.fail("[TEST FAILED]: " + testName, throwable);
+		}else if(result.getStatus() == ITestResult.SKIP) {
+			LogUtil.info("[WARN]: " + testName);
+		}else if(result.getStatus() == ITestResult.SUCCESS) {
+			LogUtil.pass("[TEST PASS]: " + testName);
+		}
+	}
 	
 	public static void removeExtentTest() {
 		extentTest.remove();

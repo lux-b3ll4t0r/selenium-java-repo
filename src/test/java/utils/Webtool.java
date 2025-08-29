@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,11 +33,7 @@ public class Webtool {
 		}
 	
 	}
-	
-	
-	public static WebDriver getDriver() {
-		return Webtool.driver;
-	}
+
 	
 	public static void get(String url) {
 		
@@ -52,12 +49,24 @@ public class Webtool {
 		}
 	}
 	
+	public static void clearStorage() {
+		try {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.localStorage.clear();");
+			js.executeScript("window.sessionStorage.clear();");
+		}catch(WebDriverException wde) {
+			LogUtil.warn("Failed to clear local/session storage: " + wde.getMessage());
+		}
+	}
+	
+	
 	public static String getCurrentUrl() {
+		
 		if(Webtool.isSetup()) {
 			return driver.getCurrentUrl();
 		}
 		
-		return "";
+		return null;
 	}
 	
 	public static String getInputText(By locator) {
@@ -102,6 +111,7 @@ public class Webtool {
 			return true;
 		}
 		
+		LogUtil.warn("Webtool.isSetup returned false -> Make sure Webtool.safeSetup() was called");
 		return false;
 	}
 	

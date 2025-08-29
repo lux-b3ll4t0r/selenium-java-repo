@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import utils.DriverFactory;
 import utils.Webtool;
 
 public class AllProducts{
@@ -14,7 +15,7 @@ public class AllProducts{
 	
 	public AllProducts() {
 
-		actions = new Actions(Webtool.getDriver());
+		actions = new Actions(DriverFactory.getDriver());
 	}
 	
 	private By allProductsHeader = By.xpath("//h2[contains(text(), 'All Products')]");

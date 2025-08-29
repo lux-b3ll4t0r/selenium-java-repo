@@ -2,8 +2,6 @@ package base;
 
 import java.lang.reflect.Method;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriverException;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -51,13 +49,13 @@ public class BaseTest {
 		// Set test in LogUtil so logs go to ExtentReports
 		LogUtil.setExtentTest(test);	
 		
+		Webtool.clearCookies();
+		
 		// Uncomment this line to create a new driver instance after each test
 		// Must also uncomment the quit method in AfterMethod, or handle driver quit manually
 			//LogUtil.trace("Initializing Driver");
 			//DriverFactory.setupDriver();
 			//LogUtil.trace("Driver Initialized");
-		
-		Webtool.clearCookies();
 		
 		LogUtil.info("==================== [TEST START]: " + method.getName() + " ====================");
 	}
@@ -65,24 +63,8 @@ public class BaseTest {
 	@AfterMethod(alwaysRun = true)
 	public void baseTearDown(ITestResult result) {
 		
-		String testName = result.getMethod().getMethodName();
-		
-		try {
-			JavascriptExecutor js = (JavascriptExecutor) Webtool.getDriver();
-			js.executeScript("window.localStorage.clear();");
-			js.executeScript("window.sessionStorage.clear();");
-		}catch(WebDriverException wde) {
-			LogUtil.warn("Failed to clear local/session storage: " + wde.getMessage());
-		}
-		
-		if(result.getStatus() == ITestResult.FAILURE) {
-			Throwable throwable = result.getThrowable();
-			LogUtil.fail("[TEST FAILED]: " + testName, throwable);
-		}else if(result.getStatus() == ITestResult.SKIP) {
-			LogUtil.info("[WARN]: " + testName);
-		}else if(result.getStatus() == ITestResult.SUCCESS) {
-			LogUtil.pass("[TEST PASS]: " + testName);
-		}
+		Webtool.clearStorage();	
+		LogUtil.logStatus(result);
 		
 		// Only uncomment this if driver is being setup in BeforeMethod
 			//LogUtil.debug("Quiting Driver");

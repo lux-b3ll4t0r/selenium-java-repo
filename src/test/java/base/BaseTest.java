@@ -57,7 +57,8 @@ public class BaseTest {
 			//DriverFactory.setupDriver();
 			//LogUtil.trace("Driver Initialized");
 		
-		LogUtil.info("==================== [TEST START]: " + method.getName() + " ====================");
+		LogUtil.info("==================== [TEST START] ====================");
+		LogUtil.info("[TEST]: " + method.getName());
 	}
 	
 	@AfterMethod(alwaysRun = true)

@@ -23,11 +23,11 @@ public class SignUpFormUITest extends BaseTest{
 	public void setupClass() {
 		LogUtil.trace("Setting up class resources.");
 		signUpLogin = new SignUpLogin();
-		navBar = new NavBar();		
+		navBar = new NavBar();	
 	}
 	
 	@BeforeMethod(alwaysRun = true)
-	public void setupMethods() {		
+	public void setupMethods() {	
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
 	}

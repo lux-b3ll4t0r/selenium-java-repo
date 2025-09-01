@@ -6,50 +6,33 @@ import java.util.List;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Webtool {
 	
-	private static WebDriver driver = DriverFactory.getDriver();
-	private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));;
-
 	public static void get(String url) {
-		
-		if(Webtool.isSetup()) {
-			driver.get(url);
-		}
+		DriverFactory.getDriver().get(url);
 	}
 	
 	public static void clearCookies() {
-		
-		if(Webtool.isSetup()) {
-			driver.manage().deleteAllCookies();
-		}
+			DriverFactory.getDriver().manage().deleteAllCookies();
 	}
 	
 	public static void clearStorage() {
-		
 		try {
-			JavascriptExecutor js = (JavascriptExecutor) driver;
+			JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
 			js.executeScript("window.localStorage.clear();");
 			js.executeScript("window.sessionStorage.clear();");
-		}catch(WebDriverException wde) {
-			LogUtil.warn("Failed to clear local/session storage: " + wde.getMessage());
+		}catch(Exception e) {
+			LogUtil.warn("Failed to clear local/session storage: " + e.getMessage());
 		}
 	}
 	
 	
-	public static String getCurrentUrl() {
-		
-		if(Webtool.isSetup()) {
-			return driver.getCurrentUrl();
-		}
-		
-		return null;
+	public static String getCurrentUrl() {	
+		return DriverFactory.getDriver().getCurrentUrl();
 	}
 	
 	public static String getInputText(By locator) {
@@ -70,27 +53,19 @@ public class Webtool {
 	
 	public static void scrollToElementLocated(By locator) {
 		WebElement element = waitForVisibitliyOfElementLocated(locator);
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		((JavascriptExecutor) DriverFactory.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	
 	public static void acceptAlertSafe() {
 		
 		try {
-			wait.until(ExpectedConditions.alertIsPresent());
-			Alert alert = driver.switchTo().alert();
+			new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
+								.until(ExpectedConditions.alertIsPresent());
+			Alert alert = DriverFactory.getDriver().switchTo().alert();
 			alert.accept();
 		}catch(Exception e) {
 			LogUtil.warn("Alert was not found, no need to handle.");
 		}
-	}
-	
-	public static boolean isSetup() {
-		if(driver != null && wait != null) {
-			return true;
-		}
-		
-		LogUtil.warn("Webtool.isSetup returned false -> Make sure Webtool.safeSetup() was called");
-		return false;
 	}
 	
 	public static boolean isElementVisible(By locator) {
@@ -99,38 +74,40 @@ public class Webtool {
 	}
 	
 	public static void waitForUrlToBe(String url) {
-		wait.until(ExpectedConditions.urlToBe(url));
+		new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
+							.until(ExpectedConditions.urlToBe(url));
 	}
 	
 	public static void waitForInvisibilityOfElementLocatedBy(By locator) {
-		
-		try {
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-		}catch(Exception e) {
-			LogUtil.warn("Unable to wait for invisibility of element: " + locator);
-		}
+		new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
+							.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 	}
 	
 	public static WebElement waitForVisibitliyOfElementLocated(By locator) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
+							.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
 	}
 	
 	public static WebElement waitForVisibitliyOfElementLocated(By locator, int duration) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(duration))
+							.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
 	}
 	
 	public static WebElement waitForVisibilityOfElement(WebElement element) {
-		return wait.until(ExpectedConditions.visibilityOf(element));
+		return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
+							.until(ExpectedConditions.visibilityOf(element));
 	}
 	
 	public static WebElement waitForElementToBeClickable(By locator) {
-		return wait.until(ExpectedConditions.elementToBeClickable(locator));
+		return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
+							.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 	
 	public static List<WebElement> waitForVisibilityOfAllElementsLocatedBy(By locator) {
-		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+		return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
+							.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 	}
 	
 }

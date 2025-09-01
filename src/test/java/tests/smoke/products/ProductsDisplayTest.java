@@ -26,7 +26,6 @@ public class ProductsDisplayTest extends BaseTest{
 		products = new AllProducts();
 	}
 	
-	
 	@BeforeMethod(alwaysRun = true)
 	public void setupMethods() {
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);

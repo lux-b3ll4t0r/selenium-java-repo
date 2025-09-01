@@ -28,13 +28,13 @@ public class BaseTest {
 	}
 	
 	@BeforeClass(alwaysRun = true)
-	public void setupClass() {
+	public void setupBaseClass() {
 		LogUtil.trace("Setting up resources");
 		DriverFactory.setupDriver();
 	}
 	
 	@BeforeMethod(alwaysRun = true)
-	public void setupMethod(Method method) {
+	public void setupBaseMethods(Method method) {
 		
 		// Create a test node in the report
 		ExtentTest test = extent.createTest(method.getName());
@@ -55,10 +55,9 @@ public class BaseTest {
 	}
 	
 	@AfterMethod(alwaysRun = true)
-	public void baseTearDown(ITestResult result) {
+	public void teardownBaseMethods(ITestResult result) {
 		Webtool.clearStorage();	
 		LogUtil.logTestResult(result);
-		
 		// Only uncomment this if driver is being setup in BeforeMethod
 			//LogUtil.debug("Quiting Driver");
 			//DriverFactory.quitDriver();
@@ -68,13 +67,14 @@ public class BaseTest {
 	}
 	
 	@AfterClass(alwaysRun = true)
-	public void afterClassTearDown() {
+	public void teardownBaseClasses() {
+		LogUtil.trace("Tearing down class");
 		DriverFactory.quitDriver();
 	}
 	
 	@AfterSuite(alwaysRun = true)
-	public void tearDownSuite() {
-		LogUtil.trace("Tearing down all resources.");
+	public void teardownBaseSuite() {
+		LogUtil.trace("Tearing down suite.");
 		try {
 			extent.flush();
 			LogUtil.removeExtentTest();

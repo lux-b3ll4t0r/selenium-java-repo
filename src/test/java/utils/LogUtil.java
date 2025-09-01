@@ -22,7 +22,7 @@ public class LogUtil {
 		
 		if(result.getStatus() == ITestResult.FAILURE) {
 			Throwable throwable = result.getThrowable();
-			LogUtil.fail("[TEST FAILED]: " + testName, throwable);
+			LogUtil.fail("[TEST FAILED]: " + testName + " ", throwable);
 		}else if(result.getStatus() == ITestResult.SKIP) {
 			LogUtil.info("[WARN]: " + testName);
 		}else if(result.getStatus() == ITestResult.SUCCESS) {

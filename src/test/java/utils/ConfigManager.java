@@ -98,4 +98,8 @@ public class ConfigManager {
 		return System.getProperty("user.dir") + get("reportPath");
 	}
 	
+	public static int getWaitDuration() {
+		return Integer.valueOf(get("waitDuration"));
+				
+	}
 }

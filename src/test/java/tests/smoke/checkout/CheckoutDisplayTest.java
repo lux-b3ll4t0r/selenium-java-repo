@@ -1,6 +1,7 @@
 package tests.smoke.checkout;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -23,18 +24,19 @@ public class CheckoutDisplayTest extends BaseTest{
 	private SignUpLogin login;
 	private Cart cart;
 	private Checkout checkout;
-
 	
-	@BeforeMethod(alwaysRun = true)
-	public void setupResources() {
-		LogUtil.trace("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.trace("Setting up class resources.");
 		featuredItems = new FeaturedItems();
 		navBar = new NavBar();
 		login = new SignUpLogin();
 		cart = new Cart();
 		checkout = new Checkout();
-		LogUtil.trace("Set up successfully");
-		
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {	
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
 	}

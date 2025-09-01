@@ -1,6 +1,7 @@
 package tests.smoke.cart;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -17,15 +18,16 @@ public class CartItemsDisplayTest extends BaseTest{
 	
 	private FeaturedItems featuredItems;
 	private Cart cart;
-
 	
-	@BeforeMethod(alwaysRun = true)
-	public void setupResources() {
-		LogUtil.trace("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.trace("Setting up class resources.");
 		featuredItems = new FeaturedItems();
 		cart = new Cart();
-		LogUtil.trace("Set up successfully");
-		
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
 	}

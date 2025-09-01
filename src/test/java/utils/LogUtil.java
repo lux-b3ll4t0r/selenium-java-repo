@@ -15,7 +15,8 @@ public class LogUtil {
 		extentTest.set(test);
 	}
 	
-	public static void logStatus(ITestResult result) {
+	
+	public static void logTestResult(ITestResult result) {
 		
 		String testName = result.getMethod().getMethodName();
 		

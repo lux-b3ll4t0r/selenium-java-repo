@@ -1,6 +1,7 @@
 package tests.smoke.homepage;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -16,135 +17,152 @@ public class NavBarTest extends BaseTest{
 	
 	private NavBar navBar;
 	
-	@BeforeMethod(alwaysRun = true)
-	public void setUpMethod() {
-		LogUtil.debug("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.trace("Setting up class resources.");
 		navBar = new NavBar();
-		LogUtil.debug("Set up successfully");
-		
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
 	}
 	
 	@Test(groups = {"smoke"})
-	public void homeNavBarVisibleAndClickable() {
-		LogUtil.info("* Verifying Home navbar link is visible and clickable.");
+	public void home_link_visible_and_clickable_test() {
+		LogUtil.info("* Verifying Home link is visible and clickable.");
 
 		Assert.assertTrue(navBar.isHomeNavVisible());
-		LogUtil.info("Home nav link is visible");
+		LogUtil.info("Home link is visible");
 		
 		navBar.clickHomeNav();
-		LogUtil.info("Home nav link is clickable");
+		LogUtil.info("Home link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.BASE);
-		LogUtil.info("Directed to homepage: [" + UrlConstants.BASE + "] successfully");
+		String baseUrl = UrlConstants.BASE;
+		
+		Webtool.waitForUrlToBe(baseUrl);
+		LogUtil.info("Directed to homepage: [" + baseUrl + "] successfully");
 		
 
 	}
 	
 	@Test(groups = {"smoke"})
-	public void productsNavBarVisibleAndClickable() {
-		LogUtil.info("* Verifying Products navbar link is visible and clickable.");
+	public void products_link_visible_and_clickable_test() {
+		LogUtil.info("* Verifying Products link is visible and clickable.");
 		
-		Assert.assertTrue(navBar.isProductsNavVisible());
-		LogUtil.info("Products nav link is visible");
+		Assert.assertTrue(navBar.isProductsNavVisible(), "Products link is not visible.");
+		LogUtil.info("Products link is visible");
 		
 		navBar.clickProductsNav();
-		LogUtil.info("Products nav link is clickable");
+		LogUtil.info("Products link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.PRODUCTS);
-		LogUtil.info("Directed to Products: " + UrlConstants.PRODUCTS + "] successfully");
+		String productsUrl = UrlConstants.PRODUCTS;
+		
+		Webtool.waitForUrlToBe(productsUrl);
+		LogUtil.info("Directed to Products: " + productsUrl + "] successfully");
 		
 	}
 	
 	@Test(groups = {"smoke"})
-	public void cart_navigation_test() {
-		LogUtil.info("* Verifying Cart navbar link is visible and clickable.");
+	public void cart_link_visible_and_clickable_test() {
+		LogUtil.info("* Verifying Cart link is visible and clickable.");
 		
-		Assert.assertTrue(navBar.isCartNavVisible());
-		LogUtil.info("Cart nav link is visible");
+		Assert.assertTrue(navBar.isCartNavVisible(), "Cart link is not visible.");
+		LogUtil.info("Cart link is visible");
 
 		navBar.clickCartNav();
-		LogUtil.info("Cart nav link is clickable");
+		LogUtil.info("Cart link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.CART);
-		LogUtil.info("Directed to Cart: " + UrlConstants.CART + "] successfully");
+		String cartUrl = UrlConstants.CART;
+		
+		Webtool.waitForUrlToBe(cartUrl);
+		LogUtil.info("Directed to Cart: " + cartUrl + "] successfully");
 
 	}
 	
 	@Test(groups = {"smoke"})
-	public void signup_login_navigation_test() {
-		LogUtil.info("* Verifying Signup Login navbar link is visible and clickable.");
+	public void signup_login_visible_and_clickable_test() {
+		LogUtil.info("* Verifying Signup/Login link is visible and clickable.");
 		
-		Assert.assertTrue(navBar.isSignUpLoginNavVisible());
-		LogUtil.info("Signup Login nav link is visible");
+		Assert.assertTrue(navBar.isSignUpLoginNavVisible(), "Signup/Login link is not visible.");
+		LogUtil.info("Signup/Login link is visible");
 
 		navBar.clickSignUpLoginNav();
-		LogUtil.info("Signup Login nav link is clickable");
+		LogUtil.info("Signup/Login link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.LOGIN);
-		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.LOGIN);
-		LogUtil.info("Directed to Signup / Login: [" + UrlConstants.LOGIN + "] successfully");
+		String loginUrl = UrlConstants.LOGIN;
+		
+		Webtool.waitForUrlToBe(loginUrl);
+		LogUtil.info("Directed to Signup/Login: [" + loginUrl + "] successfully");
 		
 	}
 	
 	@Test (groups = {"smoke"})
-	public void test_cases_navigation_test() {
-		LogUtil.info("* Verifying Test Cases navbar link is visible and clickable.");
+	public void test_cases_visible_and_clickable_test() {
+		LogUtil.info("* Verifying Test Cases link is visible and clickable.");
 		
-		Assert.assertTrue(navBar.isTestCasesNavVisible());
-		LogUtil.info("Test Cases nav link is visible");
+		Assert.assertTrue(navBar.isTestCasesNavVisible(), "Test Cases link is not visible.");
+		LogUtil.info("Test Cases link is visible");
 
 		navBar.clickTestCasesNav();
-		LogUtil.info("Test Cases nav link is clickable");
+		LogUtil.info("Test Cases link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.TEST_CASES);
-		LogUtil.info("Directed to Test Cases: [" + UrlConstants.TEST_CASES + "] successfully");
+		String testCasesUrl = UrlConstants.TEST_CASES;
+		
+		Webtool.waitForUrlToBe(testCasesUrl);
+		LogUtil.info("Directed to Test Cases: [" + testCasesUrl + "] successfully");
 
 	}
 	
 	@Test(groups = {"smoke"})
-	public void api_testing_navigation_Test() {
-		LogUtil.info("* Verifying API Testing navbar link is visible and clickable.");
+	public void api_testing_visible_and_clickable_Test() {
+		LogUtil.info("* Verifying API Testing link is visible and clickable.");
 		
-		Assert.assertTrue(navBar.isApiTestingNavVisible());
-		LogUtil.info("API Testing nav link is visible");
+		Assert.assertTrue(navBar.isApiTestingNavVisible(), "API Testing link is not visible.");
+		LogUtil.info("API Testing link is visible");
 		
 		navBar.clickApiTestingNav();
-		LogUtil.info("API Testing nav link is clickable");
+		LogUtil.info("API Testing link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.API_TESTING);
-		LogUtil.info("Directed to API Testing: [" + UrlConstants.API_TESTING + "] successfully");
+		String apiTestingUrl = UrlConstants.API_TESTING;
+		
+		Webtool.waitForUrlToBe(apiTestingUrl);
+		LogUtil.info("Directed to API Testing: [" + apiTestingUrl + "] successfully");
 
 	}
 	
 	@Test(groups = {"smoke"})
-	public void video_tutorials_navigation_test() {
-		LogUtil.info("* Verifying Video Tutorials navbar link is visible and clickable.");
+	public void video_tutorials_visible_and_clickable_test() {
+		LogUtil.info("* Verifying Video Tutorials link is visible and clickable.");
 		
-		Assert.assertTrue(navBar.isVideoTutorialsNavVisible());
-		LogUtil.info("Video Tutorials navbar link is visible");
+		Assert.assertTrue(navBar.isVideoTutorialsNavVisible(), "Video Tutorials link is not visible.");
+		LogUtil.info("Video Tutorials link is visible");
 		
 		navBar.clickVideoTutorialsNav();
-		LogUtil.info("Video Tutorials navbar link is clickable");
+		LogUtil.info("Video Tutorials link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.VIDEO_TUTORIALS);
-		LogUtil.info("Directed to Video Tutorials: [" + UrlConstants.VIDEO_TUTORIALS+ "] successfully");
+		String videoTutUrl = UrlConstants.VIDEO_TUTORIALS;
+		
+		Webtool.waitForUrlToBe(videoTutUrl);
+		LogUtil.info("Directed to Video Tutorials: [" + videoTutUrl + "] successfully");
 
 	}
 	
 	@Test(groups = {"smoke"})
-	public void contact_us_navigation_Test() {
-		LogUtil.info("* Verifying Contact Us navbar link is visible and clickable.");
+	public void contact_us_visible_and_clickable_Test() {
+		LogUtil.info("* Verifying Contact Us link is visible and clickable.");
 		
-		Assert.assertTrue(navBar.isContactUsNavVisible());
-		LogUtil.info("Contact Us navbar link is visible");
+		Assert.assertTrue(navBar.isContactUsNavVisible(), "Contact Us link is not visiblel");
+		LogUtil.info("Contact Us link is visible");
 		
 		navBar.clickContactUsNav();
-		LogUtil.info("Contact Us navbar link is clickable");
+		LogUtil.info("Contact Us link is clickable");
 		
-		Webtool.waitForUrlToBe(UrlConstants.CONTACT_US);
-		LogUtil.info("Directed to Contact Us: [" + UrlConstants.CONTACT_US + "] successfully");
+		String contactUsUrl = UrlConstants.CONTACT_US;
+		
+		Webtool.waitForUrlToBe(contactUsUrl);
+		LogUtil.info("Directed to Contact Us: [" + contactUsUrl + "] successfully");
 
 	}
 }

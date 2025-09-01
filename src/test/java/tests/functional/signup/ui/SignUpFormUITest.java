@@ -1,6 +1,7 @@
 package tests.functional.signup.ui;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -17,30 +18,29 @@ public class SignUpFormUITest extends BaseTest{
 	
 	private SignUpLogin signUpLogin;
 	private NavBar navBar;
-
 	
-	@BeforeMethod(alwaysRun = true)
-	public void setUpMethod() {
-		LogUtil.trace("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.trace("Setting up class resources.");
 		signUpLogin = new SignUpLogin();
 		navBar = new NavBar();		
-		LogUtil.trace("Set up successfully");
-		
-		
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {		
+		LogUtil.info("Navigating to: " + UrlConstants.BASE);
+		Webtool.get(UrlConstants.BASE);
 	}
 	
 	@Test(groups = {"headersTests"}, priority = 0)
 	public void verifySignUpFormHeaderVisibility() {
 		
 		LogUtil.info("* Verifying sign up form header is visible.");
-		
-		LogUtil.info("Navigating to: " + UrlConstants.BASE);
-		Webtool.get(UrlConstants.BASE);
-		
+				
 		navBar.clickSignUpLoginNav();
 	
-		Assert.assertTrue(signUpLogin.isSignUpHeaderVisible());
-		LogUtil.info("Sign up form header is visible");
+		Assert.assertTrue(signUpLogin.isSignUpHeaderVisible(), "Sign up header not visible.");
+		LogUtil.info("Sign up form header is visible.");
 		
 	
 		

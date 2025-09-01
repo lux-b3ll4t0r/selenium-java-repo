@@ -1,6 +1,7 @@
 package tests.smoke.signup_login;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -15,17 +16,18 @@ import utils.Webtool;
 @Listeners(utils.TestListener.class)
 public class LoginLogoutTest extends BaseTest{
 	
-	NavBar navBar;
-	SignUpLogin signUpLogin;
-	Webtool basePage;
+	private NavBar navBar;
+	private SignUpLogin signUpLogin;
 	
-	@BeforeMethod(alwaysRun = true)
-	public void setUpResources() {
-		LogUtil.trace("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.trace("Setting up class resources.");
 		navBar = new NavBar();
 		signUpLogin = new SignUpLogin();
-		LogUtil.trace("Set up successfully");
-		
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
 	}
@@ -43,7 +45,7 @@ public class LoginLogoutTest extends BaseTest{
 		
 		signUpLogin.login(email, pass);
 		
-		Assert.assertTrue(navBar.isLoggedInAsVisible());
+		Assert.assertTrue(navBar.isLoggedInAsVisible(), "Logged in as is not visible.");
 		LogUtil.info("User logged in successfully.");
 
 	}

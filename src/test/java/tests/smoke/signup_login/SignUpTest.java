@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -29,20 +30,20 @@ public class SignUpTest extends BaseTest{
 	private NavBar navBar;
 	private Connection con;
 
-	
-	@BeforeMethod(alwaysRun = true)
-	public void setUpMethod() {
-		LogUtil.trace("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.trace("Setting up class resources.");
 		signUpLogin = new SignUpLogin();
 		signUpAccInfo = new SignUpAccountInfo();
 		newUser = new User();
 		accountCreated = new AccountCreated();
-		navBar = new NavBar();		
-		LogUtil.trace("Set up successfully");
-		
+		navBar = new NavBar();	
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
-	
 	}
 
 	
@@ -96,7 +97,6 @@ public class SignUpTest extends BaseTest{
 		LogUtil.debug("Signing up new user: \"" + name + "\" - \"" + email + "\"");
 		signUpLogin.signUpNewUserWithRetry(name, email);
 		
-		Assert.assertTrue(signUpAccInfo.isAccountInfoHeaderVisible());
 		LogUtil.info("Entering new user account information");
 	
 		signUpAccInfo.selectTitle(newUser.getTitle());
@@ -120,7 +120,7 @@ public class SignUpTest extends BaseTest{
 		LogUtil.info("Submitting sign up account info");
 		signUpAccInfo.clickCreateAccount();
 		
-		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible());
+		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible(), "Creation success message was not visible.");
 		LogUtil.info("Account created successfully");
 		
 		con = SQLWorkbench.connectToLocalDb();

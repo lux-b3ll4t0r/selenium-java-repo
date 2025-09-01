@@ -1,6 +1,7 @@
 package tests.smoke.products;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -15,17 +16,19 @@ import utils.Webtool;
 @Listeners(utils.TestListener.class)
 public class ProductsDisplayTest extends BaseTest{
 	
-	NavBar navBar;
-	AllProducts products;
-	Webtool basePage;
+	private NavBar navBar;
+	private AllProducts products;
 	
-	@BeforeMethod(alwaysRun = true)
-	public void setupResources() {
-		LogUtil.trace("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.trace("Setting up class resources.");
 		navBar = new NavBar();
 		products = new AllProducts();
-		LogUtil.trace("Set up successfully");
-		
+	}
+	
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
 	}
@@ -35,12 +38,12 @@ public class ProductsDisplayTest extends BaseTest{
 	@Test(groups = {"smoke"}, priority = 0)
 	public void products_visibility_test() {
 		
-		LogUtil.info("* Verifying all products are listed in the Products page");	
+		LogUtil.info("* Verifying all products are listed in the Products page.");	
 		
 		LogUtil.info("Clicking Products link");
 		navBar.clickProductsNav();
 		
-		Assert.assertTrue(products.isProductsListVisible(), "Products not visible");
+		Assert.assertTrue(products.isProductsListVisible(), "Products not visible.");
 		LogUtil.info("All Products are visible");
 	
 		
@@ -57,7 +60,7 @@ public class ProductsDisplayTest extends BaseTest{
 		products.searchProduct("shirt");
 		
 		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.PRODUCTS + "?search=shirt");
-		Assert.assertTrue(products.isProductsListVisible());
+		Assert.assertTrue(products.isProductsListVisible(), "The list of products was not visible.");
 		LogUtil.info("Directed to correct url, and products relating to search are shown successfully");
 		
 	}

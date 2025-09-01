@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -15,26 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Webtool {
 	
-	private static WebDriver driver;
-	private static WebDriverWait wait;
-	
-	public static void main(String[] args) {
+	private static WebDriver driver = DriverFactory.getDriver();
+	private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));;
 
-	}
-	
-	public static void safeSetup() {
-		
-		try {
-			driver = DriverFactory.getDriver();
-			wait = new WebDriverWait(driver, Duration.ofSeconds(8));
-		
-		}catch(Exception e) {
-			LogUtil.warn("Safe setup unsuccessful: ", e);
-		}
-	
-	}
-
-	
 	public static void get(String url) {
 		
 		if(Webtool.isSetup()) {
@@ -50,6 +32,7 @@ public class Webtool {
 	}
 	
 	public static void clearStorage() {
+		
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("window.localStorage.clear();");
@@ -101,11 +84,6 @@ public class Webtool {
 		}
 	}
 	
-	public void acceptAlert(){
-		
-	}
-	
-	
 	public static boolean isSetup() {
 		if(driver != null && wait != null) {
 			return true;
@@ -128,7 +106,7 @@ public class Webtool {
 		
 		try {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-		}catch(TimeoutException e) {
+		}catch(Exception e) {
 			LogUtil.warn("Unable to wait for invisibility of element: " + locator);
 		}
 	}

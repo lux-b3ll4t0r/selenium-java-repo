@@ -19,10 +19,8 @@ import utils.LogUtil;
 import utils.Webtool;
 
 public class BaseTest {
-	
-	private static ThreadLocal<ExtentTest> extentTestThread = new ThreadLocal<>();
-	private static ExtentReports extent;
 
+	private static ExtentReports extent;
 	
 	@BeforeSuite(alwaysRun = true)
 	public void setupSuite() {
@@ -31,20 +29,15 @@ public class BaseTest {
 	
 	@BeforeClass(alwaysRun = true)
 	public void setupClass() {
-		LogUtil.trace("Initializing Driver");
+		LogUtil.trace("Setting up resources");
 		DriverFactory.setupDriver();
-		LogUtil.trace("Driver Initialized");
-		Webtool.safeSetup();
 	}
 	
 	@BeforeMethod(alwaysRun = true)
-	public void baseSetUp(Method method) {
+	public void setupMethod(Method method) {
 		
 		// Create a test node in the report
 		ExtentTest test = extent.createTest(method.getName());
-		
-		// Set to ThreadLocal for parallel 
-		extentTestThread.set(test);
 		
 		// Set test in LogUtil so logs go to ExtentReports
 		LogUtil.setExtentTest(test);	
@@ -63,9 +56,8 @@ public class BaseTest {
 	
 	@AfterMethod(alwaysRun = true)
 	public void baseTearDown(ITestResult result) {
-		
 		Webtool.clearStorage();	
-		LogUtil.logStatus(result);
+		LogUtil.logTestResult(result);
 		
 		// Only uncomment this if driver is being setup in BeforeMethod
 			//LogUtil.debug("Quiting Driver");
@@ -77,16 +69,15 @@ public class BaseTest {
 	
 	@AfterClass(alwaysRun = true)
 	public void afterClassTearDown() {
-		LogUtil.trace("Quiting Driver");
 		DriverFactory.quitDriver();
-		LogUtil.trace("Driver Quit");
 	}
 	
 	@AfterSuite(alwaysRun = true)
 	public void tearDownSuite() {
-		
+		LogUtil.trace("Tearing down all resources.");
 		try {
 			extent.flush();
+			LogUtil.removeExtentTest();
 		}catch(Exception e) {
 			LogUtil.warn("Failed to flush extent report: " + e.getMessage());
 		}

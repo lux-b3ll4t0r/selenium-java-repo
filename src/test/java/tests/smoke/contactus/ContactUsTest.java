@@ -1,6 +1,7 @@
 package tests.smoke.contactus;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -21,13 +22,15 @@ public class ContactUsTest extends BaseTest {
 	private NavBar navBar;
 	private ContactUs contactUs;
 	
-	@BeforeMethod(alwaysRun = true)
-	public void setupResources() {
-		LogUtil.debug("Setting up test resources");
+	@BeforeClass(alwaysRun = true)
+	public void setupClass() {
+		LogUtil.debug("Setting up class resources.");
 		navBar = new NavBar();
 		contactUs = new ContactUs();
-		LogUtil.debug("Set up successfully");
-		
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	public void setupMethods() {
 		LogUtil.info("Navigating to: " + UrlConstants.BASE);
 		Webtool.get(UrlConstants.BASE);
 	}
@@ -36,10 +39,12 @@ public class ContactUsTest extends BaseTest {
 	public void contact_us_submit_test() {
 		LogUtil.info("* Verifying contact form submits successfully.");
 		
-		LogUtil.info("Navigating to: " + UrlConstants.CONTACT_US);
+		String contactUsUrl = UrlConstants.CONTACT_US;
+		
+		LogUtil.info("Navigating to: " + contactUsUrl);
 		navBar.clickContactUsNav();
 		
-		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.CONTACT_US);
+		Assert.assertEquals(Webtool.getCurrentUrl(), contactUsUrl, "Current url doesn't match the Contact Us url");
 		LogUtil.debug("Directed to Contact Us url successfully.");
 		
 		LogUtil.info("Filling out Contact Us form.");
@@ -69,7 +74,6 @@ public class ContactUsTest extends BaseTest {
 		
 		LogUtil.debug("Closing alert.");
 		Webtool.acceptAlertSafe();
-		
 		
 		Assert.assertTrue(contactUs.isSuccessMessageVisible(), "Success message not visible");
 		LogUtil.info("Success message shown.");

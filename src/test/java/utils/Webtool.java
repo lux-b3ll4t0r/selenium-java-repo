@@ -17,7 +17,7 @@ public class Webtool {
 	}
 	
 	public static void clearCookies() {
-			DriverFactory.getDriver().manage().deleteAllCookies();
+		DriverFactory.getDriver().manage().deleteAllCookies();
 	}
 	
 	public static void clearStorage() {

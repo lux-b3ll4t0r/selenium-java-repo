@@ -38,6 +38,7 @@ public class ConfigManager {
 		return get("baseUrl");
 	}
 	
+	
 	public static String getEmail() {
 		return get("email");
 	}
@@ -101,5 +102,13 @@ public class ConfigManager {
 	public static int getWaitDuration() {
 		return Integer.valueOf(get("waitDuration"));
 				
+	}
+	
+	public static String getSheet() {
+		return get("excelSheet");
+	}
+	
+	public static String getUIPass() {
+		return System.getenv("UI_PASS");
 	}
 }

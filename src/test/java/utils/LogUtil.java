@@ -84,6 +84,13 @@ public class LogUtil {
 		logger.error(message, t);
 		ExtentTest test = extentTest.get();
 		
-		if(test != null) test.fail(message + "<br>" + t.getMessage());
+		if(test != null) test.fail(message + ": " + t.getMessage());
+	}
+	
+	public static void error(String message) {
+		logger.error(message);
+		ExtentTest test = extentTest.get();
+		
+		if(test != null) test.fail(message);
 	}
 }

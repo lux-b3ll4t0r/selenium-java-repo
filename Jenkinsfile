@@ -33,6 +33,11 @@ pipeline {
                         credentialsId: 'ui-creds',
                         usernameVariable: 'UI_USER',
                         passwordVariable: 'UI_PASS'
+                    ),
+                    usernamePassword(
+                    	credentialsId: 'api-creds',
+                    	usernameVariable: 'API_USER',
+                    	passwordVariable: 'API_PASS'
                     )
                 ]) {
                     bat 'mvn test'   // runs your TestNG tests

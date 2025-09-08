@@ -1,6 +1,8 @@
 package pages.signup_login;
 
 
+import java.time.Month;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.support.ui.Select;
@@ -34,6 +36,7 @@ public class SignUpAccountInfo {
 	private By zipCodeInput = By.id("zipcode");
 	private By mobileNumberInput = By.id("mobile_number");
 	private By createAccountButton = By.xpath("//button[@data-qa='create-account']");
+	
 	public void selectTitle(String title) {
 		switch(title) {
 		case "Mr":
@@ -47,35 +50,39 @@ public class SignUpAccountInfo {
 		}
 	}
 	
-	public void selectDay(int day) {
+	public void selectDay(String day) {
 		Select selector = new Select(DriverFactory.getDriver().findElement(daySelector));
-		
-		if(day >= 1 && day <= 31) {
-			selector.selectByVisibleText(String.valueOf(day));
-		}else {
-			throw new IllegalArgumentException("Day must be between 1 and 31");
+		try {
+		if(Integer.valueOf(day) >= 1 && Integer.valueOf(day) <= 31) {
+			selector.selectByVisibleText(day);
+		}
+		}catch(Exception e) {
+			LogUtil.error("Day not in range (1-31) or text not visible", e);
 		}
 	}
 	
-	public void selectMonth(int month) {
+	public void selectMonth(String month) {
 		Select selector = new Select(DriverFactory.getDriver().findElement(monthSelector));
-		
-		if(month >= 1 && month <= 12) {
-			selector.selectByIndex(month);
-		}else {
-			throw new IllegalArgumentException("Month must be between 1 and 12");
+	
+		try {
+			Month.valueOf(month.toUpperCase());
+			selector.selectByVisibleText(month);
+		}catch(Exception e) {
+			LogUtil.error("Month: " + month + " not recognized or text not visible", e);
 		}
+		
 	}
 	
-	public void selectYear(int year) {
+	public void selectYear(String year) {
 		Select selector = new Select(DriverFactory.getDriver().findElement(yearSelector));
 		
-		if(year >= 1900 && year <= 2025) {
+		try {
+		if(Integer.valueOf(year) >= 1900 && Integer.valueOf(year) <= 2025) {
 			selector.selectByValue(String.valueOf(year));
-		}else {
-			throw new IllegalArgumentException("Year must be between 1900 and 2025");
 		}
-		
+		}catch(Exception e) {
+			LogUtil.error("Year not in range (1900-2025) or value doesn't exist", e);
+		}
 	}
 	
 	public void clickSignUpForNewsLetter() {
@@ -130,8 +137,8 @@ public class SignUpAccountInfo {
 		Webtool.sendKeysTo(cityInput, city);
 	}
 	
-	public void enterZipCode(int zipCode) {
-		Webtool.sendKeysTo(zipCodeInput, String.valueOf(zipCode));
+	public void enterZipCode(String zipcode) {
+		Webtool.sendKeysTo(zipCodeInput, zipcode);
 	}
 	
 	public void enterMobileNumber(String mobileNumber) {

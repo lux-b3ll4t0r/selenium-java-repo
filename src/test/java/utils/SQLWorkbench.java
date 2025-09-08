@@ -4,15 +4,19 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
-import constants.QueryConstants;
+import constants.db.QueryConstants;
 
 public class SQLWorkbench {
 
 	
 	public static Connection connectToLocalDb() {
-		
 		String url = ConfigManager.getDbLocalUrl() + ConfigManager.getLocalDbName();
 		String user = System.getenv("DB_USER");
 		String pass = System.getenv("DB_PASS");
@@ -27,35 +31,129 @@ public class SQLWorkbench {
 		return con;
 	}
 	
-	public static void saveUser(Connection con, User user) {
-		LogUtil.trace("Saving user to DB.");
-		try {
-			PreparedStatement ps = con.prepareStatement(QueryConstants.getInsertUserData());
+	public static Map<String, Object> getUser(Connection con, String username, String password) {
+		
+		Map<String, Object> userData = new HashMap<>();
+		
+		try (PreparedStatement ps = con.prepareStatement(QueryConstants.getUser())){
+			ps.setString(1, username);
+			ps.setString(2, password);
+			try (ResultSet rs = ps.executeQuery()){
 			
-			ps.setString(1, user.getTitle());
-			ps.setString(2, user.getFullName());
-			ps.setString(3, user.getEmail());
-			ps.setString(4, user.getPassword());
-			ps.setInt(5, user.getDay());
-			ps.setInt(6, user.getMonth());
-			ps.setInt(7, user.getYear());
-			ps.setString(8, user.getNewsLetter());
-			ps.setString(9, user.getOptin());
-			ps.setString(10, user.getFirstName());
-			ps.setString(11, user.getLastName());
-			ps.setString(12, user.getCompany());
-			ps.setString(13, user.getAddress1());
-			ps.setString(14, user.getAddress2());
-			ps.setString(15, user.getState());
-			ps.setString(16, user.getCity());
-			ps.setInt(17, user.getZipCode());
-			ps.setString(18, user.getMobileNumber());
+				if(rs.next()) {
+				
+					ResultSetMetaData rsmd = rs.getMetaData();
+					int columnCount = rsmd.getColumnCount();
+					
+					for(int i = 1; i <= columnCount; i++) {
+						userData.put(rsmd.getColumnLabel(i), rs.getObject(i));
+					}
+				}else {
+					LogUtil.warn("No results returned: ");
+				}
+			}
+		}catch(Exception e){
+			LogUtil.error("User not retrieved: ", e);
+		}
+		
+		return userData;
+	}
+	
+	public static void saveUser(Connection con, User user) {
+		LogUtil.trace("Saving user to DB: " + user.getEmail());
+		try {
+			PreparedStatement ps = con.prepareStatement(QueryConstants.insertUser());
+			
+			ps.setObject(1, user.getTitle());
+			ps.setObject(2, user.getName());
+			ps.setObject(3, user.getEmail());
+			ps.setObject(4, user.getPassword());
+			ps.setObject(5, user.getBirthDay());
+			ps.setObject(6, user.getBirthMonth());
+			ps.setObject(7, user.getBirthYear());
+			ps.setObject(8, user.getNewsLetter());
+			ps.setObject(9, user.getOptin());
+			ps.setObject(10, user.getFirstName());
+			ps.setObject(11, user.getLastName());
+			ps.setObject(12, user.getCompany());
+			ps.setObject(13, user.getAddress1());
+			ps.setObject(14, user.getAddress2());
+			ps.setObject(15, user.getCountry());
+			ps.setObject(16, user.getState());
+			ps.setObject(17, user.getCity());
+			ps.setObject(18, user.getZipcode());
+			ps.setObject(19, user.getMobileNumber());
+			ps.setObject(20, LocalDateTime.now().toString());
 			ps.executeUpdate();
 			ps.close();
-			LogUtil.trace("User saved to DB.");
+			LogUtil.trace(user.getEmail() + " saved to DB.");
 		}catch(SQLException | NullPointerException e) {
 			LogUtil.error("Failed to save new user: ", e);
 		}
+	}
+	
+	public static void deleteUser(Connection con, User user) {
+		LogUtil.trace("Deleting user from DB: " + user.getEmail());
+		try {
+			PreparedStatement ps = con.prepareStatement(QueryConstants.deleteUser());
+			ps.setString(1, user.getEmail());
+			ps.setString(2, System.getenv("UI_PASS"));
+			ps.executeUpdate();
+			ps.close();
+			LogUtil.trace(user.getEmail() + " deleted from DB");
+		}catch(SQLException | NullPointerException e) {
+			LogUtil.error("Failed to delete user: ", e);
+		}
+	}
+	
+	public static void updateUser(Connection con, User user) {
+		StringBuilder stmnt = new StringBuilder("UPDATE users SET ");
+		Map<String, Object> updateForm = user.getAsMap();
+		
+		int count = 0;
+		
+		for(String column : updateForm.keySet()) {
+			if(count > 0) {
+				stmnt.append(", ");
+			}
+			
+			stmnt.append(column).append(" = ?");
+			count++;
+		}
+		
+		stmnt.append("WHERE email = ?");
+		
+		try (PreparedStatement ps = con.prepareStatement(stmnt.toString())){
+			int index = 1;
+			
+			for(Object value : updateForm.values()) {
+				ps.setObject(index++, value);
+			}
+			
+			ps.setString(index, user.getEmail());
+			ps.executeUpdate();
+			ps.close();
+		}catch(Exception e) {
+			LogUtil.error("User not updated: ", e);
+		}	
+	}
+	
+	public static String getUserMobileNumber(Connection con, String email) {
+		
+		String number = "";
+		
+		try(PreparedStatement ps = con.prepareStatement(QueryConstants.getMobile())){
+			
+			ps.setString(1, email);
+			ResultSet set = ps.executeQuery();
+			
+			if(set.next()) { number = set.getString(1); }
+			
+		}catch(Exception e) {
+			
+		}
+		
+		return number;
 	}
 	
 	public static Connection connect(DBConnection connection) {
@@ -89,7 +187,7 @@ public class SQLWorkbench {
 			con.close();	
 			LogUtil.trace("Connection closed");
 		}catch(SQLException e) {
-			LogUtil.warn("Close operation returned SQL Exception - Unsure if connection is closed.");
+			LogUtil.error("Close operation returned SQL Exception - Unsure if connection is closed.", e);
 		}
 	}
 	

@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="UI Smoke Suite" parallel="classes" thread-count="4">
+<suite name="UI Smoke Suite" parallel="classes" thread-count="2">
 
 	<test name="SmokeUITests">
 		<groups>

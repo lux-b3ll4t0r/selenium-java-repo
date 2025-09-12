@@ -10,7 +10,6 @@ import utils.LogUtil;
 public class BaseTest {
 
 	protected static ExtentReports extent;
-	protected APITools api;
 	
 	@BeforeSuite(alwaysRun = true)
 	public void setupSuite() {

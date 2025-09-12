@@ -13,7 +13,6 @@ import utils.User;
 import utils.UserDataGenerator;
 
 public class AccountApi{	
-
 	
 	public static Response createNewUser(User user) {
 		Map<String, Object> userData = UserDataGenerator.getApiMap(user);
@@ -39,7 +38,6 @@ public class AccountApi{
 	public static Response updateUser(User user) {
 		Map<String, Object> userMap = UserDataGenerator.getApiMap(user);	
 		return APITools.putForm(RequestFactory.getBaseSpec(), ApiEndpoints.UPDATE_ACCOUNT, userMap);
-
 	}
 	
 	public static Response getUserInfo(String email) {
@@ -47,7 +45,6 @@ public class AccountApi{
 	}
 	
 	public static User getUser(String email, String password) {
-		
 		Connection con = SQLWorkbench.connectToLocalDb();
 		Map<String, Object> userData = SQLWorkbench.getUser(con, email, password);
 		SQLWorkbench.closeConnection(con);

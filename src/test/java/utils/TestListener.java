@@ -11,9 +11,8 @@ public class TestListener implements ITestListener{
 	public void onTestFailure(ITestResult result) {
 		WebDriver driver = DriverFactory.getDriver();
 		
-		String testName = result.getName();
-		ScreenshotUtils.takeScreenshot(driver, testName);
-		
+		String base64Path = ScreenshotUtils.getBase64Screenshot(driver);
+		LogUtil.attachScreenshot(result, base64Path);
 		
 	}
 }

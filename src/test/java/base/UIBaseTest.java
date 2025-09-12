@@ -31,10 +31,11 @@ public class UIBaseTest extends BaseTest{
 		
 		// Uncomment this line to create a new driver instance after each test
 		// Must also uncomment the quit method in AfterMethod, or handle driver quit manually
-			//LogUtil.trace("Initializing Driver");
-			//DriverFactory.setupDriver();
-			//LogUtil.trace("Driver Initialized");
+//			LogUtil.trace("Initializing Driver");
+//			DriverFactory.setupDriver();
+//			LogUtil.trace("Driver Initialized");
 		
+		Webtool.clearCookies();
 		LogUtil.info("==================== [TEST START] ====================");
 		LogUtil.info("[TEST]: " + method.getName());
 	}
@@ -44,9 +45,7 @@ public class UIBaseTest extends BaseTest{
 		Webtool.clearStorage();	
 		LogUtil.logTestResult(result);
 		// Only uncomment this if driver is being setup in BeforeMethod
-			//LogUtil.debug("Quiting Driver");
 			//DriverFactory.quitDriver();
-			//LogUtil.debug("Driver Quit");
 		
 		LogUtil.info("==================== [TEST END] ====================");
 	}

@@ -26,17 +26,16 @@ public class Webtool {
 			js.executeScript("window.localStorage.clear();");
 			js.executeScript("window.sessionStorage.clear();");
 		}catch(Exception e) {
-			LogUtil.warn("Failed to clear local/session storage: " + e.getMessage());
+			LogUtil.error("Failed to clear local/session storage: ", e);
 		}
 	}
-	
 	
 	public static String getCurrentUrl() {	
 		return DriverFactory.getDriver().getCurrentUrl();
 	}
 	
 	public static String getInputText(By locator) {
-		WebElement element = waitForVisibitliyOfElementLocated(locator);
+		WebElement element = waitForVisibitlityOfElementLocated(locator);
 		return element.getAttribute("value");
 	}
 	
@@ -48,11 +47,22 @@ public class Webtool {
 	
 	public static void clickElement(By locator) {
 		WebElement element = waitForElementToBeClickable(locator);
-		element.click();
+		
+		try {
+			element.click();			
+		}catch(Exception e) {
+			try {
+				scrollToElementLocated(locator);
+				element.click();
+			}catch(Exception t) {
+				LogUtil.error("Tried to click element but failed.");
+			}
+			
+		}
 	}
 	
 	public static void scrollToElementLocated(By locator) {
-		WebElement element = waitForVisibitliyOfElementLocated(locator);
+		WebElement element = waitForVisibitlityOfElementLocated(locator);
 		((JavascriptExecutor) DriverFactory.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	
@@ -69,7 +79,7 @@ public class Webtool {
 	}
 	
 	public static boolean isElementVisible(By locator) {
-		WebElement element = waitForVisibitliyOfElementLocated(locator);
+		WebElement element = waitForVisibitlityOfElementLocated(locator);
 		return element.isDisplayed();
 	}
 	
@@ -83,7 +93,7 @@ public class Webtool {
 							.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 	}
 	
-	public static WebElement waitForVisibitliyOfElementLocated(By locator) {
+	public static WebElement waitForVisibitlityOfElementLocated(By locator) {
 		return new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(ConfigManager.getWaitDuration()))
 							.until(ExpectedConditions.visibilityOfElementLocated(locator));
 

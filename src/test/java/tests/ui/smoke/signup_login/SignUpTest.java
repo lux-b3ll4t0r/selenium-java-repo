@@ -3,7 +3,6 @@ package tests.ui.smoke.signup_login;
 import java.sql.Connection;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -29,7 +28,6 @@ public class SignUpTest extends UIBaseTest{
 	private AccountCreated accountCreated;
 	private User newUser;
 	private NavBar navBar;
-	private Connection con;
 
 	@BeforeClass(alwaysRun = true)
 	public void setupClass() {
@@ -123,19 +121,9 @@ public class SignUpTest extends UIBaseTest{
 		Assert.assertTrue(accountCreated.isAccountCreatedMessageVisible(), "Creation success message was not visible.");
 		LogUtil.info("Account created successfully");
 		
-		con = SQLWorkbench.connectToLocalDb();
+		Connection con = SQLWorkbench.connectToLocalDb();
 		SQLWorkbench.saveUser(con, newUser);
+		SQLWorkbench.closeConnection(con);
 		
-	}
-	
-	@AfterMethod(alwaysRun = true)
-	public void updateAndCloseResources() {
-		
-		LogUtil.trace("[UPDATING AND CLOSING RESOURCES]");
-		
-		if(con != null) {
-			SQLWorkbench.closeConnection(con);
-		}
-	
 	}
 }

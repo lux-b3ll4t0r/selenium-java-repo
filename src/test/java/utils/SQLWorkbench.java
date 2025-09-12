@@ -97,7 +97,7 @@ public class SQLWorkbench {
 		try {
 			PreparedStatement ps = con.prepareStatement(QueryConstants.deleteUser());
 			ps.setString(1, user.getEmail());
-			ps.setString(2, System.getenv("UI_PASS"));
+			ps.setString(2, user.getPassword());
 			ps.executeUpdate();
 			ps.close();
 			LogUtil.trace(user.getEmail() + " deleted from DB");

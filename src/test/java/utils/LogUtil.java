@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 
 public class LogUtil {
 	
@@ -92,5 +93,14 @@ public class LogUtil {
 		ExtentTest test = extentTest.get();
 		
 		if(test != null) test.fail(message);
+	}
+	
+	public static void attachScreenshot(ITestResult result, String base64) {
+		
+		if(result.getStatus() == ITestResult.FAILURE) {
+			ExtentTest test = extentTest.get();
+			
+			if(test != null) test.fail("Failed, see screenshot" , MediaEntityBuilder.createScreenCaptureFromBase64String(base64).build());
+		}
 	}
 }

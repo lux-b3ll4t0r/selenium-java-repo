@@ -20,9 +20,23 @@ public class ScreenshotUtils {
 			File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(srcFile, new File(screenshotPath));
 		}catch(Exception e) {
-			LogUtil.warn("Failed to take a screenshot: " + e.getMessage());
+			LogUtil.error("Failed to take a screenshot: ", e);
 		}
 		
 		return screenshotPath;
+	}
+	
+	public static String getBase64Screenshot(WebDriver driver) {
+		
+		try {
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			String base64Screenshot = ts.getScreenshotAs(OutputType.BASE64);
+			return base64Screenshot;
+			
+		}catch(Exception e) {
+			LogUtil.error("Failed to take screenshot: ", e);
+		}
+		
+		return null;
 	}
 }

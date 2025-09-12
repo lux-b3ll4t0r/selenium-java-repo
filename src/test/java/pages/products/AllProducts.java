@@ -11,12 +11,6 @@ import utils.Webtool;
 
 public class AllProducts{
 	
-	private Actions actions;
-	
-	public AllProducts() {
-
-		actions = new Actions(DriverFactory.getDriver());
-	}
 	
 	private By allProductsHeader = By.xpath("//h2[contains(text(), 'All Products')]");
 	private By allProducts = By.xpath("//div[@class='features_items']//div[@class='col-sm-4']");
@@ -105,7 +99,7 @@ public class AllProducts{
 		Webtool.clickElement(continueShoppingBtn);
 	}
 	public void moveCursorToProduct(int productIndex) {
-		
+		Actions actions = new Actions(DriverFactory.getDriver());
 		checkIfIndexTooHigh(productIndex);
 		actions.moveToElement(getAllProducts().get(productIndex)).perform();
 	}

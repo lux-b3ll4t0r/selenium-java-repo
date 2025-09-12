@@ -9,3 +9,5 @@ test-output/
 
 #logs
 *.log
+
+src/test/resources/testdata/excel/signup_acc_info.xlsx

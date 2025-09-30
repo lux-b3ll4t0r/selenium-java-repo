@@ -2,7 +2,7 @@
 
 <suite name="MasterSuite" parallel="false">
 	<suite-files>
-		<suite-file path="testng-smoke-ui.xml"/>
-		<suite-file path="testng-smoke-api.xml"/>
+		<suite-file path="testng-ui.xml"/>
+		<suite-file path="testng-api.xml"/>
 	</suite-files>
 </suite>

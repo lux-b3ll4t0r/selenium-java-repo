@@ -1,0 +1,28 @@
+Automation Exercise Documentation
+==========================
+
+////////// PRODUCT QUANTITY //////////
+-Quantity has no min-max value. Negative and extremely large numbers can be entered and still added to cart.
+-The total price reflects negative number values. (ex. if quantity = -1 and price = 400, cart will show -400)
+-Extremely large quantity numbers cause elements to completely shift
+-An order can be placed if quantity is set to 0 which will allow the item to be bought for $0
+-Quantity cannot be changed in the cart, only in the View Product page
+
+///////// PRODUCT CATEGORY //////////
+-The category of a product is not shown in the all products list, but does in the View Product page.
+
+///////// CHECKOUT //////////
+-Checkout page can be accessed when no product is in cart by navigating directly to /checkout. 
+-An order can also be placed successfully even with nothing to checkout.
+-Checkout can be accessed when not logged in.
+-If a user logs out at checkout screen, then navigates backwards they are still logged in and can place the order.
+
+///////// LOGIN ///////////
+-Valid emails can have leading and trailing spaces, allowing login.
+
+
+///////// LOGOUT //////////
+-When logging out and navigating backwards UI displays that the user is still logged in but disappears once the page is refreshed
+
+///////// CONTACT US ///////////
+-Form can be submitted with no message

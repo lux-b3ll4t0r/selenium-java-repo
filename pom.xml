@@ -13,7 +13,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.35.0</version>
+			<version>4.36.0</version>
 		</dependency>
 		<!-- Rest Assured-->
 		<dependency>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
-			<version>5.8.0</version>
+			<version>6.3.2</version>
 		</dependency>
 		<!-- MySQL Connector-->
 		<dependency>

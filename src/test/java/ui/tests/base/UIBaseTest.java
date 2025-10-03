@@ -19,12 +19,11 @@ public class UIBaseTest extends BaseTest{
 	@BeforeClass(alwaysRun = true)
 	public void setupUIBaseClass() {
 		LogUtil.trace("Setting up resources");
-
+		DriverFactory.setupDriver();
 	}
 	
 	@BeforeMethod(alwaysRun = true)
 	public void setupUIBaseMethods(Method method) {
-		DriverFactory.setupDriver();
 		// Create a test node in the report
 		ExtentTest test = extent.createTest(method.getName());
 		
@@ -46,7 +45,7 @@ public class UIBaseTest extends BaseTest{
 	public void teardownUIBaseMethods(ITestResult result) {
 		Webtool.clearStorage();	
 		LogUtil.logTestResult(result);
-		DriverFactory.quitDriver();
+
 		// Only uncomment this if driver is being setup in BeforeMethod
 			//DriverFactory.quitDriver();
 		
@@ -56,6 +55,7 @@ public class UIBaseTest extends BaseTest{
 	@AfterClass(alwaysRun = true)
 	public void teardownUIBaseClasses() {
 		LogUtil.trace("Tearing down class");
+		DriverFactory.quitDriver();
 	}
 	
 

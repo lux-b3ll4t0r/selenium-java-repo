@@ -52,7 +52,7 @@ public class CartTest extends UIBaseTest{
 		LogUtil.info("Navigating to Cart.");
 		homepage.navigateToCart();
 		
-		Assert.assertTrue(cart.isCartInfoVisible());
+		Assert.assertTrue(cart.isCartInfoVisible(), "Cart was not visible.");
 		LogUtil.info("Cart is visible.");
 	}
 	
@@ -66,7 +66,7 @@ public class CartTest extends UIBaseTest{
 		LogUtil.info("Navigating to cart.");
 		productDetails.clickPopupViewCart();
 
-		Assert.assertTrue(cart.isCartInfoVisible());
+		Assert.assertTrue(cart.isCartInfoVisible(), "Cart was not visible.");
 		LogUtil.info("Added items are visible in cart.");
 	}
 	
@@ -83,7 +83,7 @@ public class CartTest extends UIBaseTest{
 		LogUtil.info("Removing item from cart.");
 		cart.removeCartItem();
 		
-		Assert.assertTrue(cart.isCartEmpty());
+		Assert.assertTrue(cart.isCartEmpty(), "Cart was not empty.");
 		LogUtil.info("Item removed from cart successfully.");
 		
 	}
@@ -181,7 +181,7 @@ public class CartTest extends UIBaseTest{
 		LogUtil.info("Removing items from cart.");
 		cart.removeAllCartItems();
 		
-		Assert.assertTrue(cart.isCartEmpty());
+		Assert.assertTrue(cart.isCartEmpty(), "Cart was not empty.");
 		LogUtil.info("All items removed from cart successfully.");
 		
 	}

@@ -65,10 +65,10 @@ public class Webtool {
 	}
 	
 	public static void clickElement(By locator) {
-		WebElement element = waitForElementToBeClickable(locator);
+		WebElement element = waitForVisibitlityOfElementLocated(locator);
 		
 		try {
-			element.click();			
+			element.click();		
 		}catch(Exception e) {
 			try {
 				scrollToElementLocated(locator);
@@ -201,7 +201,7 @@ public class Webtool {
 			js.executeScript("window.localStorage.clear();");
 			js.executeScript("window.sessionStorage.clear();");
 		}catch(Exception e) {
-			LogUtil.error("Failed to clear local/session storage: ", e);
+			LogUtil.warn("Failed to clear local/session storage: " + e);
 		}
 	}
 }

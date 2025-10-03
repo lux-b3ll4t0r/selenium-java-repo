@@ -6,8 +6,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-
 import common.utils.LogUtil;
 import ui.constants.UrlConstants;
 import ui.pages.homepage.Homepage;
@@ -102,9 +100,7 @@ public class LoginTest extends UIBaseTest{
 		LogUtil.info("Navigating to: " + page);
 		Webtool.get(page);
 		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertTrue(homepage.isLoggedInAsVisible(), "User was not logged in at: " + page);
-		softAssert.assertAll();
+		Assert.assertTrue(homepage.isLoggedInAsVisible(), "User was not logged in at: " + page);
 		LogUtil.info("Session saved successfully.");
 	}
 	
@@ -127,11 +123,10 @@ public class LoginTest extends UIBaseTest{
 		homepage.navigateToLogin();
 		
 		LogUtil.info("Logging in and validating: " + type);
-		login.login(email, password);
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertTrue(login.isBrowserErrorDisplayed(), "No browser error was displayed.");
-		softAssert.assertAll();
+		login.login(email, password);	
+
+		Assert.assertTrue(login.isBrowserErrorDisplayed(), "No browser error was displayed.");
+
 		
 		LogUtil.info("Browser error displayed successfully for incomplete form.");
 	}

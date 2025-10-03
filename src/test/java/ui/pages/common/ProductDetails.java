@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import common.pojos.Product;
+import common.pojos.UIProduct;
 import ui.constants.UrlConstants;
 import ui.utils.DriverFactory;
 import ui.utils.Webtool;
@@ -75,8 +75,8 @@ public class ProductDetails {
 		}
 	}
 	
-	public Product getProductDetails() {
-		return new Product.Builder()
+	public UIProduct getProductDetails() {
+		return new UIProduct.Builder()
 		.img(getProductImgSrc())
 		.price(getProductPrice())
 		.name(getProductName())

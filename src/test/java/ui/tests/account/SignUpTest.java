@@ -12,8 +12,8 @@ import org.testng.asserts.SoftAssert;
 import com.github.javafaker.Faker;
 
 import common.pojos.User;
-import common.pojos.UserDataGenerator;
 import common.utils.LogUtil;
+import common.utils.UserDataGenerator;
 import db.utils.SQLWorkbench;
 import ui.constants.UrlConstants;
 import ui.pages.homepage.Homepage;
@@ -49,7 +49,6 @@ public class SignUpTest extends UIBaseTest{
 	
 	@Test (groups = {"smoke"}, priority = 0)
 	public void initial_signup_test() {
-		
 		LogUtil.info("* Verifying a new user can enter name and email address to create account.");
 		
 		LogUtil.info("Navigating to Signup.");
@@ -65,14 +64,11 @@ public class SignUpTest extends UIBaseTest{
 		
 		Assert.assertEquals(Webtool.getCurrentUrl(), UrlConstants.SIGNUP);
 		LogUtil.info("Name and email accepted, directed to account information successfully..");
-		
-		
 	}
 	
 	
 	@Test(groups = {"smoke"}, priority = 1)
 	public void account_info_smoke_test() {
-		
 		LogUtil.info("* Verifying user can submit account information.");
 		
 		LogUtil.info("Navigating to Signup.");
@@ -82,9 +78,8 @@ public class SignUpTest extends UIBaseTest{
 		
 		User user = UserDataGenerator.randomUser(); // creates a new user
 			// generates that users info
-		LogUtil.debug(user.toSafeString());
 		
-		LogUtil.debug("Signing up new user.");
+		LogUtil.info("Signing up new user.");
 		signUpLogin.signUpNewUserWithRetry(user.getFirstName(), user.getEmail());
 		
 		LogUtil.info("Entering and submitting new user account information.");
@@ -101,7 +96,6 @@ public class SignUpTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"}, priority = 1)
 	public void account_info_data_persist_functional_test() {
-		
 		LogUtil.info("* Verifying initial name and email persist to account information page.");
 		
 		LogUtil.info("Navigating to Signup.");
@@ -124,7 +118,7 @@ public class SignUpTest extends UIBaseTest{
 		LogUtil.info("Name and email persisted successfully.");
 	}
 	
-	@Test(groups = {"functional"})
+	@Test(groups = {"functional", "negative"})
 	public void account_info_incomplete_functional_test() {
 		LogUtil.info("* Verifying account information form is rejected when submitting incomplete form.");
 		

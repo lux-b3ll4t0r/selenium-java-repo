@@ -2,6 +2,11 @@ package api.constants;
 
 public class JsonPaths {
 	
+	/*
+	 *  Json Paths for all modules
+	 *  For larger structures, paths would be broken into multiple classes for each module
+	 */
+	
 	public static final String RESPONSE_CODE = "responseCode";
 	public static final String MESSAGE = "message";
 	public static final String BRANDS = "brands";

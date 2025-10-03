@@ -15,7 +15,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class DriverFactory {
 
 	private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
-	private static String browser = ConfigManager.getBrowser().toLowerCase();
+	private static String browser = System.getProperty("browser", ConfigManager.getBrowser().toLowerCase());
 	private static boolean isHeadless = ConfigManager.isHeadless();
 	private static ChromeOptions chromeOptions;
 	private static FirefoxOptions firefoxOptions;
@@ -92,11 +92,9 @@ public class DriverFactory {
 	}
 	
 	public static void quitDriver() {
-		
 		if(threadLocalDriver != null) {
 			threadLocalDriver.get().quit();
 			threadLocalDriver.remove();
-			
 		}
 	}
 		

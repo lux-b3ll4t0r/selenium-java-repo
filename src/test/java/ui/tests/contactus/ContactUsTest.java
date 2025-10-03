@@ -56,7 +56,7 @@ public class ContactUsTest extends UIBaseTest {
 		LogUtil.info("Successfully submitted contact form.");
 	}
 	
-	@Test(groups = { "functional" }, dataProvider = "emails")
+	@Test(groups = { "functional", "negative" }, dataProvider = "emails")
 	public void contact_incomplete_form_functional_test(String email) {
 		LogUtil.info("* Verifying contact form is rejected when email is not valid.");
 		

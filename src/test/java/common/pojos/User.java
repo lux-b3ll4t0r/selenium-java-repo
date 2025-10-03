@@ -4,14 +4,102 @@ import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import common.utils.LogUtil;
 
 public class User {
-		
-	private String title, name, first_name, last_name, email, 
-	password, birth_day, birth_month, birth_year,company, 
-	newsletter, optin, address1, address2, country, state, 
-	city, zipcode, mobile_number;	
+
+	private int id;
+	
+	private String title, name, email, company, address1, 
+	address2, country, state, city, zipcode;	
+	
+	@JsonProperty("first_name")
+	String firstName;
+	
+	@JsonProperty("last_name")
+	String lastName;
+	
+	@JsonProperty("birth_date")
+	String birthDate;
+	
+	@JsonProperty("birth_month")
+	String birthMonth;
+	
+	@JsonProperty("birth_year")
+	String birthYear;
+	
+	@JsonProperty("mobile_number")
+	String mobileNumber;
+	
+	@JsonIgnore
+	private String newsletter, optin, password;
+	
+	public int getId() {return id;}
+	public void setId(int id) {this.id = id;}
+	
+	public String getBirthDate() {return birthDate;}
+	public void setBirthDay(String birthDate) {this.birthDate = birthDate;}
+
+	public String getBirthMonth() {return birthMonth;}
+	public void setBirthMonth(String birthMonth) {this.birthMonth = birthMonth;}
+
+	public String getBirthYear() {return birthYear;}
+	public void setBirthYear(String birthYear) {this.birthYear = birthYear;}
+
+	public String getNewsLetter() {return newsletter;}
+	public void setNewsLetter(String newsletter) {this.newsletter = newsletter;}
+
+	public String getOptin() {return optin;}
+	public void setOptin(String optin) {this.optin = optin;}
+
+	public String getFirstName() {return firstName;}
+	public void setFirstName(String firstName) {this.firstName = firstName;}
+
+	public String getLastName() {return lastName;}
+	public void setLastName(String lastName) {this.lastName = lastName;}
+
+	public String getTitle() {return title;}
+	public void setTitle(String title) {this.title = title;}
+	
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
+
+	public String getEmail() {return email;}
+	public void setEmail(String email) {this.email = email;}
+
+	public String getPassword() {return password;}
+	public void setPassword(String password) {this.password = password;}
+
+	public String getCompany() {return company;}
+	public void setCompany(String company) {this.company = company;}
+
+	public String getAddress1() {return address1;}
+	public void setAddress1(String address1) {this.address1 = address1;}
+
+	public String getAddress2() {return address2;}
+	public void setAddress2(String address2) {this.address2 = address2;}
+
+	public String getCountry() {return country;}
+	public void setCountry(String country) {this.country = country;}
+
+	public String getState() {return state;}
+	public void setState(String state) {this.state = state;}
+
+	public String getCity() {return city;}
+	public void setCity(String city) {this.city = city;}
+
+	public String getZipcode() {return zipcode;}
+	public void setZipcode(String zipcode) {this.zipcode = zipcode;}
+
+	public String getMobileNumber() {return mobileNumber;}
+	public void setMobileNumber(String mobileNumber) {this.mobileNumber = mobileNumber;}
+
+	public String getBirthday() {
+		return birthDate + "-" + birthMonth + "-" + birthYear;
+	}
 	
 	public static class Builder { // static class to avoid instantiating builder class
 		private final User user; // private final to encapsulate, and prevent further instantiation
@@ -19,7 +107,6 @@ public class User {
 		public Builder() {   // public constructor to instantiate user
 			user = new User();
 		}
-		
 		
 		// all methods return this class to allow method chaining
 		public Builder name(String name) {
@@ -94,11 +181,14 @@ public class User {
 			}
 			return this;
 		}
+		
 		public Builder first_name() {
-			
-			String[] names = this.user.name.split(" ");
-			this.user.setFirstName(names[0]);
-			
+			if(this.user.name != null) {
+				String[] names = this.user.name.split(" ");
+				this.user.setFirstName(names[0]);
+			}else {
+				throw new NullPointerException("Name has not been set.");
+			}
 			return this;
 		}
 		
@@ -108,70 +198,74 @@ public class User {
 		}
 		
 		public Builder last_name() {
-			String[] names = this.user.name.split(" ");
-			if(names.length > 2) {
-				this.user.setLastName(names[1] + " " + names[2]);
+			if(this.user.name != null) {
+				String[] names = this.user.name.split(" ");
+				
+				if(names.length > 2) {
+					this.user.setLastName(names[1] + " " + names[2]);
+				}else {
+					this.user.setLastName(names[1]);
+				}
 			}else {
-			this.user.setLastName(names[1]);
+				throw new NullPointerException("Name has not been set.");
 			}
+			
 			return this;
 		}
-		
+
 		public Builder last_name(String last_name) {
 			this.user.setLastName(last_name);
-			
 			return this;
 		}
 		public Builder company(String company) {
 			this.user.setCompany(company);
 			return this;
 		}
-		
+
 		public Builder address1(String address1) {
 			this.user.setAddress1(address1);
 			return this;
 		}
-		
+
 		public Builder address2(String address2) {
 			this.user.setAddress2(address2);
 			return this;
 		}
-		
+
 		public Builder country(String country) {
 			this.user.setCountry(country);
 			return this;
 		}
-		
+
 		public Builder state(String state) {
 			this.user.setState(state);
 			return this;
 		}
-		
+
 		public Builder city(String city) {
 			this.user.setCity(city);
 			return this;
 		}
-		
+
 		public Builder zipcode(String zipcode) {
 			this.user.setZipcode(zipcode);
 			return this;
 		}
-		
+
 		public Builder mobile_number(String mobile_number) {
 			this.user.setMobileNumber(mobile_number);
 			return this;
 		}
-		
+
 		public Builder password(String password) {
 			this.user.setPassword(password);
 			return this;
 		}
-		
+
 		public User build() { // build method that returns the user once built
 			return user;
 		}
 	}
-	
 	
 	private String maskEmail(String email) {
 	    if (email == null || !email.contains("@")) return "hidden";
@@ -179,30 +273,30 @@ public class User {
 	    String prefix = parts[0];
 	    return prefix.charAt(0) + "***" + prefix.charAt(prefix.length() - 1) + "@" + parts[1];
 	}
-	
+
 	private String maskPassword(String password) {
 	    return (password == null) ? "hidden" : "****";
 	}
-	
+
 	private String maskPhone(String phone) {
 	    if (phone == null || phone.length() < 4) return "hidden";
 	    String[] parts = phone.split("-");
 	    return "***-" + "***-" + parts[2];
-	    
+
 	}
-	
+
 	public Map<String, Object> getAsMap(){
-	
+
 		Map<String, Object> userMap = new HashMap<>();
 		userMap.put("name", this.getName());
 		userMap.put("email", this.getEmail());
 		userMap.put("password", this.getPassword());
 		userMap.put("title", this.getTitle());
-		userMap.put("birth_day", this.getBirthDay());
+		userMap.put("birth_date", this.getBirthDate());
 		userMap.put("birth_month", this.getBirthMonth());
 		userMap.put("birth_year", this.getBirthYear());
-		userMap.put("first_name", this.getFirstName());
-		userMap.put("last_name", this.getLastName());
+		userMap.put("firstname", this.getFirstName());
+		userMap.put("lastname", this.getLastName());
 		userMap.put("company", this.getCompany());
 		userMap.put("address1", this.getAddress1());
 		userMap.put("address2", this.getAddress2());
@@ -211,81 +305,21 @@ public class User {
 		userMap.put("city", this.getCity());
 		userMap.put("zipcode", this.getZipcode());
 		userMap.put("mobile_number", this.getMobileNumber());
-		
+
 		return userMap;
 	}
 	
-	public String getBirthDay() {return birth_day;}
-	public void setBirthDay(String birth_day) {this.birth_day = birth_day;}
-
-	public String getBirthMonth() {return birth_month;}
-	public void setBirthMonth(String birth_month) {this.birth_month = birth_month;}
-
-	public String getBirthYear() {return birth_year;}
-	public void setBirthYear(String birth_year) {this.birth_year = birth_year;}
-
-	public String getNewsLetter() {return newsletter;}
-	public void setNewsLetter(String newsletter) {this.newsletter = newsletter;}
-	
-	public String getOptin() {return optin;}
-	public void setOptin(String optin) {this.optin = optin;}
-	
-	public String getFirstName() {return first_name;}
-	public void setFirstName(String first_name) {this.first_name = first_name;}
-
-	public String getLastName() {return last_name;}
-	public void setLastName(String last_name) {this.last_name = last_name;}
-	
-	public String getTitle() {return title;}
-	public void setTitle(String title) {this.title = title;}
-	
-	public String getName() {return name;}
-	public void setName(String name) {this.name = name;}
-
-	public String getEmail() {return email;}
-	public void setEmail(String email) {this.email = email;}
-
-	public String getPassword() {return password;}
-	public void setPassword(String password) {this.password = password;}
-
-	public String getCompany() {return company;}
-	public void setCompany(String company) {this.company = company;}
-
-	public String getAddress1() {return address1;}
-	public void setAddress1(String address1) {this.address1 = address1;}
-
-	public String getAddress2() {return address2;}
-	public void setAddress2(String address2) {this.address2 = address2;}
-
-	public String getCountry() {return country;}
-	public void setCountry(String country) {this.country = country;}
-
-	public String getState() {return state;}
-	public void setState(String state) {this.state = state;}
-
-	public String getCity() {return city;}
-	public void setCity(String city) {this.city = city;}
-
-	public String getZipcode() {return zipcode;}
-	public void setZipcode(String zipcode) {this.zipcode = zipcode;}
-
-	public String getMobileNumber() {return mobile_number;}
-	public void setMobileNumber(String mobile_number) {this.mobile_number = mobile_number;}
-	
-	public String getBirthday() {
-		return birth_day + "-" + birth_month + "-" + birth_year;
-	}
 	
 	public String toSafeString() {	
 		return "[User: Title: " + title +
 		" [Full Name: " + name +
-		"] [First Name: " + first_name +
-		"] [Last Name: " + last_name +
+		"] [First Name: " + firstName +
+		"] [Last Name: " + lastName +
 		"] [Email: " + maskEmail(email) +
 		"] [Password: " + maskPassword(password) +
-		"] [Birth Day: " + birth_day +
-		"] [Birth Month: " + birth_month +
-		"] [Birth Year: " + birth_year +
+		"] [Birth Day: " + birthDate +
+		"] [Birth Month: " + birthMonth +
+		"] [Birth Year: " + birthYear +
 		"] [Company: " + company +
 		"] [Newsletter: " + newsletter +
 		"] [Optin: " + optin +
@@ -295,8 +329,7 @@ public class User {
 		"] [State: " + state +
 		"] [City: " + city + 
 		"] [Zipcode: " + zipcode + 
-		"] [Mobile Number: " + maskPhone(mobile_number) + "]";
-		
+		"] [Mobile Number: " + maskPhone(mobileNumber) + "]";
+
 	}
-	
 }

@@ -6,16 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Product {
+public class UIProduct {
 		
 	private String img, name, category, price, quantity, availability, condition, brand, total;
 	private boolean addToCart, viewProduct;
 	
 	public static class Builder {
-		private final Product product;
+		private final UIProduct product;
 		
 		public Builder() {
-			product = new Product();			
+			product = new UIProduct();			
 		}
 		
 		public Builder img(String img) {
@@ -70,7 +70,7 @@ public class Product {
 			return this;
 		}
 		
-		public Product build() {
+		public UIProduct build() {
 			return this.product;
 		}
 	}

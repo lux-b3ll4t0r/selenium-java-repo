@@ -95,7 +95,7 @@ public class ProductsTest extends UIBaseTest{
 		};
 	}
 
-	@Test(groups = {"functional"}, priority = 2, dataProvider = "negativeSearch")
+	@Test(groups = {"functional", "negative"}, priority = 2, dataProvider = "negativeSearch")
 	public void search_negative_test(String search) {
 		LogUtil.info("* Verifying invalid search values return no products.");
 		

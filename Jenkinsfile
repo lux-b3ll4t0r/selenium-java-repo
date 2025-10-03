@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+	
+	parameters {
+		choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'edge'], description: 'Choose browser')
+	}
+	
     tools {
         git 'Git'
         maven 'maven'        // the Maven name you configured in Jenkins
@@ -17,7 +21,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean install -DskipTests'  // compiles code, skip tests
+                bat "mvn clean install -DskipTests"  // compiles code, skip tests
             }
         }
 
@@ -40,7 +44,7 @@ pipeline {
                     	passwordVariable: 'API_PASS'
                     )
                 ]) {
-                    bat 'mvn test'   // runs your TestNG tests
+                    bat "mvn test -Dbrowser=${params.BROWSER}"   // runs your TestNG tests
                 }
             }
         }

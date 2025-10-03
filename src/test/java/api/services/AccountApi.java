@@ -8,14 +8,13 @@ import api.constants.ApiEndpoints;
 import api.utils.APITools;
 import api.utils.RequestFactory;
 import common.pojos.User;
-import common.pojos.UserDataGenerator;
 import db.utils.SQLWorkbench;
 import io.restassured.response.Response;
 
 public class AccountApi{	
 	
 	public static Response createNewUser(User user) {
-		Map<String, Object> userData = UserDataGenerator.getApiMap(user);
+		Map<String, Object> userData = user.getAsMap();
 		return APITools.postForm(RequestFactory.getBaseSpec(), ApiEndpoints.CREATE_ACCOUNT, userData);
 	}
 	
@@ -36,7 +35,7 @@ public class AccountApi{
 	}
 	
 	public static Response updateUser(User user) {
-		Map<String, Object> userMap = UserDataGenerator.getApiMap(user);	
+		Map<String, Object> userMap = user.getAsMap();	
 		return APITools.putForm(RequestFactory.getBaseSpec(), ApiEndpoints.UPDATE_ACCOUNT, userMap);
 	}
 	
@@ -56,11 +55,11 @@ public class AccountApi{
 				.email(String.valueOf(userData.get("email")))
 				.password(String.valueOf(userData.get("password")))
 				.title(String.valueOf(userData.get("title")))
-				.birth_day(String.valueOf(userData.get("birth_day")))
+				.birth_day(String.valueOf(userData.get("birth_date")))
 				.birth_month(String.valueOf(userData.get("birth_month")))
 				.birth_year(String.valueOf(userData.get("birth_year")))
-				.first_name(String.valueOf(userData.get("first_name")))
-				.last_name(String.valueOf(userData.get("last_name")))
+				.first_name(String.valueOf(userData.get("firstname")))
+				.last_name(String.valueOf(userData.get("lastname")))
 				.company(String.valueOf(userData.get("company")))
 				.address1(String.valueOf(userData.get("address1")))
 				.address2(String.valueOf(userData.get("address2")))

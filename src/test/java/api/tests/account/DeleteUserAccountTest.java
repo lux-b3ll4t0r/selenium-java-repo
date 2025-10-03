@@ -11,8 +11,8 @@ import api.services.AccountApi;
 import api.tests.base.APIBaseTest;
 import api.utils.JsonUtil;
 import common.pojos.User;
-import common.pojos.UserDataGenerator;
 import common.utils.LogUtil;
+import common.utils.UserDataGenerator;
 import io.restassured.response.Response;
 import ui.constants.UrlConstants;
 

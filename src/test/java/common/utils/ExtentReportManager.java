@@ -11,7 +11,7 @@ public class ExtentReportManager {
 		
 		if(extent == null) {
 			
-			// Set output path for report file appending timestamp to avoid overwriting file
+			// Set output path for report file
 			String reportPath = ConfigManager.getFullReportPath();
 			
 			// Set up spark reporter

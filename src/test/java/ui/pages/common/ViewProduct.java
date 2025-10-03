@@ -12,7 +12,7 @@ import org.openqa.selenium.WebElement;
 
 import com.github.javafaker.Faker;
 
-import common.pojos.Product;
+import common.pojos.UIProduct;
 import ui.utils.DriverFactory;
 import ui.utils.Webtool;
 	
@@ -93,8 +93,8 @@ public class ViewProduct {
 	public boolean isReviewEmailErrorVisible() {return !getReviewEmailErrorMessage().isEmpty();}
 	public boolean isReviewMsgErrorVisible() {return !getReviewMsgErrorMessage().isEmpty();}
 	
-	public Product getProduct() {
-		return new Product.Builder()
+	public UIProduct getProduct() {
+		return new UIProduct.Builder()
 								.img(getImg())
 								.name(getName())
 								.category(getCategory())

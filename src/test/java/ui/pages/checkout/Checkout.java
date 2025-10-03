@@ -7,7 +7,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
-import common.pojos.Product;
+import common.pojos.UIProduct;
 import ui.utils.Webtool;
 
 public class Checkout {
@@ -123,20 +123,20 @@ public class Checkout {
 	}
 	
 	public void validateProductTotal(SoftAssert softAssert) {
-		List<Product> orderItems = getAllOrderItemsData();
+		List<UIProduct> orderItems = getAllOrderItemsData();
 		int expectedTotal = 0;
 		
-		for(Product each : orderItems) {
+		for(UIProduct each : orderItems) {
 			expectedTotal = Integer.valueOf(each.getPrice()) * Integer.valueOf(each.getQuantity());
 			softAssert.assertEquals((int) expectedTotal, (int) Integer.valueOf(each.getTotal()), each.getName() + " total does not reflected expected price and quantity total.");
 		}
 	}
 	
 	public void validateOrderTotal(SoftAssert softAssert) {
-		List<Product> orderItems = getAllOrderItemsData();
+		List<UIProduct> orderItems = getAllOrderItemsData();
 		int expectedTotal = 0;
 		
-		for(Product each : orderItems) {
+		for(UIProduct each : orderItems) {
 			expectedTotal = expectedTotal + Integer.valueOf(each.getTotal());
 		}
 		softAssert.assertEquals((int) Integer.valueOf(getOrderTotal()), (int) expectedTotal, "Order total does not reflect expected total: " + expectedTotal);
@@ -146,9 +146,9 @@ public class Checkout {
 		return Webtool.waitForVisibilityOfAllElementsLocatedBy(allOrderItems);
 	}
 	
-	public List<Product> getAllOrderItemsData(){
+	public List<UIProduct> getAllOrderItemsData(){
 		List<WebElement> list = getAllOrderItems();
-		List<Product> productList = new ArrayList<>();
+		List<UIProduct> productList = new ArrayList<>();
 	
 		for(WebElement each : list) {
 			String img = each.findElement(By.xpath(".//img[@alt='Product Image']")).getAttribute("src");
@@ -158,7 +158,7 @@ public class Checkout {
 			String quantity = each.findElement(By.xpath(".//td[@class='cart_quantity']/button")).getText().trim();
 			String total = each.findElement(By.xpath(".//td[@class='cart_product']//following-sibling::td[@class='cart_total']/p")).getText().replaceFirst("Rs.", "").trim();
 
-			Product product = new Product.Builder().img(img).name(name).category(category)
+			UIProduct product = new UIProduct.Builder().img(img).name(name).category(category)
 					.price(price).quantity(quantity).total(total).build();
 			productList.add(product);
 		}

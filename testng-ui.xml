@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="UI Suite" parallel="classes" thread-count="4" verbose="0">
+<suite name="UI Suite" parallel="true" thread-count="4" verbose="0">
 
 	<test name="UI Smoke Tests">
 		<groups>

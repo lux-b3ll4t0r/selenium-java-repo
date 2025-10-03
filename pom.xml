@@ -3,6 +3,10 @@
 	<groupId>selenium-interview</groupId>
 	<artifactId>selenium-interview</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
 	<dependencies>
 		<!-- Selenium -->
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -29,6 +33,13 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.10.1</version>
+		</dependency>
+		<!-- Json Schema Validator -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>5.4.0</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- TestNG -->
 		<dependency>
@@ -82,8 +93,8 @@
 				<version>3.1.2</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng-smoke-ui.xml</suiteXmlFile> <!-- Path to your TestNG suite -->
-						<suiteXmlFile>testng-smoke-api.xml</suiteXmlFile>
+						<suiteXmlFile>testng-ui.xml</suiteXmlFile> <!-- Path to your TestNG suite -->
+						<suiteXmlFile>testng-api.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

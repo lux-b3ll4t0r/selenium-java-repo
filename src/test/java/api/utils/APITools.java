@@ -1,13 +1,31 @@
 package api.utils;
 
+import java.util.List;
 import java.util.Map;
 
+import api.services.ProductsApi;
+import common.pojos.APIProduct;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 
 public class APITools {	
+	
+	public static void main(String[] args) {
+		
+		Response response = ProductsApi.getAllProducts();
+		List<APIProduct> list = JsonUtil.getListAsObject(response, "products", APIProduct.class);
+		System.out.println(list);
+	}
+	
+	public static Response sendRequest(RequestSpecification requestSpec, String method, String endpoint) {
+		return RestAssured
+				.given()
+				.spec(requestSpec)
+				.when()
+				.request(method, endpoint);
+	}
 	
 	public static Response get(RequestSpecification requestSpec, String endpoint) {
 		return RestAssured
@@ -44,6 +62,15 @@ public class APITools {
 				.when()
 				.post(endpoint);
 	
+	}
+	
+	public static Response post(RequestSpecification requestSpec, String endpoint) {
+		return RestAssured
+				.given()
+				.spec(requestSpec)
+				.contentType("application/json")
+				.when()
+				.post(endpoint);
 	}
 		
 	public static Response postForm(RequestSpecification requestSpec, String endpoint, Map<String, Object> form) {

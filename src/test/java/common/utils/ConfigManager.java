@@ -5,11 +5,13 @@ import java.util.Properties;
 
 public class ConfigManager {
 	
-	public static void main(String[] args) {
-		
+	/*
+	 * 	For larger structured projects, ConfigManager can return new instances of Properties
+	 *  Method would then require that properties instances.
+	 * 	New instances can then call specific config files based on necessity.
+	 */
 	
-	}
-
+	
 	private static Properties props = new Properties();
 	
 	static {
@@ -20,7 +22,6 @@ public class ConfigManager {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public static String get(String key) {
@@ -103,6 +104,18 @@ public class ConfigManager {
 	public static int getWaitDuration() {
 		return Integer.valueOf(get("waitDuration"));
 				
+	}
+	
+	public static String getProductsSchema() {
+		return get("productsSchema");
+	}
+	
+	public static String getBrandsSchema() {
+		return get("brandsSchema");
+	}
+	
+	public static String getLoginSchema() {
+		return get("loginSchema");
 	}
 	
 	public static String getSheet() {

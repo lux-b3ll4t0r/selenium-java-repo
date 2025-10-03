@@ -13,8 +13,8 @@ import api.services.AccountApi;
 import api.tests.base.APIBaseTest;
 import api.utils.JsonUtil;
 import common.pojos.User;
-import common.pojos.UserDataGenerator;
 import common.utils.LogUtil;
+import common.utils.UserDataGenerator;
 import db.utils.SQLWorkbench;
 import io.restassured.response.Response;
 import ui.constants.UrlConstants;
@@ -29,8 +29,8 @@ public class UpdateUserTest extends APIBaseTest{
 		
 		LogUtil.info("Updating user: " + user.toSafeString());
 
-		String updateName = UserDataGenerator.getName();
-		String updateAddress1 = UserDataGenerator.getAddress1();
+		String updateName = UserDataGenerator.name();
+		String updateAddress1 = UserDataGenerator.address1();
 		user.setName(updateName);
 		user.setAddress1(updateAddress1); 
 		

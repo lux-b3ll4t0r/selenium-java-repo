@@ -146,7 +146,7 @@ public class SignUpAccountInfo {
 	public void enterAndSubmitAccInfo(User user) {
 		selectTitle(user.getTitle());
 		enterPassword(System.getenv("UI_PASS")); 
-		selectDay(user.getBirthDay());				 
+		selectDay(user.getBirthDate());				 
 		selectMonth(user.getBirthMonth());
 		selectYear(user.getBirthYear());
 		clickSignUpForNewsLetter();

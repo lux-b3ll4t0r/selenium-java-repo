@@ -13,8 +13,8 @@ import api.services.AccountApi;
 import api.tests.base.APIBaseTest;
 import api.utils.JsonUtil;
 import common.pojos.User;
-import common.pojos.UserDataGenerator;
 import common.utils.LogUtil;
+import common.utils.UserDataGenerator;
 import db.utils.SQLWorkbench;
 import io.restassured.response.Response;
 import ui.constants.UrlConstants;
@@ -34,12 +34,12 @@ public class CreateRegisterAccountTest extends APIBaseTest{
 		int statusCode = response.statusCode();
 		
 		// Validating both HTTP code and Application level status code
-		LogUtil.debug("Expected: {}, Actual: {}", StatusCodes.OK, statusCode);
+	
 		Assert.assertEquals(statusCode, StatusCodes.OK);
-		LogUtil.debug("Expected: {}, Actual: {}", StatusCodes.USER_CREATED, responseCode);
+
 		Assert.assertEquals(responseCode, StatusCodes.USER_CREATED);
 		
-		LogUtil.debug("Expected: {}, Actual: {}", ResponseMessages.USER_CREATED, message);
+
 		Assert.assertTrue(message.contains(ResponseMessages.USER_CREATED));
 		
 		Connection con = SQLWorkbench.connectToLocalDb();

@@ -8,7 +8,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import common.pojos.Product;
+import common.pojos.UIProduct;
 import ui.utils.Webtool;
 
 public class Cart {
@@ -44,8 +44,8 @@ public class Cart {
 		}
 	}
 	
-	public Product getProductDetails() {
-		return new Product.Builder()
+	public UIProduct getProductDetails() {
+		return new UIProduct.Builder()
 				.img(getProductImg())
 				.name(getProductName())
 				.category(getProductCategory())

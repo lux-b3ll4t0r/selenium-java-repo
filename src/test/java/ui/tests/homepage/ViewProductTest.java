@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
-import common.constants.NegativeValues;
+import common.constants.NegativeInputs;
 import common.utils.LogUtil;
 import ui.constants.UrlConstants;
 import ui.pages.common.ProductDetails;
@@ -104,14 +104,14 @@ public class ViewProductTest extends UIBaseTest{
 		};
 	}
 	
-	@Test(groups = {"negative"}, priority = 4)
+	@Test(groups = {"functional", "negative"}, priority = 4)
 	public void view_product_quantity_negative_test() {
 		LogUtil.info("* Verifying product quantity negative values.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
 		
-		for(Object each : NegativeValues.NUMBER_INPUT) {
+		for(Object each : NegativeInputs.NUMBER_INPUT) {
 			viewProduct.setQuantity(each);
 			Assert.assertTrue(viewProduct.isAddedToCartModalNotVisible());
 		}
@@ -130,7 +130,7 @@ public class ViewProductTest extends UIBaseTest{
 		LogUtil.info("Review submitted successfully.");
 	}
 	
-	@Test(groups = {"smoke"}, priority = 6)
+	@Test(groups = {"functional", "negative"}, priority = 6)
 	public void view_product_write_review_negative_smoke_test() {
 		LogUtil.info("* Verifying negative inputs.");
 		
@@ -144,7 +144,7 @@ public class ViewProductTest extends UIBaseTest{
 		LogUtil.info("Form successfully rejected review. -> Message: " + viewProduct.getReviewNameErrorMessage());
 	}
 	
-	@Test(groups = {"functional"}, priority = 8)
+	@Test(groups = {"functional", "negative"}, priority = 8)
 	public void view_product_write_review_name_negative_test() {
 		LogUtil.info("* Verifying an error message is displayed when submitting with no name.");
 		
@@ -160,7 +160,7 @@ public class ViewProductTest extends UIBaseTest{
 		LogUtil.info("Form successfully rejected review. -> Message: " + viewProduct.getReviewNameErrorMessage());
 	}	
 	
-	@Test(groups = {"functional"}, priority = 9)
+	@Test(groups = {"functional", "negative"}, priority = 9)
 	public void view_product_write_review_email_negative_test() {
 		LogUtil.info("* Verifying an error message is displayed when submitting with no email.");
 		
@@ -176,7 +176,7 @@ public class ViewProductTest extends UIBaseTest{
 		LogUtil.info("Form successfully rejected review. -> Message: " + viewProduct.getReviewEmailErrorMessage());
 	}
 	
-	@Test(groups = {"functional"}, priority = 10)
+	@Test(groups = {"functional", "negative"}, priority = 10)
 	public void view_product_write_review_msg_negative_test() {
 		LogUtil.info("* Verifying an error message is displayed when submitting with no message.");
 		

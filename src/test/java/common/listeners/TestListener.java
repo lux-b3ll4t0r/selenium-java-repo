@@ -5,8 +5,8 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import common.utils.LogUtil;
+import common.utils.ScreenshotUtils;
 import ui.utils.DriverFactory;
-import ui.utils.ScreenshotUtils;
 
 public class TestListener implements ITestListener{
 

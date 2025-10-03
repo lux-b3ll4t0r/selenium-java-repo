@@ -51,7 +51,7 @@ public class LoginTest extends UIBaseTest{
 		LogUtil.info("User logged in successfully.");
 	}
 	
-	@Test(groups = {"functional"})
+	@Test(groups = {"functional", "negative"})
 	public void login_valid_email_invalid_pass_functional_test() {
 		LogUtil.info("* Verifying attempting to login with valid email but invalid password rejects form.");
 		
@@ -68,7 +68,7 @@ public class LoginTest extends UIBaseTest{
 		LogUtil.info("Form rejected successfully.");
 	}
 	
-	@Test(groups = {"functional"})
+	@Test(groups = {"functional", "negative"})
 	public void login_partial_email_valid_pass_functional_test() {
 		LogUtil.info("* Verifying attempting to login with partial valid email but valid password rejects form.");
 		
@@ -119,7 +119,7 @@ public class LoginTest extends UIBaseTest{
 		};
 	}
 	
-	@Test(groups = {"functional"}, dataProvider = "incompleteLogin")
+	@Test(groups = {"functional", "negative"}, dataProvider = "incompleteLogin")
 	public void login_form_incomplete_negative_test(String type, String email, String password) {
 		LogUtil.info("* Verifying login form is rejected with incomplete inputs.");
 		

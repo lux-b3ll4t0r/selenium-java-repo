@@ -35,10 +35,9 @@ public class SQLWorkbench {
 	}
 	
 	public static Map<String, Object> getUser(Connection con, String username, String password) {
-		
 		Map<String, Object> userData = new HashMap<>();
 		
-		try (PreparedStatement ps = con.prepareStatement(QueryConstants.getUser())){
+		try (PreparedStatement ps = con.prepareStatement(QueryConstants.GET_USER)){
 			ps.setString(1, username);
 			ps.setString(2, password);
 			try (ResultSet rs = ps.executeQuery()){
@@ -62,16 +61,15 @@ public class SQLWorkbench {
 		return userData;
 	}
 	
-	public static void saveUser(Connection con, User user) {
+	public static void saveUser(Connection con, User user) {	
 		LogUtil.trace("Saving user to DB: " + user.getEmail());
-		try {
-			PreparedStatement ps = con.prepareStatement(QueryConstants.insertUser());
-			
+		try (PreparedStatement ps = con.prepareStatement(QueryConstants.INSERT_USER);){
+
 			ps.setObject(1, user.getTitle());
 			ps.setObject(2, user.getName());
 			ps.setObject(3, user.getEmail());
 			ps.setObject(4, user.getPassword());
-			ps.setObject(5, user.getBirthDay());
+			ps.setObject(5, user.getBirthDate());
 			ps.setObject(6, user.getBirthMonth());
 			ps.setObject(7, user.getBirthYear());
 			ps.setObject(8, user.getNewsLetter());
@@ -88,7 +86,6 @@ public class SQLWorkbench {
 			ps.setObject(19, user.getMobileNumber());
 			ps.setObject(20, LocalDateTime.now().toString());
 			ps.executeUpdate();
-			ps.close();
 			LogUtil.trace(user.getEmail() + " saved to DB.");
 		}catch(SQLException | NullPointerException e) {
 			LogUtil.error("Failed to save new user: ", e);
@@ -97,12 +94,10 @@ public class SQLWorkbench {
 	
 	public static void deleteUser(Connection con, User user) {
 		LogUtil.trace("Deleting user from DB: " + user.getEmail());
-		try {
-			PreparedStatement ps = con.prepareStatement(QueryConstants.deleteUser());
+		try (PreparedStatement ps = con.prepareStatement(QueryConstants.DELETE_USER);){
 			ps.setString(1, user.getEmail());
 			ps.setString(2, user.getPassword());
 			ps.executeUpdate();
-			ps.close();
 			LogUtil.trace(user.getEmail() + " deleted from DB");
 		}catch(SQLException | NullPointerException e) {
 			LogUtil.error("Failed to delete user: ", e);
@@ -124,7 +119,7 @@ public class SQLWorkbench {
 			count++;
 		}
 		
-		stmnt.append("WHERE email = ?");
+		stmnt.append(" WHERE email = ?");
 		
 		try (PreparedStatement ps = con.prepareStatement(stmnt.toString())){
 			int index = 1;
@@ -135,37 +130,17 @@ public class SQLWorkbench {
 			
 			ps.setString(index, user.getEmail());
 			ps.executeUpdate();
-			ps.close();
 		}catch(Exception e) {
 			LogUtil.error("User not updated: ", e);
 		}	
 	}
 	
-	public static String getUserMobileNumber(Connection con, String email) {
-		
-		String number = "";
-		
-		try(PreparedStatement ps = con.prepareStatement(QueryConstants.getMobile())){
-			
-			ps.setString(1, email);
-			ResultSet set = ps.executeQuery();
-			
-			if(set.next()) { number = set.getString(1); }
-			
-		}catch(Exception e) {
-			
-		}
-		
-		return number;
-	}
-	
 	public static Connection connect(DBConnection connection) {
-				
-		Connection connectionInstance = null;
+		Connection con = null;
 		
 			try {
 				LogUtil.trace("Connecting to: " + connection.getUrl());
-				connectionInstance = DriverManager.getConnection(
+				con = DriverManager.getConnection(
 						connection.getUrl(), 
 						connection.getUsername(), 
 						connection.getPassword());
@@ -173,12 +148,10 @@ public class SQLWorkbench {
 				LogUtil.error("Connection to: " + connection.getUrl() + " may have failed.", e);
 			}
 	
-			return connectionInstance;
-
+			return con;
 	}
 	
 	public static void closeConnection(Connection con) {
-		
 		if(con == null) {
 			LogUtil.warn("Attempted to close a null connection");
 			return;

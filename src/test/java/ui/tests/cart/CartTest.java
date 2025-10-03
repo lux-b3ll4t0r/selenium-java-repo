@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import common.pojos.Product;
+import common.pojos.UIProduct;
 import common.utils.LogUtil;
 import ui.constants.UrlConstants;
 import ui.pages.cart.Cart;
@@ -115,7 +115,7 @@ public class CartTest extends UIBaseTest{
 	public void cart_refresh_functional_test() {
 		LogUtil.info("* Verifying cart items persist when refreshing the page.");
 		
-		Product product = productDetails.getProductDetails();
+		UIProduct product = productDetails.getProductDetails();
 		
 		LogUtil.info("Adding item to cart.");
 		productDetails.clickAddToCartBtn();
@@ -123,7 +123,7 @@ public class CartTest extends UIBaseTest{
 		LogUtil.info("Navigating to cart.");
 		productDetails.clickPopupViewCart();
 		
-		Product cartProduct = cart.getProductDetails();
+		UIProduct cartProduct = cart.getProductDetails();
 
 		Assert.assertEquals(cartProduct.getImg(), product.getImg(),"Product image in cart does not match.");
 		Assert.assertEquals(cartProduct.getName(),product.getName(), "Product name in cart does not match.");
@@ -136,7 +136,7 @@ public class CartTest extends UIBaseTest{
 	public void homepage_cart_item_details_functional_test() {
 		LogUtil.info("* Verifying product details match when adding to cart from Homepage.");
 		
-		Product homepageProduct = productDetails.getProductDetails();
+		UIProduct homepageProduct = productDetails.getProductDetails();
 		
 		LogUtil.info("Adding item to cart.");
 		productDetails.clickAddToCartBtn();
@@ -144,7 +144,7 @@ public class CartTest extends UIBaseTest{
 		LogUtil.info("Navigating to cart.");
 		productDetails.clickPopupViewCart();
 		
-		Product cartProduct = cart.getProductDetails();
+		UIProduct cartProduct = cart.getProductDetails();
 
 		Assert.assertEquals(cartProduct.getImg(), homepageProduct.getImg(),"Product image in cart does not match.");
 		Assert.assertEquals(cartProduct.getName(),homepageProduct.getName(), "Product name in cart does not match.");

@@ -4,8 +4,8 @@ Automation Exercise Learning Documentation
 ===== UI =====
 *	Product Quantity
 -Quantity has no min-max value. Negative and extremely large numbers can be entered and still added to cart.
--The total price reflects negative number values. (ex. if quantity = -1 and price = 400, cart will show -400)
 -Extremely large quantity numbers cause elements to completely shift
+-The total price reflects negative number values. (ex. if quantity = -1 and price = 400, cart will show -400)
 -An order can be placed if quantity is set to 0 which will allow the item to be bought for $0
 -Quantity cannot be changed in the cart, only in the View Product page
 
@@ -13,14 +13,12 @@ Automation Exercise Learning Documentation
 -The category of a product is not shown in the all products list, but does in the View Product page.
 
 *	Checkout
--Checkout page can be accessed when no product is in cart by navigating directly to /checkout. 
+-Checkout page can be accessed when user is not logged in and no product is in cart by navigating directly to /checkout. 
 -An order can also be placed successfully even with nothing to checkout.
--Checkout can be accessed when not logged in.
 -If a user logs out at checkout screen, then navigates backwards they are still logged in and can place the order.
 
 *	Login 
 -Valid emails can have leading and trailing spaces, allowing login.
-
 
 *	Logout
 -When logging out and navigating backwards UI displays that the user is still logged in but disappears once the page is refreshed
@@ -31,5 +29,19 @@ Automation Exercise Learning Documentation
 ===== API =====
 
 *	Fields
-- first name and last name are not consistent throughout endpoints. For /createAccount it is "firstname" and "lastname". 
+- First name and last name are not consistent throughout endpoints. For /createAccount it is "firstname" and "lastname". 
 But when retrieving user details through /getUserDetailByEmail, it returns "first_name" and "last_name"
+
+- "birth_date" is required to create an account but getting user details by email returns it as "birth_day"
+
+- Email fields are not handled for case-sensitivity and will reject a request even though the email is correct.
+- Leading and trailing whitespaces will also cause the request to be rejected
+
+- Fields do not have a data type check, and fields that have fixed values in the UI can be changed to whatever is sent. (Ex. title, country)
+
+*	Create Account
+- Required fields for create account are (name, email, password, firstname, lastname, address1, country, zipcode, state, city, mobile_number)
+The major issue found was that a user can be created without providing values to any of the required fields, including password. Only if the field keys are absent
+will the request be rejected.
+
+

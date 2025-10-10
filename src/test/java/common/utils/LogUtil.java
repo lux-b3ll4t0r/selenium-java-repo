@@ -16,7 +16,6 @@ public class LogUtil {
 		extentTest.set(test);
 	}
 	
-	
 	public static void logTestResult(ITestResult result) {
 		
 		String testName = result.getMethod().getMethodName();
@@ -25,7 +24,7 @@ public class LogUtil {
 			Throwable throwable = result.getThrowable();
 			LogUtil.fail("[TEST FAILED]: " + testName + " ", throwable);
 		}else if(result.getStatus() == ITestResult.SKIP) {
-			LogUtil.info("[WARN]: " + testName);
+			LogUtil.info("[SKIPPED]: " + testName);
 		}else if(result.getStatus() == ITestResult.SUCCESS) {
 			LogUtil.pass("[TEST PASS]: " + testName);
 		}

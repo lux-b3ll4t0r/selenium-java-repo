@@ -12,7 +12,7 @@ import org.openqa.selenium.WebElement;
 
 import com.github.javafaker.Faker;
 
-import common.pojos.UIProduct;
+import ui.pojos.UIProduct;
 import ui.utils.DriverFactory;
 import ui.utils.Webtool;
 	

@@ -1,4 +1,4 @@
-package common.pojos;
+package api.pojos;
 
 import java.util.Arrays;
 import java.util.List;

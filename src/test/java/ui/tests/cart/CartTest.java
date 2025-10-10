@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import common.pojos.UIProduct;
 import common.utils.LogUtil;
 import ui.constants.UrlConstants;
 import ui.pages.cart.Cart;
@@ -16,6 +15,7 @@ import ui.pages.common.ProductDetails;
 import ui.pages.common.ViewProduct;
 import ui.pages.homepage.Homepage;
 import ui.pages.signup_login.SignUpLogin;
+import ui.pojos.UIProduct;
 import ui.tests.base.UIBaseTest;
 import ui.utils.Webtool;
 

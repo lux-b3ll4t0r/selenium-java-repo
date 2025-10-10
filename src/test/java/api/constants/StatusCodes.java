@@ -4,5 +4,6 @@ public class StatusCodes {
 	
 	public static final int OK = 200;
 	public static final String USER_CREATED = "201";
+	public static final int METHOD_NOT_ALLOWED = 405;
 	
 }

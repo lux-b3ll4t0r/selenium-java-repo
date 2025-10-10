@@ -29,7 +29,7 @@ public class DriverFactory {
 	private static void setupChromeOptions() {
 		chromeOptions = new ChromeOptions();
 		
-		if(isHeadless) chromeOptions.addArguments("--headless=new");
+		if(isHeadless) chromeOptions.addArguments("--headless=new", "--disable-gpu");
 		chromeOptions.addArguments("--start-maximized");
 		chromeOptions.addArguments("--window-size=1920,1080");
 		chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);

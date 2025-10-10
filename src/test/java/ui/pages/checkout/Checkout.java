@@ -7,7 +7,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
-import common.pojos.UIProduct;
+
+import ui.pojos.UIProduct;
 import ui.utils.Webtool;
 
 public class Checkout {

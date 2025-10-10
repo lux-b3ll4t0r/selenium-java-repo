@@ -114,6 +114,10 @@ public class ConfigManager {
 		return get("brandsSchema");
 	}
 	
+	public static String getUsetDetailsSchema() {
+		return get("userDetailsSchema");
+	}
+	
 	public static String getLoginSchema() {
 		return get("loginSchema");
 	}

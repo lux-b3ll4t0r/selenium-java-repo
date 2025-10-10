@@ -17,7 +17,7 @@ public class ExtentReportManager {
 			// Set up spark reporter
 			ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);
 			reporter.config().setReportName("Automation Exercise Report");
-			
+		
 			// Create and configure ExtentReports instance
 			extent = new ExtentReports();
 			extent.attachReporter(reporter);

@@ -18,6 +18,11 @@ public class AccountApi{
 		return APITools.postForm(RequestFactory.getBaseSpec(), ApiEndpoints.CREATE_ACCOUNT, userData);
 	}
 	
+	public static Response createNewUser(Map<String, Object> userMap) {
+		return APITools.postForm(RequestFactory.getBaseSpec(), ApiEndpoints.CREATE_ACCOUNT, userMap);
+	}
+	
+	
 	public static Response login(String email, String password) {
 		Map<String, Object> loginInfo = new HashMap<>();
 		loginInfo.put("email", email);
@@ -34,8 +39,16 @@ public class AccountApi{
 		return APITools.deleteForm(RequestFactory.getBaseSpec(), ApiEndpoints.DELETE_ACCOUNT, deleteForm);
 	}
 	
+	public static Response deleteUser(Map<String, Object> userMap) {
+		return APITools.deleteForm(RequestFactory.getBaseSpec(), ApiEndpoints.DELETE_ACCOUNT, userMap);
+	}
+	
 	public static Response updateUser(User user) {
 		Map<String, Object> userMap = user.getAsMap();	
+		return APITools.putForm(RequestFactory.getBaseSpec(), ApiEndpoints.UPDATE_ACCOUNT, userMap);
+	}
+	
+	public static Response updateUser(Map<String, Object> userMap) {
 		return APITools.putForm(RequestFactory.getBaseSpec(), ApiEndpoints.UPDATE_ACCOUNT, userMap);
 	}
 	

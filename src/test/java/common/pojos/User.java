@@ -22,7 +22,7 @@ public class User {
 	@JsonProperty("last_name")
 	String lastName;
 	
-	@JsonProperty("birth_date")
+	@JsonProperty("birth_day")
 	String birthDate;
 	
 	@JsonProperty("birth_month")
@@ -286,7 +286,6 @@ public class User {
 	}
 
 	public Map<String, Object> getAsMap(){
-
 		Map<String, Object> userMap = new HashMap<>();
 		userMap.put("name", this.getName());
 		userMap.put("email", this.getEmail());
@@ -309,6 +308,50 @@ public class User {
 		return userMap;
 	}
 	
+	public Map<String, Object> getAsMapRequiredOnly(){
+		Map<String, Object> userMap = new HashMap<>();
+		userMap.put("name", this.getName());
+		userMap.put("email", this.getEmail());
+		userMap.put("password", this.getPassword());
+		userMap.put("firstname", this.getFirstName());
+		userMap.put("lastname", this.getLastName());
+		userMap.put("address1", this.getAddress1());
+		userMap.put("country", this.getCountry());
+		userMap.put("state", this.getState());
+		userMap.put("city", this.getCity());
+		userMap.put("zipcode", this.getZipcode());
+		userMap.put("mobile_number", this.getMobileNumber());
+
+		return userMap;
+	}
+	
+	public Map<String, Object> getAsUserDetailsCompareMap(){
+		Map<String, Object> userMap = new HashMap<>();
+		userMap.put("name", this.getName());
+		userMap.put("email", this.getEmail());
+		userMap.put("title", this.getTitle());
+		userMap.put("birth_day", this.getBirthDate());
+		userMap.put("birth_month", this.getBirthMonth());
+		userMap.put("birth_year", this.getBirthYear());
+		userMap.put("first_name", this.getFirstName());
+		userMap.put("last_name", this.getLastName());
+		userMap.put("company", this.getCompany());
+		userMap.put("address1", this.getAddress1());
+		userMap.put("address2", this.getAddress2());
+		userMap.put("country", this.getCountry());
+		userMap.put("state", this.getState());
+		userMap.put("city", this.getCity());
+		userMap.put("zipcode", this.getZipcode());
+		return userMap;
+	}
+	
+	public Map<String, Object> getDeleteRequestMap(){
+		Map<String, Object> userMap = new HashMap<>();
+		userMap.put("email", this.getEmail());
+		userMap.put("password", this.getPassword());
+		
+		return userMap;
+	}
 	
 	public String toSafeString() {	
 		return "[User: Title: " + title +

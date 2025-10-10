@@ -8,8 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import common.pojos.UIProduct;
 import ui.constants.UrlConstants;
+import ui.pojos.UIProduct;
 import ui.utils.DriverFactory;
 import ui.utils.Webtool;
 

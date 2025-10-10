@@ -2,6 +2,7 @@ package api.utils;
 
 import java.io.IOException;
 import java.util.List;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -11,19 +12,24 @@ import io.restassured.response.Response;
 public class JsonUtil {
 	
 	public static String getStringValue(Response response, String key) {
-		return response.then().extract().jsonPath().getString(key);
+		return response.jsonPath().getString(key);
 	}
 	
 	public static int getIntValue(Response response, String key) {
-		return response.then().extract().jsonPath().getInt(key);
+		return response.jsonPath().getInt(key);
 	}
 	
 	public static List<String> getList(Response response, String key){
-		return response.then().extract().jsonPath().getList(key);
+		return response.jsonPath().getList(key);
 	}
 	
 	public static <T> List<T> getListAsObject(Response response, String key, Class<T> className){
 		return response.jsonPath().getList(key, className);
+	}
+	
+	
+	public static <T> T getObject(Response response, String key, Class<T> className){
+		return response.jsonPath().getObject(key, className);
 	}
 	
     public static void prettyPrintJsonResponse(Response response) {

@@ -1,4 +1,4 @@
-package common.pojos;
+package ui.pojos;
 
 import java.util.ArrayList;
 import java.util.Collections;

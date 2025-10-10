@@ -37,11 +37,34 @@ public class UserDataGenerator {
 		
 	}
 	
+	public static User requiredApiFields() {
+		
+		return new User.Builder()
+				.name(name())
+				.email(email())
+				.password(password())
+				.first_name()
+				.last_name()
+				.address1(address1())
+				.country(country())
+				.state(state())
+				.city(city())
+				.zipcode(zipCode())
+				.mobile_number(mobileNumber())
+				.build();		
+	}
 	
 	public static String name() {
 		return faker.name().firstName() + " " + faker.name().lastName();
 	}
-
+	
+	public static String firstName() {
+		return faker.name().firstName();
+	}
+	
+	public static String lastName() {
+		return faker.name().lastName();
+	}
 	
 	public static String email() {
 		return faker.internet().emailAddress();
@@ -67,7 +90,7 @@ public class UserDataGenerator {
 	}
 		
 	public static String birthYear() {
-		return String.valueOf(MathUtils.getRandomIntWithRange(1900, 2025));
+		return String.valueOf(MathUtils.getRandomIntWithRange(1900, 2021));
 	}
 	
 	public static String newsletter() {

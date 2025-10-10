@@ -3,8 +3,8 @@ package api.utils;
 import java.util.List;
 import java.util.Map;
 
+import api.pojos.APIProduct;
 import api.services.ProductsApi;
-import common.pojos.APIProduct;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;

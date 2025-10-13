@@ -2,12 +2,17 @@ package api.services;
 
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import api.constants.ApiEndpoints;
+import api.constants.JsonPaths;
+import api.constants.ResponseCodes;
 import api.utils.APITools;
+import api.utils.JsonUtil;
 import api.utils.RequestFactory;
 import common.pojos.User;
+import common.utils.LogUtil;
 import db.utils.SQLWorkbench;
 import io.restassured.response.Response;
 
@@ -85,6 +90,21 @@ public class AccountApi{
 		
 		}else {
 			throw new IllegalArgumentException("Username or password are incorrect, no user returned.");
+		}
+	}
+	
+	public static void cleanUpUsers(List<User> usersToDelete) {
+		if(!usersToDelete.isEmpty()) {
+			for(User user : usersToDelete) {
+				try {
+					Response deleteResponse = AccountApi.deleteUser(user);
+					if(JsonUtil.getIntValue(deleteResponse, JsonPaths.RESPONSE_CODE) != ResponseCodes.OK) {
+						LogUtil.warn("User: '" + user.getEmail() + "' was not deleted. May have already been deleted.");
+					}
+				}catch(Exception e) {
+					LogUtil.warn("Delete request failed: " + e);
+				}
+			}
 		}
 	}
 }

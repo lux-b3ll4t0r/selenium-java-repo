@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import common.utils.LogUtil;
@@ -16,7 +15,6 @@ import ui.pages.products.Products;
 import ui.tests.base.UIBaseTest;
 import ui.utils.Webtool;
 
-@Listeners(common.listeners.TestListener.class)
 public class ProductsTest extends UIBaseTest{
 	
 	private Homepage homepage;
@@ -26,7 +24,6 @@ public class ProductsTest extends UIBaseTest{
 	
 	@BeforeClass(alwaysRun = true)
 	public void setupClass() {
-		LogUtil.trace("Setting up class resources.");
 		homepage = new Homepage();
 		products = new Products();
 		viewProduct = new ViewProduct();
@@ -41,7 +38,7 @@ public class ProductsTest extends UIBaseTest{
 	
 	@Test(groups = {"smoke"}, priority = 0)
 	public void products_list_smoke_test() {
-		LogUtil.info("* Verifying all products are listed in the Products page.");	
+		LogUtil.info("Verifying all products are listed in the Products page.");	
 		
 		LogUtil.info("Navigating to Products.");
 		homepage.navigateToProducts();
@@ -53,7 +50,7 @@ public class ProductsTest extends UIBaseTest{
 	
 	@Test(groups = {"smoke"}, priority = 1)
 	public void search_smoke_test() {
-		LogUtil.info("* Verifying searching for a product returns matching results.");
+		LogUtil.info("Verifying searching for a product returns matching results.");
 		
 		LogUtil.info("Navigating to Products.");
 		homepage.navigateToProducts();
@@ -68,7 +65,7 @@ public class ProductsTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"}, priority = 2, dataProvider = "search")
 	public void search_functional_test(String search) {
-		LogUtil.info("* Verifying products details match the searched product.");
+		LogUtil.info("Verifying products details match the searched product.");
 		
 		LogUtil.info("Navigating to Products.");
 		homepage.navigateToProducts();
@@ -97,7 +94,7 @@ public class ProductsTest extends UIBaseTest{
 
 	@Test(groups = {"functional", "negative"}, priority = 2, dataProvider = "negativeSearch")
 	public void search_negative_test(String search) {
-		LogUtil.info("* Verifying invalid search values return no products.");
+		LogUtil.info("Verifying invalid search values return no products.");
 		
 		LogUtil.info("Navigating to Products.");
 		homepage.navigateToProducts();

@@ -1,12 +1,18 @@
 package common.utils;
 
 import java.time.Month;
+import java.util.UUID;
 
 import com.github.javafaker.Faker;
 
 import common.pojos.User;
 
 public class UserDataGenerator {
+	
+	public static void main(String[] args) {
+		String email = new Faker().internet().emailAddress().replace("@", UUID.randomUUID() + "@");
+		System.out.println(email);
+	}
 	
 	private static final Faker faker = new Faker();
 	
@@ -67,7 +73,7 @@ public class UserDataGenerator {
 	}
 	
 	public static String email() {
-		return faker.internet().emailAddress();
+		return faker.internet().emailAddress().replace("@", UUID.randomUUID() + "@");
 	}
 	
 	public static String password() {

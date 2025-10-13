@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
@@ -17,7 +16,6 @@ import ui.pages.common.ViewProduct;
 import ui.tests.base.UIBaseTest;
 import ui.utils.Webtool;
 
-@Listeners(common.listeners.TestListener.class)
 public class ViewProductTest extends UIBaseTest{
 
 	private ViewProduct viewProduct;
@@ -38,7 +36,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"smoke"}, priority = 0)
 	public void view_product_smoke_test() {
-		LogUtil.info("* Verifying view products link directs and displays the product is visible.");
+		LogUtil.info("Verifying view products link directs and displays the product is visible.");
 	
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -51,7 +49,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"}, priority = 1)
 	public void view_product_functional_test() {
-		LogUtil.info("* Verifying correct product information is displayed when viewing product details.");
+		LogUtil.info("Verifying correct product information is displayed when viewing product details.");
 		
 		String img = productDetails.getProductImgSrc();
 		String price = productDetails.getProductPrice();
@@ -72,7 +70,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"smoke"}, priority = 2)
 	public void view_product_quantity_smoke_test() {
-		LogUtil.info("* Verifying quantity is visible in the view product page.");
+		LogUtil.info("Verifying quantity is visible in the view product page.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -83,7 +81,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"}, priority = 3, dataProvider = "validQuantities")
 	public void view_product_quantity_functional_test(int quantity) {
-		LogUtil.info("* Verifying quantity can be populated with valid inputs.");		
+		LogUtil.info("Verifying quantity can be populated with valid inputs.");		
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -106,7 +104,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"}, priority = 4)
 	public void view_product_quantity_negative_test() {
-		LogUtil.info("* Verifying product quantity negative values.");
+		LogUtil.info("Verifying product quantity negative values.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -120,7 +118,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"smoke"}, priority = 5)
 	public void view_product_write_review_smoke_test() {
-		LogUtil.info("* Verifying write review section can be submitted successfully.");
+		LogUtil.info("Verifying write review section can be submitted successfully.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -132,7 +130,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"}, priority = 6)
 	public void view_product_write_review_negative_smoke_test() {
-		LogUtil.info("* Verifying negative inputs.");
+		LogUtil.info("Verifying negative inputs.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -146,7 +144,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"}, priority = 8)
 	public void view_product_write_review_name_negative_test() {
-		LogUtil.info("* Verifying an error message is displayed when submitting with no name.");
+		LogUtil.info("Verifying an error message is displayed when submitting with no name.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -162,7 +160,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"}, priority = 9)
 	public void view_product_write_review_email_negative_test() {
-		LogUtil.info("* Verifying an error message is displayed when submitting with no email.");
+		LogUtil.info("Verifying an error message is displayed when submitting with no email.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();
@@ -178,7 +176,7 @@ public class ViewProductTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"}, priority = 10)
 	public void view_product_write_review_msg_negative_test() {
-		LogUtil.info("* Verifying an error message is displayed when submitting with no message.");
+		LogUtil.info("Verifying an error message is displayed when submitting with no message.");
 		
 		LogUtil.info("Clicking View Product.");
 		productDetails.clickViewProduct();

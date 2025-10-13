@@ -145,7 +145,7 @@ public class SignUpAccountInfo {
 	
 	public void enterAndSubmitAccInfo(User user) {
 		selectTitle(user.getTitle());
-		enterPassword(System.getenv("UI_PASS")); 
+		enterPassword(user.getPassword()); 
 		selectDay(user.getBirthDate());				 
 		selectMonth(user.getBirthMonth());
 		selectYear(user.getBirthYear());
@@ -213,85 +213,7 @@ public class SignUpAccountInfo {
 			selector.selectByValue(String.valueOf(year));
 		}
 		}catch(Exception e) {
-			LogUtil.error("Year not in range (1900-2025) or value doesn't exist", e);
+			LogUtil.error("Year not in range (1900-2021) or value doesn't exist", e);
 		}
 	}
-	
-
-	
-	
-	/////////////////////////////////////////////
-	
-//	public String getGender1ButtonValue() {
-//		return gender1Button.getAttribute("value");
-//	}
-//
-//	public String getGender2ButtonValue() {
-//		return gender2Button.getAttribute("value");
-//	}
-//
-//	public String getNameInputValue() {
-//		return nameInput.getAttribute("value");
-//	}
-//
-//	public String getEmailInputValue() {
-//		return emailInput.getAttribute("value");
-//	}
-//
-//	public String getPasswordInputValue() {
-//		return passwordInput.getAttribute("value");
-//	}
-//
-//	public String getDaySelectorValue() {
-//		return daySelector.getAttribute("value");
-//	}
-//
-//	public String getMonthSelectorValue() {
-//		return monthSelector.getAttribute("value");
-//	}
-//
-//	public String getYearSelectorValue() {
-//		return yearSelector.getAttribute("value");
-//	}
-//
-//	public String getFirstNameInputValue() {
-//		return firstNameInput.getAttribute("value");
-//	}
-//
-//	public String getLastNameInputValue() {
-//		return lastNameInput.getAttribute("value");
-//	}
-//
-//	public String getCompanyInputValue() {
-//		return companyInput.getAttribute("value");
-//	}
-//
-//	public String getAddress1InputValue() {
-//		return address1Input.getAttribute("value");
-//	}
-//
-//	public String getAddress2InputValue() {
-//		return address2Input.getAttribute("value");
-//	}
-//
-//	public String getCountrySelectorValue() {
-//		return countrySelector.getAttribute("value");
-//	}
-//
-//	public String getStateInputValue() {
-//		return stateInput.getAttribute("value");
-//	}
-//
-//	public String getCityInputValue() {
-//		return cityInput.getAttribute("value");
-//	}
-//
-//	public String getZipCodeInputValue() {
-//		return zipCodeInput.getAttribute("value");
-//	}
-//
-//	public String getMobileNumberInputValue() {
-//		return mobileNumberInput.getAttribute("value");
-//	}
-
 }

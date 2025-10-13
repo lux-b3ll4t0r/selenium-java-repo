@@ -18,6 +18,7 @@ import api.tests.base.APIBaseTest;
 import api.utils.APITools;
 import api.utils.JsonUtil;
 import api.utils.RequestFactory;
+import api.utils.ResponseValidator;
 import common.utils.ConfigManager;
 import common.utils.LogUtil;
 import io.restassured.response.Response;
@@ -130,25 +131,22 @@ public class ValidLoginTest extends APIBaseTest{
 	}
 	
 	@Test (groups = {"functional", "negative"}, priority = 5, dataProvider = "invalidMethods")
-	public void verify_invalid_request_method_negative_test(String method, int responseCode, String responseMessage) {
-		LogUtil.info("Verifying invalid HTTP methods are rejected.");
+	public void verify_invalid_request_method_negative_test(String method) {
+		LogUtil.info("Verifying invalid HTTP methods are not allowed.");
 		
 		LogUtil.info("Sending request using: " + method);
 		Response response = APITools.sendRequest(RequestFactory.getBaseSpec(), method, ApiEndpoints.VERIFY_LOGIN);
 		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE), responseCode);
-		softAssert.assertEquals(JsonUtil.getStringValue(response, JsonPaths.MESSAGE), responseMessage);
-		softAssert.assertAll();
-		LogUtil.info("Method rejected successfully.");
+		ResponseValidator.verifyMethodNotAllowedWithResponseCode(response);
+		LogUtil.info(method + ": was not allowed.");
 	}
 	
 	@DataProvider(name = "invalidMethods")
 	public Object[][] invalidMethods(){
 		return new Object[][] {
-			{"GET", ResponseCodes.METHOD_NOT_SUPPORTED, ResponseMessages.METHOD_NOT_SUPPORTED},
-			{"PUT", ResponseCodes.METHOD_NOT_SUPPORTED, ResponseMessages.METHOD_NOT_SUPPORTED},
-			{"DELETE", ResponseCodes.METHOD_NOT_SUPPORTED, ResponseMessages.METHOD_NOT_SUPPORTED},
+			{"GET"},
+			{"PUT"},
+			{"DELETE"},
 		};
 	}
 }

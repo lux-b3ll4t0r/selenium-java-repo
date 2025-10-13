@@ -32,7 +32,7 @@ public class DriverFactory {
 		if(isHeadless) chromeOptions.addArguments("--headless=new", "--disable-gpu");
 		chromeOptions.addArguments("--start-maximized");
 		chromeOptions.addArguments("--window-size=1920,1080");
-		chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+		chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 	}
 	
 	private static void setupFirefoxOptions() {

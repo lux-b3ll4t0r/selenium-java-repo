@@ -7,6 +7,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+import api.constants.JsonPaths;
 import io.restassured.response.Response;
 
 public class JsonUtil {
@@ -64,4 +65,12 @@ public class JsonUtil {
     		return false;
     	}
     } 
+    
+    public static int getResponseCode(Response response) {
+    	return JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
+    }
+    
+    public static String getResponseMessage(Response response) {
+    	return JsonUtil.getStringValue(response, JsonPaths.MESSAGE);
+    }
 }

@@ -5,7 +5,6 @@ import java.sql.Connection;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -23,7 +22,6 @@ import ui.pages.signup_login.SignUpLogin;
 import ui.tests.base.UIBaseTest;
 import ui.utils.Webtool;
 
-@Listeners(common.listeners.TestListener.class)
 public class SignUpTest extends UIBaseTest{
 	
 	private SignUpLogin signUpLogin;
@@ -33,7 +31,6 @@ public class SignUpTest extends UIBaseTest{
 
 	@BeforeClass(alwaysRun = true)
 	public void setupClass() {
-		LogUtil.trace("Setting up class resources.");
 		signUpLogin = new SignUpLogin();
 		signUpAccInfo = new SignUpAccountInfo();
 		accountCreated = new AccountCreated();
@@ -49,7 +46,7 @@ public class SignUpTest extends UIBaseTest{
 	
 	@Test (groups = {"smoke"}, priority = 0)
 	public void initial_signup_test() {
-		LogUtil.info("* Verifying a new user can enter name and email address to create account.");
+		LogUtil.info("Verifying a new user can enter name and email address to create account.");
 		
 		LogUtil.info("Navigating to Signup.");
 		homepage.navigateToSignup();
@@ -69,15 +66,14 @@ public class SignUpTest extends UIBaseTest{
 	
 	@Test(groups = {"smoke"}, priority = 1)
 	public void account_info_smoke_test() {
-		LogUtil.info("* Verifying user can submit account information.");
+		LogUtil.info("Verifying user can submit account information.");
 		
 		LogUtil.info("Navigating to Signup.");
 		homepage.navigateToSignup();
 		
 		Webtool.waitForUrlToBe(UrlConstants.LOGIN);
 		
-		User user = UserDataGenerator.randomUser(); // creates a new user
-			// generates that users info
+		User user = UserDataGenerator.randomUser(); 
 		
 		LogUtil.info("Signing up new user.");
 		signUpLogin.signUpNewUserWithRetry(user.getFirstName(), user.getEmail());
@@ -96,7 +92,7 @@ public class SignUpTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"}, priority = 1)
 	public void account_info_data_persist_functional_test() {
-		LogUtil.info("* Verifying initial name and email persist to account information page.");
+		LogUtil.info("Verifying initial name and email persist to account information page.");
 		
 		LogUtil.info("Navigating to Signup.");
 		homepage.navigateToSignup();
@@ -120,7 +116,7 @@ public class SignUpTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"})
 	public void account_info_incomplete_functional_test() {
-		LogUtil.info("* Verifying account information form is rejected when submitting incomplete form.");
+		LogUtil.info("Verifying account information form is rejected when submitting incomplete form.");
 		
 		LogUtil.info("Navigating to Signup.");
 		homepage.navigateToSignup();

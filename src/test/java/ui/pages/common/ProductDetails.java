@@ -66,7 +66,7 @@ public class ProductDetails {
 	public List<WebElement> getAllProducts() {return Webtool.waitForVisibilityOfAllElementsLocatedBy(allProducts);}
 	public List<WebElement> getAllAddToCartBtns() {return Webtool.waitForVisibilityOfAllElementsLocatedBy(addToCartBtn);}
 	
-	public void addMultipleItemsToCart(int count) {
+	public void addItemsToCart(int count) {
 		List<WebElement> allBtns = getAllAddToCartBtns();
 		
 		for(int i = 0; i < count; i++) {

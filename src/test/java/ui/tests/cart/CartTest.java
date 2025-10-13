@@ -5,7 +5,6 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import common.utils.LogUtil;
@@ -19,7 +18,7 @@ import ui.pojos.UIProduct;
 import ui.tests.base.UIBaseTest;
 import ui.utils.Webtool;
 
-@Listeners(common.listeners.TestListener.class)
+
 public class CartTest extends UIBaseTest{
 
 	private Homepage homepage;
@@ -31,7 +30,6 @@ public class CartTest extends UIBaseTest{
 	
 	@BeforeClass(alwaysRun = true)
 	public void setupClass() {
-		LogUtil.trace("Setting up class resources.");
 		homepage = new Homepage();
 		productDetails = new ProductDetails();
 		viewProduct = new ViewProduct();
@@ -47,7 +45,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"smoke"}, priority = 0)
 	public void cart_smoke_test() {
-		LogUtil.info("* Verifying cart is visible with no items added.");
+		LogUtil.info("Verifying cart is visible with no items added.");
 		
 		LogUtil.info("Navigating to Cart.");
 		homepage.navigateToCart();
@@ -58,7 +56,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"smoke"}, priority = 1)
 	public void cart_item_added_smoke_test() {
-		LogUtil.info("* Verifying items added to cart are visible.");
+		LogUtil.info("Verifying items added to cart are visible.");
 		
 		LogUtil.info("Adding item to cart.");
 		productDetails.clickAddToCartBtn();
@@ -72,7 +70,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"smoke"}, priority = 2)
 	public void cart_item_removed_smoke_test() {
-		LogUtil.info("* Verifying items removed from cart are removed.");
+		LogUtil.info("Verifying items removed from cart are removed.");
 		
 		productDetails.clickAddToCartBtn();
 		LogUtil.info("Added item to cart.");
@@ -90,7 +88,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"smoke"}, priority = 3)
 	public void cart_directs_to_checkout_smoke_test() {
-		LogUtil.info("* Verifying Cart directs to Checkout when proceeding to checkout.");
+		LogUtil.info("Verifying Cart directs to Checkout when proceeding to checkout.");
 		
 		homepage.navigateToLogin();
 		
@@ -113,7 +111,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"functional"})
 	public void cart_refresh_functional_test() {
-		LogUtil.info("* Verifying cart items persist when refreshing the page.");
+		LogUtil.info("Verifying cart items persist when refreshing the page.");
 		
 		UIProduct product = productDetails.getProductDetails();
 		
@@ -134,7 +132,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"functional"})
 	public void homepage_cart_item_details_functional_test() {
-		LogUtil.info("* Verifying product details match when adding to cart from Homepage.");
+		LogUtil.info("Verifying product details match when adding to cart from Homepage.");
 		
 		UIProduct homepageProduct = productDetails.getProductDetails();
 		
@@ -154,7 +152,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"functional"})
 	public void viewpage_cart_item_details_functional_test() {
-		LogUtil.info("* Verifying product details match when adding to cart from View Product page.");
+		LogUtil.info("Verifying product details match when adding to cart from View Product page.");
 		
 		productDetails.clickViewProduct();
 		
@@ -170,10 +168,10 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"functional"})
 	public void cart_mutliple_items_removed_smoke_test() {
-		LogUtil.info("* Verifying multiple items can be removed from cart.");
+		LogUtil.info("Verifying multiple items can be removed from cart.");
 		
 		LogUtil.info("Adding multiple items to cart.");
-		productDetails.addMultipleItemsToCart(2);;
+		productDetails.addItemsToCart(2);;
 		
 		LogUtil.info("Navigating to cart.");
 		Webtool.get(UrlConstants.CART);
@@ -188,7 +186,7 @@ public class CartTest extends UIBaseTest{
 	
 	@Test (groups = {"functional"})
 	public void cart_item_total_functional_test() {
-		LogUtil.info("* Verifying item total reflects the quantity amount.");
+		LogUtil.info("Verifying item total reflects the quantity amount.");
 		
 		int quantity = 2;
 		

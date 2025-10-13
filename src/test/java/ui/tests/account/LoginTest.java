@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import common.utils.LogUtil;
 import ui.constants.UrlConstants;
@@ -13,7 +12,6 @@ import ui.pages.signup_login.SignUpLogin;
 import ui.tests.base.UIBaseTest;
 import ui.utils.Webtool;
 
-@Listeners(common.listeners.TestListener.class)
 public class LoginTest extends UIBaseTest{
 	
 	private Homepage homepage;
@@ -21,7 +19,6 @@ public class LoginTest extends UIBaseTest{
 	
 	@BeforeClass(alwaysRun = true)
 	public void setupClass() {
-		LogUtil.trace("Setting up class resources.");
 		homepage = new Homepage();
 		login = new SignUpLogin();
 	}
@@ -34,7 +31,7 @@ public class LoginTest extends UIBaseTest{
 
 	@Test(groups = {"smoke"})
 	public void login_smoke_test() {
-		LogUtil.info("* Verifying user can login successfully.");
+		LogUtil.info("Verifying user can login successfully.");
 		
 		LogUtil.info("Navigating to Sign up / Login");
 		homepage.navigateToLogin();
@@ -51,7 +48,7 @@ public class LoginTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"})
 	public void login_valid_email_invalid_pass_functional_test() {
-		LogUtil.info("* Verifying attempting to login with valid email but invalid password rejects form.");
+		LogUtil.info("Verifying attempting to login with valid email but invalid password rejects form.");
 		
 		LogUtil.info("Navigating to Sign up / Login");
 		homepage.navigateToLogin();
@@ -68,7 +65,7 @@ public class LoginTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"})
 	public void login_partial_email_valid_pass_functional_test() {
-		LogUtil.info("* Verifying attempting to login with partial valid email but valid password rejects form.");
+		LogUtil.info("Verifying attempting to login with partial valid email but valid password rejects form.");
 		
 		LogUtil.info("Navigating to Sign up / Login");
 		homepage.navigateToLogin();
@@ -86,7 +83,7 @@ public class LoginTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"}, dataProvider = "pages")
 	public void login_navigation_functional_test(String page) {
-		LogUtil.info("* Verifying login session is saved navigating to different pages.");
+		LogUtil.info("Verifying login session is saved navigating to different pages.");
 		
 		LogUtil.info("Navigating to Sign up / Login");
 		homepage.navigateToLogin();
@@ -117,7 +114,7 @@ public class LoginTest extends UIBaseTest{
 	
 	@Test(groups = {"functional", "negative"}, dataProvider = "incompleteLogin")
 	public void login_form_incomplete_negative_test(String type, String email, String password) {
-		LogUtil.info("* Verifying login form is rejected with incomplete inputs.");
+		LogUtil.info("Verifying login form is rejected with incomplete inputs.");
 		
 		LogUtil.info("Navigating to Sign up / Login");
 		homepage.navigateToLogin();
@@ -126,7 +123,6 @@ public class LoginTest extends UIBaseTest{
 		login.login(email, password);	
 
 		Assert.assertTrue(login.isBrowserErrorDisplayed(), "No browser error was displayed.");
-
 		
 		LogUtil.info("Browser error displayed successfully for incomplete form.");
 	}

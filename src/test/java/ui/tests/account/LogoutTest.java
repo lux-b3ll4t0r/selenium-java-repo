@@ -3,7 +3,6 @@ package ui.tests.account;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import common.utils.LogUtil;
@@ -13,7 +12,6 @@ import ui.pages.signup_login.SignUpLogin;
 import ui.tests.base.UIBaseTest;
 import ui.utils.Webtool;
 
-@Listeners(common.listeners.TestListener.class)
 public class LogoutTest extends UIBaseTest{
 	
 	private Homepage homepage;
@@ -21,7 +19,6 @@ public class LogoutTest extends UIBaseTest{
 	
 	@BeforeClass(alwaysRun = true)
 	public void setupClass() {
-		LogUtil.trace("Setting up class resources.");
 		homepage = new Homepage();
 		login = new SignUpLogin();
 	}
@@ -34,7 +31,7 @@ public class LogoutTest extends UIBaseTest{
 
 	@Test(groups = {"smoke"})
 	public void logout_smoke_test() {
-		LogUtil.info("* Verifying user can log out successfully.");
+		LogUtil.info("Verifying user can log out successfully.");
 		
 		LogUtil.info("Navigating to: Sign up / Login");
 		homepage.navigateToLogin();
@@ -55,7 +52,7 @@ public class LogoutTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"})
 	public void logout_navigate_backwards_functional_test() {
-		LogUtil.info("* Verifying after logout, user is still logged out after navigating backwards.");
+		LogUtil.info("Verifying after logout, user is still logged out after navigating backwards.");
 		
 		LogUtil.info("Navigating to: Sign up / Login");
 		homepage.navigateToLogin();
@@ -78,7 +75,7 @@ public class LogoutTest extends UIBaseTest{
 	
 	@Test(groups = {"functional"})
 	 	public void logout_new_tab_functional_test() {
-		LogUtil.info("* Verifying user is logged out after accessing through a new tab.");
+		LogUtil.info("Verifying user is logged out after accessing through a new tab.");
 		
 		LogUtil.info("Navigating to: Sign up / Login");
 		homepage.navigateToLogin();

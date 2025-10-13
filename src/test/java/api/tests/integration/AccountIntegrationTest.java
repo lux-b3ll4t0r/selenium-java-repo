@@ -8,9 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import api.constants.JsonPaths;
-import api.constants.ResponseCodes;
 import api.services.AccountApi;
 import api.tests.base.APIBaseTest;
 import api.utils.JsonUtil;
@@ -124,7 +121,7 @@ public class AccountIntegrationTest extends APIBaseTest{
 		ResponseValidator.verifyUserExists(AccountApi.login(email, user.getPassword()));
 		
 		LogUtil.info("User login verification successful, deleting user.");
-		ResponseValidator.verifyUserDeletion(AccountApi.deleteUser(user));
+		ResponseValidator.verifyUserDeleted(AccountApi.deleteUser(user));
 		
 		LogUtil.info("User was deleted successfully, verifying account is not found.");
 		ResponseValidator.verifyUserNotExisting(AccountApi.login(email, user.getPassword()));
@@ -150,7 +147,7 @@ public class AccountIntegrationTest extends APIBaseTest{
 		ResponseValidator.verifyUserDetailsExist(AccountApi.getUserInfo(email));
 		
 		LogUtil.info("User details exist, deleting user.");
-		ResponseValidator.verifyUserDeletion(AccountApi.deleteUser(user));
+		ResponseValidator.verifyUserDeleted(AccountApi.deleteUser(user));
 		
 		LogUtil.info("User deleted successfully, verifying account is not found when requesting details.");
 		ResponseValidator.verifyNoUserDetails(AccountApi.getUserInfo(email));
@@ -159,17 +156,6 @@ public class AccountIntegrationTest extends APIBaseTest{
 	@AfterClass(alwaysRun = true)
 	public void cleanUpUsers() {
 		LogUtil.info("Cleaning up users.");
-		if(!createdUsers.isEmpty()) {
-			for(User user : createdUsers) {
-				try {
-					Response deleteResponse = AccountApi.deleteUser(user);
-					if(JsonUtil.getIntValue(deleteResponse, JsonPaths.RESPONSE_CODE) != ResponseCodes.OK) {
-						LogUtil.warn("User: '" + user.getEmail() + "' was not deleted. May have already been deleted.");
-					}
-				}catch(Exception e) {
-					LogUtil.warn("Delete request failed: " + e);
-				}
-			}
-		}
+		AccountApi.cleanUpUsers(createdUsers);
 	}
 }

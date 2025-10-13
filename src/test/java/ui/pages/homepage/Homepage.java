@@ -15,7 +15,7 @@ public class Homepage {
 	private By footer = By.id("footer");
 	private By homeNav = By.partialLinkText("Home");
 	private By productsNav = By.xpath("//a[@href='/products']");	
-	private By cartNav = By.xpath("//a[@href='/view_cart']");	
+	private By cartNav = By.xpath(" //li//a[@href='/view_cart']");	
 	private By signUpLoginNav = By.xpath("//a[@href='/login']");
 	private By testCasesNav = By.xpath("//a[@href='/test_cases']");
 	private By apiTestingNav = By.xpath("//a[@href='/api_list']");
@@ -24,10 +24,21 @@ public class Homepage {
 	private By homePageLogo = By.xpath("//img[@alt='Website for automation practice']");
 	private By loggedInAs = By.xpath("//i[@class='fa fa-user']/parent::a");
 	private By logoutButton = By.xpath("//a[@href='/logout']");
+	private By deleteButton = By.xpath("//a[@href='/delete_account']");
 	
 	public By getLoggedInAs() {return loggedInAs;}
 	public By getLogoutButton() {return logoutButton;}
+	public By getHomeNav() {return homeNav;}
+	public By getProductsNav() {return productsNav;}
+	public By getCartNav() {return cartNav;}
+	public By getSignUpLoginNav() {return signUpLoginNav;}
+	public By getTestCasesNav() {return testCasesNav;}
+	public By getApiTestingNav() {return apiTestingNav;}
+	public By getVideoTutorialsNav() {return videoTutorialsNav;}
+	public By getContactUsNav() {return contactUsNav;}
+	public void deleteUser() {Webtool.clickElement(deleteButton);}
 	public void logout() {Webtool.clickElement(logoutButton);}
+	public void navigateTo(By nav) {Webtool.clickElement(nav);}
 	public void navigateToHome() {Webtool.clickElement(homeNav);}
 	public void navigateToProducts() {Webtool.clickElement(productsNav);}
 	public void navigateToCart() {Webtool.clickElement(cartNav);}
@@ -53,6 +64,7 @@ public class Homepage {
 	public boolean isLogoutButtonVisible() {return Webtool.isElementVisible(logoutButton);}
 	public boolean isLoggedInAsVisible() {return Webtool.isElementVisible(loggedInAs);}
 	public boolean isHomePageLogoVisible() {return Webtool.isElementVisible(homePageLogo);}
+
 	
 	public boolean isHomePageVisible() {
 			return isMainHeaderVisible() && isSliderSectionVisible() 

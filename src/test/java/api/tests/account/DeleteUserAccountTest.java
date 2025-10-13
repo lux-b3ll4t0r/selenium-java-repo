@@ -1,22 +1,21 @@
 package api.tests.account;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import api.constants.ApiEndpoints;
-import api.constants.JsonPaths;
-import api.constants.ResponseCodes;
 import api.constants.ResponseMessages;
-import api.constants.StatusCodes;
 import api.services.AccountApi;
 import api.tests.base.APIBaseTest;
-import api.utils.JsonUtil;
 import api.utils.RequestFactory;
+import api.utils.ResponseValidator;
 import common.pojos.User;
 import common.utils.LogUtil;
 import common.utils.UserDataGenerator;
@@ -25,28 +24,22 @@ import io.restassured.response.Response;
 
 public class DeleteUserAccountTest extends APIBaseTest{
 	
+	private List<User> createdUsers = new ArrayList<>();
+	
 	@Test (groups = {"smoke"}, priority = 0)
 	public void verify_deleting_account_smoke_test() {
 		LogUtil.info("Verifying account is deleted successfully after sending a delete request.");
 		
 		User tempUser = UserDataGenerator.requiredApiFields();
+		
 		LogUtil.info("Creating new user to delete: " + tempUser.getEmail());
 		AccountApi.createNewUser(tempUser);
 		
 		LogUtil.info("Sending delete request.");
 		Response response = AccountApi.deleteUser(tempUser);
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		int statusCode = response.getStatusCode();
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String message = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);
-		LogUtil.info("Response Code: " + " - " + "Message: " + message);
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(statusCode, StatusCodes.OK);
-		softAssert.assertEquals(responseCode, ResponseCodes.OK);
-		softAssert.assertEquals(message, ResponseMessages.ACCOUNT_DELETED);
-		softAssert.assertAll();
-
+		ResponseValidator.verifyUserDeleted(response);
 		LogUtil.info("Account deleted successfully");
 	}
 	
@@ -58,6 +51,7 @@ public class DeleteUserAccountTest extends APIBaseTest{
 		
 		LogUtil.info("Creating new user to delete: " + tempUser.getEmail());
 		AccountApi.createNewUser(tempUser);
+		createdUsers.add(tempUser);
 		
 		LogUtil.info("Removing field: " + key);
 		Map<String, Object> userMap = tempUser.getDeleteRequestMap();
@@ -65,17 +59,9 @@ public class DeleteUserAccountTest extends APIBaseTest{
 	
 		LogUtil.info("Sending delete request.");
 		Response response = AccountApi.deleteUser(userMap);
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String message = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);
-		String expectedMessage = "Bad request, " + key + " parameter is missing in DELETE request."; 
-		LogUtil.info("Response Code: " + responseCode +" - " + "Message: " + message);
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(responseCode, ResponseCodes.BAD_REQUEST);
-		softAssert.assertEquals(message, expectedMessage);
-		softAssert.assertAll();
-
+		ResponseValidator.verifyUserDeleteRejected(response, key);
 		LogUtil.info("Delete request rejected successfully.");
 	}
 	
@@ -90,7 +76,7 @@ public class DeleteUserAccountTest extends APIBaseTest{
 	
 	@Test (groups = {"functional", "negative"}, priority = 2)
 	public void verify_invalid_credentials_negative_test() {
-		LogUtil.info("Verifying delete account request is rejected when credentials are invalid.");
+		LogUtil.info("Verifying account is not found when deleting and credentials are invalid.");
 
 		Map<String, Object> userMap = new HashMap<>();
 		userMap.put("email", "thisisafakeemail123@fakeemail.com");
@@ -98,45 +84,31 @@ public class DeleteUserAccountTest extends APIBaseTest{
 	
 		LogUtil.info("Sending delete request with invalid credentials.");
 		Response response = AccountApi.deleteUser(userMap);
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String message = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);
-		LogUtil.info("Response Code: " + responseCode +" - " + "Message: " + message);
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(responseCode, ResponseCodes.NOT_FOUND);
-		softAssert.assertEquals(message, ResponseMessages.ACCOUNT_NOT_FOUND);
-		softAssert.assertAll();
-
-		LogUtil.info("Delete request rejected successfully.");
+		ResponseValidator.verifyUserDeleteAccountNotFound(response);
+		LogUtil.info("Account was not found.");
 	}
 	
 	@Test (groups = {"functional", "negative"}, priority = 3, dataProvider = "invalidCredentials")
 	public void verify_partial_invalid_credentials_negative_test(String key, String value) {
-		LogUtil.info("Verifying delete account request is rejected when partial credentials are invalid.");
+		LogUtil.info("Verifying account is not found when deleting with partial invalid credentials.");
 		
 		User tempUser = UserDataGenerator.requiredApiFields();
 		
 		LogUtil.info("Creating new user to delete: " + tempUser.getEmail());
 		AccountApi.createNewUser(tempUser);
+		createdUsers.add(tempUser);
 		
-
 		Map<String, Object> userMap = tempUser.getDeleteRequestMap();
 		userMap.put(key, value);
 	
 		LogUtil.info("Sending delete request with invalid credential: " + key);
 		Response response = AccountApi.deleteUser(userMap);
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String message = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);
-		LogUtil.info("Response Code: " + responseCode +" - " + "Message: " + message);
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(responseCode, ResponseCodes.NOT_FOUND);
-		softAssert.assertEquals(message, ResponseMessages.ACCOUNT_NOT_FOUND);
-		softAssert.assertAll();
-
-		LogUtil.info("Delete request rejected successfully.");
+		ResponseValidator.verifyUserDeleteAccountNotFound(response);
+		LogUtil.info("Account was not found.");
 	}
 	
 	@DataProvider (name = "invalidCredentials")
@@ -151,13 +123,14 @@ public class DeleteUserAccountTest extends APIBaseTest{
 	}
 	
 	@Test (groups = {"functional", "negative"}, priority = 4, dataProvider = "invalidMethods")
-	public void verify_invalid_request_methods_functional_test(String method, int statusCode) {
-		LogUtil.info("Verifying invalid HTTP methods are rejected.");
+	public void verify_invalid_request_methods_functional_test(String method) {
+		LogUtil.info("Verifying invalid HTTP methods are not allowed.");
 		
 		User tempUser = UserDataGenerator.requiredApiFields();
 		
 		LogUtil.info("Creating new user to delete: " + tempUser.getEmail());
 		AccountApi.createNewUser(tempUser);
+		createdUsers.add(tempUser);
 		
 		Map<String, Object> userMap = tempUser.getDeleteRequestMap();
 		
@@ -170,18 +143,22 @@ public class DeleteUserAccountTest extends APIBaseTest{
 				.when()
 				.request(method, ApiEndpoints.DELETE_ACCOUNT);
 		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(response.getStatusCode(), statusCode);
-		softAssert.assertAll();
-		LogUtil.info("Method rejected successfully.");
+		ResponseValidator.verifyMethodNotAllowed(response);
+		LogUtil.info(method + ": was not allowed.");
 	}
 	
 	@DataProvider(name = "invalidMethods")
 	public Object[][] invalidMethods(){
 		return new Object[][] {
-			{"GET", StatusCodes.METHOD_NOT_ALLOWED},
-			{"POST", StatusCodes.METHOD_NOT_ALLOWED},
-			{"PUT", StatusCodes.METHOD_NOT_ALLOWED},
+			{"GET"},
+			{"POST"},
+			{"PUT"},
 		};
+	}
+	
+	@AfterClass
+	public void cleanUpUsers() {
+		LogUtil.info("Cleaning up users.");
+		AccountApi.cleanUpUsers(createdUsers);
 	}
 }

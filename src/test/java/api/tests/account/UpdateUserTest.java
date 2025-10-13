@@ -5,17 +5,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import com.github.javafaker.Faker;
 import api.constants.ApiEndpoints;
-import api.constants.JsonPaths;
-import api.constants.ResponseCodes;
 import api.constants.ResponseMessages;
 import api.constants.StatusCodes;
 import api.services.AccountApi;
 import api.tests.base.APIBaseTest;
-import api.utils.JsonUtil;
 import api.utils.RequestFactory;
+import api.utils.ResponseValidator;
 import common.pojos.User;
 import common.utils.LogUtil;
 import common.utils.UserDataGenerator;
@@ -31,10 +28,7 @@ public class UpdateUserTest extends APIBaseTest{
 		LogUtil.info("Creating new user to update.");
 		updateUser = UserDataGenerator.randomUser();
 		Response createUser = AccountApi.createNewUser(updateUser);
-		
-		if(createUser.statusCode() != StatusCodes.OK) {
-			LogUtil.warn("User creation did not return 200, test will likely fail.");
-		}
+		ResponseValidator.verifyUserCreated(createUser);
 	}
 	
 	@Test (groups = {"smoke"}, priority = 0)
@@ -46,18 +40,9 @@ public class UpdateUserTest extends APIBaseTest{
 		userMap.put("name", new Faker().name().fullName());
 	
 		Response response = AccountApi.updateUser(userMap);	
-		int statusCode = response.statusCode();
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String responseMessage = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);	
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		LogUtil.info("Status Code: '" + statusCode + "' - Response Code: '" + responseCode + "' - Response Message: '" + responseMessage + "'.");
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(statusCode, StatusCodes.OK);
-		softAssert.assertEquals(responseCode, ResponseCodes.OK);
-		softAssert.assertEquals(responseMessage, ResponseMessages.USER_UPDATED);
-		softAssert.assertAll();
-		
+		ResponseValidator.verifyUserUpdated(response);
 		LogUtil.info("User updated successfully.");
 	}
 	
@@ -72,18 +57,9 @@ public class UpdateUserTest extends APIBaseTest{
 		LogUtil.info("Updating field: '" + key + "' with value: '" + value + "' for user: '" + updateUser.getEmail() + "'.");
 		
 		Response response = AccountApi.updateUser(userMap);	
-		int statusCode = response.statusCode();
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String responseMessage = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);	
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		LogUtil.info("Status Code: '" + statusCode + "' - Response Code: '" + responseCode + "' - Response Message: '" + responseMessage + "'.");
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(statusCode, StatusCodes.OK, "Update user status code did not match expected.");
-		softAssert.assertEquals(responseCode, ResponseCodes.OK, "Update user response code did not match expected.");
-		softAssert.assertEquals(responseMessage, ResponseMessages.USER_UPDATED, "Update user response message did not match expected.");
-		softAssert.assertAll();
-		
+		ResponseValidator.verifyUserUpdated(response);
 		LogUtil.info("User updated successfully.");
 	}
 	
@@ -120,18 +96,9 @@ public class UpdateUserTest extends APIBaseTest{
 		userMap.put("state", new Faker().address().state());
 	
 		Response response = AccountApi.updateUser(userMap);	
-		int statusCode = response.statusCode();
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String responseMessage = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);	
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		LogUtil.info("Status Code: '" + statusCode + "' - Response Code: '" + responseCode + "' - Response Message: '" + responseMessage + "'.");
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(statusCode, StatusCodes.OK);
-		softAssert.assertEquals(responseCode, ResponseCodes.OK);
-		softAssert.assertEquals(responseMessage, ResponseMessages.USER_UPDATED);
-		softAssert.assertAll();
-		
+		ResponseValidator.verifyUserUpdated(response);
 		LogUtil.info("User updated successfully.");
 	}
 	
@@ -145,17 +112,9 @@ public class UpdateUserTest extends APIBaseTest{
 		userMap.remove(field);
 		
 		Response response = AccountApi.updateUser(userMap);	
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String responseMessage = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);	
-		String expectedMessage = "Bad request, " + field + " parameter is missing in PUT request.";
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		LogUtil.info("Response Code: '" + responseCode + "' - Response Message: '" + responseMessage + "'.");
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(responseCode, ResponseCodes.BAD_REQUEST);
-		softAssert.assertEquals(responseMessage, expectedMessage);
-		softAssert.assertAll();
-		
+		ResponseValidator.verifyUserUpdateRejected(response, field);
 		LogUtil.info("Update user request rejected successfully.");
 	}
 	
@@ -169,7 +128,7 @@ public class UpdateUserTest extends APIBaseTest{
 	
 	@Test (groups = {"functional", "negative"}, priority = 4, dataProvider = "invalidCredentials")
 	public void update_user_with_invalid_credentials_negative_test(String field, String value, String verification) {
-		LogUtil.info("Verifying user account request is reject when credentials are invalid.");
+		LogUtil.info("Verifying user account is not found when credentials are invalid.");
 	
 		LogUtil.info("Updating field '" + field + "' to verify '" + verification + "'");
 		
@@ -177,18 +136,10 @@ public class UpdateUserTest extends APIBaseTest{
 		userMap.replace(field, value);
 		
 		Response response = AccountApi.updateUser(userMap);	
-		int responseCode = JsonUtil.getIntValue(response, JsonPaths.RESPONSE_CODE);
-		String responseMessage = JsonUtil.getStringValue(response, JsonPaths.MESSAGE);	
-		 
+		LogUtil.info(ResponseMessages.apiStatusAndMessage(response));
 		
-		LogUtil.info("Response Code: '" + responseCode + "' - Response Message: '" + responseMessage + "'.");
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(responseCode, ResponseCodes.NOT_FOUND);
-		softAssert.assertEquals(responseMessage, ResponseMessages.ACCOUNT_NOT_FOUND);
-		softAssert.assertAll();
-		
-		LogUtil.info("Update user request rejected successfully.");
+		ResponseValidator.verifyUserUpdateAccountNotFound(response);
+		LogUtil.info("Account was not found.");
 	}
 	
 	@DataProvider(name = "invalidCredentials")
@@ -203,8 +154,8 @@ public class UpdateUserTest extends APIBaseTest{
 	}
 	
 	@Test (groups = {"functional", "negative"}, priority = 5, dataProvider = "invalidMethods")
-	public void verify_invalid_request_method_negative_test(String method, int responseCode) {
-		LogUtil.info("Verifying invalid HTTP methods are rejected.");
+	public void verify_invalid_request_method_negative_test(String method) {
+		LogUtil.info("Verifying invalid HTTP methods are not allowed.");
 		
 		Map<String, Object> userMap = updateUser.getAsMap();
 		 
@@ -216,22 +167,16 @@ public class UpdateUserTest extends APIBaseTest{
 							.when()
 							.request(method, ApiEndpoints.UPDATE_ACCOUNT);
 											
-		int statusCode = response.statusCode();
-		
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(statusCode, StatusCodes.METHOD_NOT_ALLOWED);
-		softAssert.assertAll();
-		
-		LogUtil.info("Method rejected successfully.");
+		ResponseValidator.verifyMethodNotAllowed(response);
+		LogUtil.info(method + ": was not allowed.");
 	}
 	
 	@DataProvider(name = "invalidMethods")
 	public Object[][] invalidMethods(){
 		return new Object[][] {
-			{"GET", ResponseCodes.METHOD_NOT_SUPPORTED},
-			{"POST", ResponseCodes.METHOD_NOT_SUPPORTED},
-			{"PATCH", ResponseCodes.METHOD_NOT_SUPPORTED},
-			{"DELETE", ResponseCodes.METHOD_NOT_SUPPORTED},
+			{"GET"},
+			{"POST"},
+			{"DELETE"},
 		};
 	}
 	

@@ -8,7 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
+import org.testng.annotations.Listeners;
 
 import com.aventstack.extentreports.ExtentTest;
 
@@ -17,13 +17,13 @@ import common.utils.LogUtil;
 import ui.utils.DriverFactory;
 import ui.utils.Webtool;
 
+@Listeners(common.listeners.TestListener.class)
 public class UIBaseTest extends BaseTest{
 
 	protected ThreadLocal<ExtentTest> classTest = new ThreadLocal<>();	
 	
 	@BeforeClass(alwaysRun = true)
 	public void setupUIBaseClass(ITestContext context) {
-		LogUtil.trace("Setting up resources");
 		DriverFactory.setupDriver();
 		classTest.set(BaseTest.getTestTagNode(context.getCurrentXmlTest().getName()).createNode(this.getClass().getSimpleName()));
 	}
@@ -59,7 +59,6 @@ public class UIBaseTest extends BaseTest{
 	
 	@AfterClass(alwaysRun = true)
 	public void teardownUIBaseClasses() {
-		LogUtil.trace("Tearing down class");
 		DriverFactory.quitDriver();
 	}
 	

@@ -37,7 +37,7 @@ public class Cart {
 	
 	public boolean isCartEmpty() {
 		try {
-			Webtool.waitForVisibitlityOfElementLocated(emptyCart, 1);
+			Webtool.waitForVisibitlityOfElementLocated(emptyCart, 3);
 			return true;
 		}catch(Exception e) {
 			return false;

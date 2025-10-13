@@ -1,5 +1,4 @@
 Automation Exercise Learning Documentation
-==========================
 
 ===== UI =====
 *	Product Quantity
@@ -44,4 +43,5 @@ But when retrieving user details through /getUserDetailByEmail, it returns "firs
 The major issue found was that a user can be created without providing values to any of the required fields, including password. Only if the field keys are absent
 will the request be rejected.
 
-
+==== E2E ====
+Birth month is accepted as the literal name in the UI but returns an Integer representation in the API, although the API allows month to be the name

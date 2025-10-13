@@ -84,15 +84,18 @@ public class Checkout {
 	public boolean isProductTotalVisible() {return Webtool.isElementVisible(productTotal);}
 	public boolean isTotalAmountVisible() {return Webtool.isElementVisible(orderTotal);}
 	
-	public void validateCheckoutLoads(SoftAssert softAssert) {
+	public void validateCheckoutLoads() {
+		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(isDeliveryAddressVisible(), "Delivery address not visible.");
 		softAssert.assertTrue(isBillingAddressVisible(), "Billing address not visible.");
 		softAssert.assertTrue(isCartInfoVisible(), "Item info not visible.");
 		softAssert.assertTrue(isOrderMsgVisible(), "Order message not visible.");
 		softAssert.assertTrue(isPlaceOrderBtnVisible(), "Place order button not visible.");
+		softAssert.assertAll();
 	}
 	
-	public void validateDeliveryDetails(SoftAssert softAssert) {
+	public void validateDeliveryDetails() {
+		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(isDeliveryNameVisible(), "Delivery name not visible.");
 		softAssert.assertTrue(isDeliveryCompanyVisible(), "Delivery company not visible.");
 		softAssert.assertTrue(isDeliveryAddress1Visible(), "Delivery address1 not visible.");
@@ -100,10 +103,11 @@ public class Checkout {
 		softAssert.assertTrue(isDeliveryCityStateZipVisible(), "Delivery city/state/zip not visible.");
 		softAssert.assertTrue(isDeliveryCountryVisible(), "Delivery country not visible.");
 		softAssert.assertTrue(isDeliveryPhoneNumVisible(), "Delivery phone number not visible.");
-	
+		softAssert.assertAll();
 	}
 	
-	public void validateBillingDetails(SoftAssert softAssert) {
+	public void validateBillingDetails() {
+		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(isBillingNameVisible(), "Billing name not visible.");
 		softAssert.assertTrue(isBillingCompanyVisible(), "Billing company not visible.");
 		softAssert.assertTrue(isBillingAddress1Visible(), "Billing address1 not visible.");
@@ -111,9 +115,11 @@ public class Checkout {
 		softAssert.assertTrue(isBillingCityStateZipVisible(), "Billing city/state/zip not visible.");
 		softAssert.assertTrue(isBillingCountryVisible(), "Billing country not visible.");
 		softAssert.assertTrue(isBillingPhoneNumVisible(), "Billing phone number not visible.");
+		softAssert.assertAll();
 	}
 	
-	public void validateCartItemDetails(SoftAssert softAssert) {
+	public void validateCartItemDetails() {
+		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(isProductImgVisible());
 		softAssert.assertTrue(isProductNameVisible());
 		softAssert.assertTrue(isProductCategoryVisible());
@@ -121,9 +127,11 @@ public class Checkout {
 		softAssert.assertTrue(isProductQuantityVisible());
 		softAssert.assertTrue(isProductTotalVisible());
 		softAssert.assertTrue(isTotalAmountVisible());
+		softAssert.assertAll();
 	}
 	
-	public void validateProductTotal(SoftAssert softAssert) {
+	public void validateProductTotal() {
+		SoftAssert softAssert = new SoftAssert();
 		List<UIProduct> orderItems = getAllOrderItemsData();
 		int expectedTotal = 0;
 		
@@ -131,9 +139,11 @@ public class Checkout {
 			expectedTotal = Integer.valueOf(each.getPrice()) * Integer.valueOf(each.getQuantity());
 			softAssert.assertEquals((int) expectedTotal, (int) Integer.valueOf(each.getTotal()), each.getName() + " total does not reflected expected price and quantity total.");
 		}
+		softAssert.assertAll();
 	}
 	
-	public void validateOrderTotal(SoftAssert softAssert) {
+	public void validateOrderTotal() {
+		SoftAssert softAssert = new SoftAssert();
 		List<UIProduct> orderItems = getAllOrderItemsData();
 		int expectedTotal = 0;
 		
@@ -141,6 +151,7 @@ public class Checkout {
 			expectedTotal = expectedTotal + Integer.valueOf(each.getTotal());
 		}
 		softAssert.assertEquals((int) Integer.valueOf(getOrderTotal()), (int) expectedTotal, "Order total does not reflect expected total: " + expectedTotal);
+		softAssert.assertAll();
 	}
 	
 	public List<WebElement> getAllOrderItems(){

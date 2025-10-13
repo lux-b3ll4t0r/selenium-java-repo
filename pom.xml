@@ -93,8 +93,7 @@
 				<version>3.1.2</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng-ui.xml</suiteXmlFile> <!-- Path to your TestNG suite -->
-						<suiteXmlFile>testng-api.xml</suiteXmlFile>
+						<suiteXmlFile>testng-mastersuite.xml</suiteXmlFile> <!-- Path to your TestNG suite -->
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
